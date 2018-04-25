@@ -9,6 +9,6 @@ public class Player {
 
     @Override
     public boolean equals(Object obj) {
-        return playerName.equals(((Player)obj).playerName) && playerScores == ((Player)obj).playerScores;
+        return this.playerName.equals(((Player)obj).playerName) && this.playerScores == ((Player)obj).playerScores;
     }
 }

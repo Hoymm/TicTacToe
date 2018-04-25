@@ -1,11 +1,12 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class PlayersTest {
     private Players examplePlayers;
 
-    @BeforeClass
+    @BeforeTest
     public void setUp(){
         examplePlayers = new Players(new Player("Adrian", 2), new Player("Kasia", 3));
     }

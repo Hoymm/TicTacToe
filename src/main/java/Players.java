@@ -1,6 +1,6 @@
 public class Players {
-    Player player1;
-    Player player2;
+    private Player player1;
+    private Player player2;
 
     public Players(Player player1, Player player2) {
         this.player1 = player1;
@@ -9,6 +9,6 @@ public class Players {
 
     @Override
     public boolean equals(Object obj) {
-        return player1.equals(((Players)obj).player1) && player1.equals(((Players)obj).player2);
+        return player1.equals(((Players)obj).player1) && player2.equals(((Players)obj).player2);
     }
 }
