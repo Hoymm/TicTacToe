@@ -8,8 +8,8 @@ public class DisplayDataProviderTest {
 
     @BeforeClass
     public void setUp(){
-        dataProvider = new DataProvider(new Players(new Player("Maciek", 2), new Player("Wojtek", 3)),
-                new GameBoard(3,3));
+        dataProvider = new DataProvider(new Data(new Players(new Player("Maciek", 2), new Player("Wojtek", 3)),
+                new GameBoard(3,3)));
         displayDataProvider = dataProvider.displayInfo();
     }
 

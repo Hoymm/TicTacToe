@@ -1,6 +1,9 @@
 public class DataProvider implements DisplayDataProvider {
-    public DataProvider(Players players, GameBoard gameBoard) {
 
+    private Data data;
+
+    public DataProvider(Data data) {
+        this.data = data;
     }
 
     public DisplayDataProvider displayInfo() {
@@ -13,7 +16,7 @@ public class DataProvider implements DisplayDataProvider {
 
     public String boardInfo() {
         StringBuilder tableDisplayInfoBuilder = new StringBuilder();
-        for (int width = 0; width < 3; ++width){
+        for (int width = 0; width < 3; ++width) {
             for (int height = 0; height < 3; ++height)
                 tableDisplayInfoBuilder.append(" ").append("|");
             tableDisplayInfoBuilder.append("\n");
