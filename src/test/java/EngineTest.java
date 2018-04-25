@@ -10,10 +10,10 @@ public class EngineTest {
 
     @BeforeClass
     public void createEngine(){
-        Data data = new Data(new Players(new Player("Maciek", 2), new Player("Wojtek", 3)), new GameBoard(3, 3));
-
-        DataProvider dataProvider = new DataProvider(data);
         userIO = new UserIO();
+
+        Data data = userIO.getGameSettingsFromUser();
+        DataProvider dataProvider = new DataProvider(data);
         playGame = new PlayGame();
         infoDisplayer = new InfoDisplayer();
 
