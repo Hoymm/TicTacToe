@@ -1,6 +1,7 @@
 import Data.DisplayInfoProvider;
 import UserIO.UserIO;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 
 public class InfoDisplayerTest {

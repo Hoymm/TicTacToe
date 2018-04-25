@@ -8,32 +8,23 @@ public class PlayerTest {
 
     @BeforeTest
     public void setUp(){
-        playerKasia2 = new Player("Kasia", 2);
+        playerKasia2 = new Player("Kasia");
     }
 
     @Test
     public void twoSameNameAndScoresPlayers_shouldBeConsideredEqual(){
         // given
         // when
-        Player anotherPlayerKasia2 = new Player("Kasia", 2);
+        Player anotherPlayerKasia2 = new Player("Kasia");
         // then
         Assert.assertEquals(playerKasia2, anotherPlayerKasia2);
     }
 
     @Test
-    public void twoDifferentNamePlayersAndSameScores_shouldBeConsideredNotEqual(){
+    public void twoDifferentNamePlayers_shouldBeConsideredNotEqual(){
         // given
         // when
-        Player anotherPlayerBartek1 = new Player("Bartek", 2);
-        // then
-        Assert.assertNotEquals(playerKasia2, anotherPlayerBartek1);
-    }
-
-    @Test
-    public void twoSameNamePlayersAndDifferentScores_shouldBeConsideredNotEqual(){
-        // given
-        // when
-        Player anotherPlayerBartek1 = new Player("Kasia", 1);
+        Player anotherPlayerBartek1 = new Player("Bartek");
         // then
         Assert.assertNotEquals(playerKasia2, anotherPlayerBartek1);
     }

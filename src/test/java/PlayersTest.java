@@ -9,32 +9,41 @@ public class PlayersTest {
 
     @BeforeTest
     public void setUp(){
-        examplePlayers = new Players(new Player("Adrian", 2), new Player("Kasia", 3));
+        examplePlayers = new Players(new Player("Adrian"), new Player("Kasia"));
     }
 
 
     @Test
-    public void twoPlayersWithTheSameNamesAndScores_shouldBeConsiderEqual(){
+    public void twoPlayersWithTheSameNames_shouldBeConsiderEqual(){
         // given
-        Players players = new Players(new Player("Adrian", 2), new Player("Kasia", 3));
+        Players players = new Players(new Player("Adrian"), new Player("Kasia"));
         // when
         // then
         Assert.assertEquals(examplePlayers, players);
     }
 
     @Test
-    public void twoPlayersWithTheSameNamesAndDifferentScores_shouldBeConsiderDifferent(){
+    public void twoPlayersWithTheFirstDifferentName_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Adrian", 2), new Player("Kasia", 1));
+        Players players = new Players(new Player("Wiktor"), new Player("Kasia"));
         // when
         // then
         Assert.assertNotEquals(examplePlayers, players);
     }
 
     @Test
-    public void twoPlayersWithDifferentNamesAndSameScores_shouldBeConsiderDifferent(){
+    public void twoPlayersWithTheSecondDifferentName_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Adrian", 2), new Player("Wojtek", 3));
+        Players players = new Players(new Player("Adrian"), new Player("Filip"));
+        // when
+        // then
+        Assert.assertNotEquals(examplePlayers, players);
+    }
+
+    @Test
+    public void twoPlayersWitDifferentNames_shouldBeConsiderDifferent(){
+        // given
+        Players players = new Players(new Player("Grzegorz"), new Player("Filip"));
         // when
         // then
         Assert.assertNotEquals(examplePlayers, players);

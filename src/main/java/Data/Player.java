@@ -4,9 +4,9 @@ public class Player {
     private String playerName;
     private int playerScores;
 
-    public Player(String playerName, int playerScores) {
+    public Player(String playerName) {
         this.playerName = playerName;
-        this.playerScores = playerScores;
+        this.playerScores = 0;
     }
 
     @Override

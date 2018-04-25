@@ -4,14 +4,13 @@ import org.testng.Assert;
 import Data.*;
 
 public class DisplayDataProviderTest {
-    private DataProvider dataProvider;
+    private Data data;
     private DisplayInfoProvider displayDataProvider;
 
     @BeforeClass
     public void setUp(){
-        dataProvider = new DataProvider(new Data(new Players(new Player("Maciek", 2), new Player("Wojtek", 3)),
-                new GameBoard(3,3)));
-        displayDataProvider = dataProvider.displayInfo();
+        data = new Data("Maciek Wojtek 3 3");
+        displayDataProvider = data.getDisplayInfoProvider();
     }
 
     @Test

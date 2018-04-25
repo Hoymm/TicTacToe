@@ -1,11 +1,24 @@
 package UserIO;
 
-import Data.Data;
-import Data.*;
+import java.util.Scanner;
 
 public class UserIO {
+    public String lastInput = "";
+    private Scanner scanner;
 
-    public Data loadGameSettingsFromUser() {
-        return new Data(new Players(new Player("Maciek", 2), new Player("Wojtek", 3)), new GameBoard(3, 3));
+    public UserIO(){
+        scanner = new Scanner(System.in);
+    }
+
+    public String userGameStartInput() {
+        return "Maciek Wojtek 3 3";
+    }
+
+    public void askUserToInputData() {
+        lastInput = scanner.nextLine();
+    }
+
+    public String lastUserInput(){
+        return lastInput;
     }
 }

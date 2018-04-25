@@ -11,19 +11,14 @@ public class UserIOTest {
     @BeforeClass
     public void setUp(){
         userIO = new UserIO();
-
-        Players players = new Players(new Player("Maciek", 2), new Player("Wojtek", 3));
-        GameBoard gameBoard = new GameBoard(3, 3);
-        exampleData = new Data(players, gameBoard);
+        exampleData = new Data("Maciek Wojtek 3 3");
     }
 
     @Test
     public void twoDifferentDataObjects_withTheSamePlayersAndBoard_willBeConsideredEqual(){
         // given
-        Players players1 = new Players(new Player("Maciek", 2), new Player("Wojtek", 3));
-        GameBoard gameBoard1 = new GameBoard(3, 3);
         // when
-        Data expectedData = new Data(players1, gameBoard1);
+        Data expectedData = new Data("Maciek Wojtek 3 3");
         // then
         Assert.assertEquals(exampleData, expectedData);
     }
@@ -31,10 +26,8 @@ public class UserIOTest {
     @Test
     public void twoDifferentDataObjects_withDifferentPlayersAndBoard_willBeConsideredDifferent(){
         // given
-        Players players1 = new Players(new Player("Krzysiek", 2), new Player("Jakub", 3));
-        GameBoard gameBoard1 = new GameBoard(3, 3);
         // when
-        Data expectedData = new Data(players1, gameBoard1);
+        Data expectedData = new Data("Jarek Jakub 3 3");
         // then
         Assert.assertNotEquals(exampleData, expectedData);
     }
@@ -44,6 +37,6 @@ public class UserIOTest {
         // given
         // when
         // then
-        Assert.assertEquals(userIO.loadGameSettingsFromUser(), exampleData);
+        Assert.assertEquals(new Data(userIO.userGameStartInput()), exampleData);
     }
 }
