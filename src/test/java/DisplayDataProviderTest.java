@@ -1,10 +1,11 @@
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.Assert;
+import Data.*;
 
 public class DisplayDataProviderTest {
     private DataProvider dataProvider;
-    private DisplayDataProvider displayDataProvider;
+    private DisplayInfoProvider displayDataProvider;
 
     @BeforeClass
     public void setUp(){
@@ -17,7 +18,7 @@ public class DisplayDataProviderTest {
     public void displayDataProvider_providesInfoAboutPlayers(){
         //given
         //when
-        String playersInfo = displayDataProvider.playersInfo();
+        String playersInfo = displayDataProvider.headerInfo();
         //then
         Assert.assertEquals(String.format("%s: %d \t %s: %d", "Maciek", 2, "Wojtek", 3), playersInfo);
     }

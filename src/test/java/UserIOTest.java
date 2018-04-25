@@ -1,3 +1,5 @@
+import Data.*;
+import UserIO.UserIO;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -42,6 +44,6 @@ public class UserIOTest {
         // given
         // when
         // then
-        Assert.assertEquals(userIO.getGameSettingsFromUser(), exampleData);
+        Assert.assertEquals(userIO.loadGameSettingsFromUser(), exampleData);
     }
 }

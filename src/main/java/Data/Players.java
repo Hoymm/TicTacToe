@@ -1,3 +1,5 @@
+package Data;
+
 public class Players {
     private Player player1;
     private Player player2;

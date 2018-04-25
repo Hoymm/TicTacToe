@@ -1,3 +1,8 @@
+import Data.Data;
+import Data.DataProvider;
+import InfoDisplayer.InfoDisplayer;
+import PlayGame.PlayGame;
+import UserIO.UserIO;
 import org.testng.annotations.*;
 
 public class EngineTest {
@@ -11,7 +16,7 @@ public class EngineTest {
     @BeforeTest
     public void createEngine() {
         userIO = new UserIO();
-        Data data = userIO.getGameSettingsFromUser();
+        Data data = userIO.loadGameSettingsFromUser();
         dataProvider = new DataProvider(data);
         playGame = new PlayGame();
         infoDisplayer = new InfoDisplayer();

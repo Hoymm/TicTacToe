@@ -1,10 +1,12 @@
+import Data.DisplayInfoProvider;
+import UserIO.UserIO;
 import org.testng.annotations.BeforeClass;
 
 
 public class InfoDisplayerTest {
     private InfoDisplayerTest infoDisplayerTest;
 
-    private DisplayDataProvider displayDataProvider;
+    private DisplayInfoProvider displayDataProvider;
     private UserIO userIO;
 
     @BeforeClass
