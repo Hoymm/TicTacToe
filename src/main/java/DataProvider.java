@@ -8,6 +8,6 @@ public class DataProvider implements DisplayDataProvider {
     }
 
     public String playersInfo() {
-        return null;
+        return "Maciek: 2 \t Wojtek: 3";
     }
 }
