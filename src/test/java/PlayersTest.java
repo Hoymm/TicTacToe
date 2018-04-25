@@ -12,11 +12,29 @@ public class PlayersTest {
 
 
     @Test
-    public void twoPlayersObject_shouldBeConsideredEqualsIfTheir_playerValuesAreEqual(){
+    public void twoPlayersWithTheSameNamesAndScores_shouldBeConsiderEqual(){
         // given
         Players players = new Players(new Player("Adrian", 2), new Player("Kasia", 3));
         // when
         // then
         Assert.assertEquals(examplePlayers, players);
+    }
+
+    @Test
+    public void twoPlayersWithTheSameNamesAndDifferentScores_shouldBeConsiderDifferent(){
+        // given
+        Players players = new Players(new Player("Adrian", 2), new Player("Kasia", 1));
+        // when
+        // then
+        Assert.assertNotEquals(examplePlayers, players);
+    }
+
+    @Test
+    public void twoPlayersWithDifferentNamesAndSameScores_shouldBeConsiderDifferent(){
+        // given
+        Players players = new Players(new Player("Adrian", 2), new Player("Wojtek", 3));
+        // when
+        // then
+        Assert.assertNotEquals(examplePlayers, players);
     }
 }
