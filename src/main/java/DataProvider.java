@@ -1,5 +1,5 @@
 public class DataProvider implements DisplayDataProvider {
-    public DataProvider(Players players) {
+    public DataProvider(Players players, GameBoard gameBoard) {
 
     }
 
@@ -9,5 +9,15 @@ public class DataProvider implements DisplayDataProvider {
 
     public String playersInfo() {
         return "Maciek: 2 \t Wojtek: 3";
+    }
+
+    public String boardInfo() {
+        StringBuilder tableDisplayInfoBuilder = new StringBuilder();
+        for (int width = 0; width < 3; ++width){
+            for (int height = 0; height < 3; ++height)
+                tableDisplayInfoBuilder.append(" ").append("|");
+            tableDisplayInfoBuilder.append("\n");
+        }
+        return tableDisplayInfoBuilder.toString();
     }
 }
