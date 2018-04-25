@@ -9,6 +9,6 @@ public class Data {
 
     @Override
     public boolean equals(Object obj) {
-        return true;
+        return players.equals(((Data)obj).players) && gameBoard.equals(((Data)obj).gameBoard);
     }
 }

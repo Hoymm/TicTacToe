@@ -13,6 +13,8 @@ public class Engine {
 
 
     public void runGame() {
-        //dataProvider = new DataProvider(userIO.getGameSettingsFromUser());
+        dataProvider = new DataProvider(userIO.getGameSettingsFromUser());
+        for (int i = 0; i < 3; ++i){
+        }
     }
 }

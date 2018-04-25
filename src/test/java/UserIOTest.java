@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class UserIOTest {
     private UserIO userIO;
-    Data exampleData;
+    private Data exampleData;
 
     @BeforeClass
     public void setUp(){
