@@ -9,13 +9,10 @@ public class Data {
     private GameBoard gameBoard;
 
     public Data(){
-
     }
 
     public Data(String userInput) {
-        String [] userInputArray = userInput.split(";");
-        this.players = new Players(new Player(userInputArray[0]), new Player(userInputArray[1]));
-        this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
+        modifyDataDependOnState(userInput, new StartGameState());
     }
 
     @Override
@@ -50,7 +47,7 @@ public class Data {
     public void modifyDataDependOnState(String userInput, GameState gameState) {
         if (gameState instanceof StartGameState) {
             String [] userInputArray = userInput.split(";");
-            this.players = new Players(new Player(userInputArray[0]), new Player(userInputArray[1]));
+            this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X));
             this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
         }
         else if (gameState instanceof RunningGameState){

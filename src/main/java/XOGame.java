@@ -18,6 +18,7 @@ class XOGame {
     }
 
     private void showInfoAboutGameToTheUser() {
+        System.out.println("Hello in XO game !");
         System.out.println("To quit game any moment you can type: quit");
     }
 

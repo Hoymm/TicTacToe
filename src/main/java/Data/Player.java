@@ -3,9 +3,11 @@ package Data;
 public class Player {
     private String playerName;
     private int playerScores;
+    private Symbol symbol;
 
-    public Player(String playerName) {
+    public Player(String playerName, Symbol symbol) {
         this.playerName = playerName;
+        this.symbol = symbol;
         this.playerScores = 0;
     }
 
@@ -20,6 +22,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("%s: %d", playerName, playerScores);
+        return String.format("%s [%s]: %d", playerName, symbol, playerScores);
     }
 }

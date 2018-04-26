@@ -1,5 +1,7 @@
 package UserIO;
 
+import Data.Symbol;
+
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -20,18 +22,18 @@ public class InputParams {
 
     String getPlayerNamesAndBoardDataFromUser() {
         StringBuilder builderUserInput = new StringBuilder();
-        builderUserInput.append(insertAndValidatePlayerName("Insert first player name: ")).append(SEPARATOR);
-        builderUserInput.append(insertAndValidatePlayerName("Insert second player name: ")).append(SEPARATOR);
+        builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
+        builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("width")).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("height"));
         return builderUserInput.toString();
     }
 
-    private String insertAndValidatePlayerName(String message) {
+    private String insertAndValidatePlayerName(String player) {
         String playerName = "";
         boolean validationPassed = false;
         while (!validationPassed){
-            System.out.println(message);
+            System.out.println(String.format("Insert %s player name: ", player));
             try {
                 playerName = scanner.nextLine();
                 validationPassed = inputParamsValidator.validateInsertedName(playerName);
