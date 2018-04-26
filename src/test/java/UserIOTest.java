@@ -1,8 +1,8 @@
 import Data.*;
 import UserIO.InputParams;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class UserIOTest {
     private Data exampleData;
@@ -18,7 +18,7 @@ public class UserIOTest {
         // when
         Data expectedData = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
         // then
-        Assert.assertEquals(exampleData, expectedData);
+        assertEquals(exampleData, expectedData);
     }
 
     @Test
@@ -28,6 +28,6 @@ public class UserIOTest {
 
         Data expectedData = new Data(String.format("Jarek%cJakub%<c3%<c3", InputParams.SEPARATOR));
         // then
-        Assert.assertNotEquals(exampleData, expectedData);
+        assertNotEquals(exampleData, expectedData);
     }
 }

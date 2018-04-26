@@ -1,8 +1,8 @@
 import Data.Player;
 import Data.Players;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class PlayersTest {
     private Players examplePlayers;
@@ -19,7 +19,7 @@ public class PlayersTest {
         Players players = new Players(new Player("Adrian"), new Player("Kasia"));
         // when
         // then
-        Assert.assertEquals(examplePlayers, players);
+        assertEquals(examplePlayers, players);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class PlayersTest {
         Players players = new Players(new Player("Wiktor"), new Player("Kasia"));
         // when
         // then
-        Assert.assertNotEquals(examplePlayers, players);
+        assertNotEquals(examplePlayers, players);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class PlayersTest {
         Players players = new Players(new Player("Adrian"), new Player("Filip"));
         // when
         // then
-        Assert.assertNotEquals(examplePlayers, players);
+        assertNotEquals(examplePlayers, players);
     }
 
     @Test
@@ -46,11 +46,11 @@ public class PlayersTest {
         Players players = new Players(new Player("Grzegorz"), new Player("Filip"));
         // when
         // then
-        Assert.assertNotEquals(examplePlayers, players);
+        assertNotEquals(examplePlayers, players);
     }
 
     @Test
     public void test(){
-        Assert.assertEquals(examplePlayers.toString(), "Adrian: 0 \t Kasia: 0");
+        assertEquals(examplePlayers.toString(), "Adrian: 0 \t Kasia: 0");
     }
 }

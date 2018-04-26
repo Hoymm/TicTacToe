@@ -2,6 +2,7 @@ import Data.Player;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class PlayerTest {
     private Player playerKasia2;
@@ -17,7 +18,7 @@ public class PlayerTest {
         // when
         Player anotherPlayerKasia2 = new Player("Kasia");
         // then
-        Assert.assertEquals(playerKasia2, anotherPlayerKasia2);
+        assertEquals(playerKasia2, anotherPlayerKasia2);
     }
 
     @Test
@@ -26,6 +27,6 @@ public class PlayerTest {
         // when
         Player anotherPlayerBartek1 = new Player("Bartek");
         // then
-        Assert.assertNotEquals(playerKasia2, anotherPlayerBartek1);
+        assertNotEquals(playerKasia2, anotherPlayerBartek1);
     }
 }

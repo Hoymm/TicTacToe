@@ -1,8 +1,9 @@
 import UserIO.InputParams;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import Data.*;
+
+import static org.testng.Assert.assertEquals;
 
 public class DisplayDataProviderTest {
     private Data data;
@@ -20,7 +21,7 @@ public class DisplayDataProviderTest {
         //when
         String playersInfo = displayDataProvider.headerInfo();
         //then
-        Assert.assertEquals(playersInfo, String.format("%s: %d \t %s: %d", "Maciek", 0, "Wojtek", 0));
+        assertEquals(playersInfo, String.format("%s: %d \t %s: %d", "Maciek", 0, "Wojtek", 0));
     }
 
     @Test
@@ -28,7 +29,8 @@ public class DisplayDataProviderTest {
         // given
         // when
         String boardToDisplay = displayDataProvider.boardInfo();
-        Assert.assertEquals(boardToDisplay, " | | |\n | | |\n | | |\n");
+        //then
+        assertEquals(boardToDisplay, " | | |\n | | |\n | | |\n");
     }
 
 }

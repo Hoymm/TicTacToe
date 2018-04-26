@@ -12,7 +12,7 @@ public class Data {
 
     @Override
     public boolean equals(Object obj) {
-        return players.equals(((Data)obj).players) && gameBoard.equals(((Data)obj).gameBoard);
+        return players.equals(((Data)obj).players);
     }
 
     public CurGameDataInfo displayInfo() {
