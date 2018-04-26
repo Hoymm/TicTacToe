@@ -1,17 +1,14 @@
 import Data.*;
 import UserIO.InputParams;
-import UserIO.UserIO;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class UserIOTest {
-    private UserIO userIO;
     private Data exampleData;
 
     @BeforeClass
     public void setUp(){
-        userIO = new UserIO();
         exampleData = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
     }
 

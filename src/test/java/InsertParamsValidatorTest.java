@@ -1,4 +1,5 @@
 import UserIO.InputCannotBeEmptyException;
+import UserIO.InputParams;
 import UserIO.InputParamsValidator;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -23,5 +24,13 @@ public class InsertParamsValidatorTest {
         boolean isNameCorrect = inputParamsValidator.validateInsertedName("Anna");
         // then
         Assert.assertTrue(isNameCorrect);
+    }
+
+    @Test (expectedExceptions = NumberFormatException.class)
+    public void validateNameInserted_nameContainingAnyOtherSignsThanLetters_shouldReturnFalse() throws InputCannotBeEmptyException {
+        // given
+        // when
+        // then
+        inputParamsValidator.validateInsertedName(String.format("%s%c%s", "Anna", InputParams.SEPARATOR, "Beata"));
     }
 }
