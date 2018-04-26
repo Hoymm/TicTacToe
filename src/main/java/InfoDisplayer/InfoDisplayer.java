@@ -1,9 +1,9 @@
 package InfoDisplayer;
 
-import Data.DisplayInfoProvider;
+import Data.CurGameStateInfo;
 
 public class InfoDisplayer {
-    public void displayCurGameState(DisplayInfoProvider infoDisplayer) {
+    public void displayCurGameState(CurGameStateInfo infoDisplayer) {
         System.out.println(infoDisplayer.headerInfo());
         System.out.println(infoDisplayer.boardInfo());
     }

@@ -6,12 +6,12 @@ import Data.*;
 
 public class DisplayDataProviderTest {
     private Data data;
-    private DisplayInfoProvider displayDataProvider;
+    private CurGameStateInfo displayDataProvider;
 
     @BeforeClass
     public void setUp(){
         data = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
-        displayDataProvider = data.getDisplayInfoProvider();
+        displayDataProvider = data.displayInfo();
     }
 
     @Test

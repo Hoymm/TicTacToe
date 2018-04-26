@@ -1,6 +1,6 @@
 package Data;
 
-public interface DisplayInfoProvider {
+public interface CurGameStateInfo {
     String headerInfo();
     String boardInfo();
 }
