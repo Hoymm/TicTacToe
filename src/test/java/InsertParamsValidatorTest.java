@@ -26,11 +26,13 @@ public class InsertParamsValidatorTest {
         Assert.assertTrue(isNameCorrect);
     }
 
-    @Test (expectedExceptions = NumberFormatException.class)
+    @Test
     public void validateNameInserted_nameContainingAnyOtherSignsThanLetters_shouldReturnFalse() throws InputCannotBeEmptyException {
         // given
         // when
+
+        boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%c%s", "Anna", InputParams.SEPARATOR, "Beata"));
         // then
-        inputParamsValidator.validateInsertedName(String.format("%s%c%s", "Anna", InputParams.SEPARATOR, "Beata"));
+        Assert.assertFalse(validateNameWithSpecialSign);
     }
 }
