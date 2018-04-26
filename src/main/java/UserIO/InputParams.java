@@ -1,6 +1,5 @@
 package UserIO;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -43,17 +42,14 @@ public class InputParams {
 
     private int insertAndValidateTableParam(String paramToGet) {
         String tableParameter = "";
-        while(!isInteger(tableParameter) || Integer.valueOf(tableParameter) < 3){
+        while(!inputParamsValidator.isTableParamVaild(tableParameter)){
             System.out.println(String.format("Insert board %s: ", paramToGet));
             tableParameter = scanner.nextLine();
-            if (!isInteger(tableParameter) || Integer.valueOf(tableParameter) < 3)
+            if (!inputParamsValidator.isTableParamVaild(tableParameter))
                 System.out.println(String.format("Please insert integer value, greater or equal 3. \n \"%s\" is not acceptable table %s"
                         , tableParameter, paramToGet));
         }
         return Integer.valueOf(tableParameter);
     }
 
-    public boolean isInteger(String tableParameter) {
-        return tableParameter.matches("-?\\d+");
-    }
 }

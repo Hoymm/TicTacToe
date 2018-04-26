@@ -1,4 +1,5 @@
 import UserIO.InputParams;
+import UserIO.InputParamsValidator;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -6,25 +7,25 @@ import org.testng.annotations.Test;
 import java.util.Scanner;
 
 public class InputParamsTest {
-    InputParams inputParams;
+    InputParamsValidator inputParamsValidator;
 
     @BeforeTest
     public void setUp (){
-        inputParams = new InputParams(new Scanner(System.in));
+        inputParamsValidator = new InputParamsValidator();
     }
 
     @Test
     public void isInteger_whenPassIntegerString_shouldReturnTrue (){
-        Assert.assertTrue(inputParams.isInteger("123"));
+        Assert.assertTrue(inputParamsValidator.isInteger("123"));
     }
 
     @Test
     public void isInteger_whenPassNonIntegerString_shouldReturnFalse (){
-        Assert.assertFalse(inputParams.isInteger("jh43"));
+        Assert.assertFalse(inputParamsValidator.isInteger("jh43"));
     }
 
     @Test
     public void isInteger_whenPassEmptyString_shouldReturnFalse (){
-        Assert.assertFalse(inputParams.isInteger(""));
+        Assert.assertFalse(inputParamsValidator.isInteger(""));
     }
 }

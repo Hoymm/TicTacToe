@@ -3,13 +3,13 @@ import Data.CurGameStateInfo;
 import InfoDisplayer.InfoDisplayer;
 import UserIO.UserIO;
 
-public class XOGame {
+class XOGame {
     private Data data;
     private CurGameStateInfo curGameState;
     private InfoDisplayer infoDisplayer;
     private UserIO userIO;
 
-    public XOGame() {
+    XOGame() {
         showInfoAboutGameToTheUser();
         initGameStartConditions();
     }
@@ -29,7 +29,7 @@ public class XOGame {
         return new Data(userIO.getStartGameParametersFromUser());
     }
 
-    public void runGame() {
+    void runGame() {
         while (userDontWantLeaveGame()){
             infoDisplayer.displayCurGameState(curGameState);
             userIO.askUserToInputData();

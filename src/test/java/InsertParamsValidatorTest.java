@@ -1,9 +1,9 @@
 import UserIO.InputCannotBeEmptyException;
 import UserIO.InputParams;
 import UserIO.InputParamsValidator;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class InsertParamsValidatorTest {
     private InputParamsValidator inputParamsValidator;
@@ -23,7 +23,7 @@ public class InsertParamsValidatorTest {
         // when
         boolean isNameCorrect = inputParamsValidator.validateInsertedName("Anna");
         // then
-        Assert.assertTrue(isNameCorrect);
+        assertTrue(isNameCorrect);
     }
 
     @Test
@@ -33,6 +33,36 @@ public class InsertParamsValidatorTest {
 
         boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%c%s", "Anna", InputParams.SEPARATOR, "Beata"));
         // then
-        Assert.assertFalse(validateNameWithSpecialSign);
+        assertFalse(validateNameWithSpecialSign);
+    }
+
+    @Test
+    public void validateTableParamInserted_insertValue5_shouldResultInTrue() {
+        // given
+        // when
+
+        boolean validateTableParamLesserThan2 = inputParamsValidator.isTableParamVaild("5");
+        // then
+        assertTrue(validateTableParamLesserThan2);
+    }
+
+    @Test
+    public void validateTableParamInserted_insertValueLesserThan3_shouldResultInFalse() {
+        // given
+        // when
+
+        boolean validateTableParamLesserThan2 = inputParamsValidator.isTableParamVaild("2");
+        // then
+        assertFalse(validateTableParamLesserThan2);
+    }
+
+    @Test
+    public void validateTableParamInserted_insertTextInsteadOfInteger_shouldResultInFalse() {
+        // given
+        // when
+
+        boolean validateTableParamLesserThan2 = inputParamsValidator.isTableParamVaild("tekstksaf");
+        // then
+        assertFalse(validateTableParamLesserThan2);
     }
 }
