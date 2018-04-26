@@ -2,7 +2,7 @@ package PlayGame;
 
 public class StartGameState implements GameState {
     @Override
-    public void moveToNextState() {
-
+    public GameState moveToNextState() {
+        return new RunningGameState();
     }
 }

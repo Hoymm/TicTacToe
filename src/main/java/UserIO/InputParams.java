@@ -14,6 +14,10 @@ public class InputParams {
         inputParamsValidator = new InputParamsValidator();
     }
 
+    String getMove(){
+        return scanner.nextLine();
+    }
+
     String getPlayerNamesAndBoardDataFromUser() {
         StringBuilder builderUserInput = new StringBuilder();
         builderUserInput.append(insertAndValidatePlayerName("Insert first player name: ")).append(SEPARATOR);

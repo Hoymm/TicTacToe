@@ -25,15 +25,15 @@ class XOGame {
         gameState = new StartGameState();
         userIO = new UserIO();
         infoDisplayer = new InfoDisplayer();
+        data = new Data();
     }
 
     void runGame() {
         while (userDontWantLeaveGame()){
             String userParamsInserted = userIO.getParametersFromUser(gameState);
-            data = new Data(userParamsInserted);
-            curDataInfo = data.displayInfo();
-            infoDisplayer.displayCurGameData(curDataInfo);
-            userIO.askUserToInputData();
+            data.modifyDataDependOnState(userParamsInserted, gameState);
+            gameState = gameState.moveToNextState();
+            infoDisplayer.displayCurGameData(data.displayInfo());
         }
     }
 

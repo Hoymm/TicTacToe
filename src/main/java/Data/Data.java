@@ -1,8 +1,16 @@
 package Data;
 
+import PlayGame.GameState;
+import PlayGame.RunningGameState;
+import PlayGame.StartGameState;
+
 public class Data {
     private Players players;
     private GameBoard gameBoard;
+
+    public Data(){
+
+    }
 
     public Data(String userInput) {
         String [] userInputArray = userInput.split(";");
@@ -37,5 +45,17 @@ public class Data {
                 return tableDisplayInfoBuilder.toString();
             }
         };
+    }
+
+    public void modifyDataDependOnState(String userInput, GameState gameState) {
+        if (gameState instanceof StartGameState) {
+            String [] userInputArray = userInput.split(";");
+            this.players = new Players(new Player(userInputArray[0]), new Player(userInputArray[1]));
+            this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
+        }
+        else if (gameState instanceof RunningGameState){
+            // TODO modify state
+        }
+        return;
     }
 }

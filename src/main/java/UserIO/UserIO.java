@@ -1,5 +1,4 @@
 package UserIO;
-import Data.Data;
 import PlayGame.GameState;
 import PlayGame.RunningGameState;
 import PlayGame.StartGameState;
@@ -17,15 +16,17 @@ public class UserIO {
     }
 
     public String getParametersFromUser(GameState gameState) {
+        // TODO think about refactor these if's and instance of
         if (gameState instanceof StartGameState)
             return paramsInput.getPlayerNamesAndBoardDataFromUser();
-        else // TODO change that else
-            return "X";
+        else if (gameState instanceof RunningGameState)
+            return askUserToInputData();
+        return paramsInput.getMove();
     }
 
-    public void askUserToInputData() {
+    public String askUserToInputData() {
         System.out.println("Insert something: ");
-        lastInput = scanner.nextLine();
+        return scanner.nextLine();
     }
 
     public String lastUserInput(){
