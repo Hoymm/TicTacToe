@@ -6,7 +6,7 @@ import Data.*;
 
 public class DisplayDataProviderTest {
     private Data data;
-    private CurGameStateInfo displayDataProvider;
+    private CurGameDataInfo displayDataProvider;
 
     @BeforeClass
     public void setUp(){

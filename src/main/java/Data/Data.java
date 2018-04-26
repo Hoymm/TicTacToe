@@ -15,8 +15,8 @@ public class Data {
         return players.equals(((Data)obj).players) && gameBoard.equals(((Data)obj).gameBoard);
     }
 
-    public CurGameStateInfo displayInfo() {
-        return new CurGameStateInfo() {
+    public CurGameDataInfo displayInfo() {
+        return new CurGameDataInfo() {
             @Override
             public String headerInfo() {
                 return players.toString();

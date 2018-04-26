@@ -4,17 +4,17 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class InputParams {
-    public static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
+    static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
     private InputParamsValidator inputParamsValidator;
     public final static char SEPARATOR = ';';
     private Scanner scanner;
 
-    public InputParams(Scanner scanner) {
+    InputParams(Scanner scanner) {
         this.scanner = scanner;
         inputParamsValidator = new InputParamsValidator();
     }
 
-    public String getPlayerNamesAndBoardDataFromUser() {
+    String getPlayerNamesAndBoardDataFromUser() {
         StringBuilder builderUserInput = new StringBuilder();
         builderUserInput.append(insertAndValidatePlayerName("Insert first player name: ")).append(SEPARATOR);
         builderUserInput.append(insertAndValidatePlayerName("Insert second player name: ")).append(SEPARATOR);

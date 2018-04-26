@@ -1,13 +1,16 @@
 import Data.Data;
-import Data.CurGameStateInfo;
+import Data.CurGameDataInfo;
 import InfoDisplayer.InfoDisplayer;
+import PlayGame.GameState;
+import PlayGame.StartGameState;
 import UserIO.UserIO;
 
 class XOGame {
     private Data data;
-    private CurGameStateInfo curGameState;
+    private CurGameDataInfo curDataInfo;
     private InfoDisplayer infoDisplayer;
     private UserIO userIO;
+    private GameState gameState;
 
     XOGame() {
         showInfoAboutGameToTheUser();
@@ -15,23 +18,21 @@ class XOGame {
     }
 
     private void showInfoAboutGameToTheUser() {
-        System.out.println("To quit game any moment you can type ");
+        System.out.println("To quit game any moment you can type: quit");
     }
 
     private void initGameStartConditions() {
+        gameState = new StartGameState();
         userIO = new UserIO();
-        data = provideGameSettingsData();
-        curGameState = data.displayInfo();
         infoDisplayer = new InfoDisplayer();
-    }
-
-    private Data provideGameSettingsData() {
-        return new Data(userIO.getStartGameParametersFromUser());
     }
 
     void runGame() {
         while (userDontWantLeaveGame()){
-            infoDisplayer.displayCurGameState(curGameState);
+            String userParamsInserted = userIO.getParametersFromUser(gameState);
+            data = new Data(userParamsInserted);
+            curDataInfo = data.displayInfo();
+            infoDisplayer.displayCurGameData(curDataInfo);
             userIO.askUserToInputData();
         }
     }
