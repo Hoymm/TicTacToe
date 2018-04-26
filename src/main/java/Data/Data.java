@@ -12,6 +12,10 @@ public class Data {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Data)) {
+            return false;
+        }
         return players.equals(((Data)obj).players);
     }
 

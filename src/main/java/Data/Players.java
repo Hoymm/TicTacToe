@@ -11,6 +11,10 @@ public class Players {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Players)) {
+            return false;
+        }
         return player1.equals(((Players)obj).player1) && player2.equals(((Players)obj).player2);
     }
 
