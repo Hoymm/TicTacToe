@@ -13,4 +13,9 @@ public class Players {
     public boolean equals(Object obj) {
         return player1.equals(((Players)obj).player1) && player2.equals(((Players)obj).player2);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s \t %s", player1, player2);
+    }
 }

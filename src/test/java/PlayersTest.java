@@ -48,4 +48,9 @@ public class PlayersTest {
         // then
         Assert.assertNotEquals(examplePlayers, players);
     }
+
+    @Test
+    public void test(){
+        Assert.assertEquals(examplePlayers.toString(), "Adrian: 0 \t Kasia: 0");
+    }
 }

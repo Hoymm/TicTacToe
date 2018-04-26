@@ -10,8 +10,12 @@ public class XOGame {
     private UserIO userIO;
 
     public XOGame() {
+        initGameStartConditions();
+    }
+
+    private void initGameStartConditions() {
         userIO = new UserIO();
-        data = new Data(userIO.userGameStartInput());
+        data = new Data(userIO.getStartGameParametersFromUser());
         displayInfoProvider = data.getDisplayInfoProvider();
         infoDisplayer = new InfoDisplayer();
     }

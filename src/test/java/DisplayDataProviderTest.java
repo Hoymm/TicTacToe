@@ -1,3 +1,4 @@
+import UserIO.InputParams;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -9,7 +10,7 @@ public class DisplayDataProviderTest {
 
     @BeforeClass
     public void setUp(){
-        data = new Data("Maciek Wojtek 3 3");
+        data = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
         displayDataProvider = data.getDisplayInfoProvider();
     }
 
@@ -19,7 +20,7 @@ public class DisplayDataProviderTest {
         //when
         String playersInfo = displayDataProvider.headerInfo();
         //then
-        Assert.assertEquals(String.format("%s: %d \t %s: %d", "Maciek", 2, "Wojtek", 3), playersInfo);
+        Assert.assertEquals(playersInfo, String.format("%s: %d \t %s: %d", "Maciek", 0, "Wojtek", 0));
     }
 
     @Test

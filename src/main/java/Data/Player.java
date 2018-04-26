@@ -13,4 +13,9 @@ public class Player {
     public boolean equals(Object obj) {
         return this.playerName.equals(((Player)obj).playerName) && this.playerScores == ((Player)obj).playerScores;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s: %d", playerName, playerScores);
+    }
 }

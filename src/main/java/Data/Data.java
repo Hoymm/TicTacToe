@@ -5,7 +5,7 @@ public class Data {
     private GameBoard gameBoard;
 
     public Data(String userInput) {
-        String [] userInputArray = userInput.split(" ");
+        String [] userInputArray = userInput.split(";");
         this.players = new Players(new Player(userInputArray[0]), new Player(userInputArray[1]));
         this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
     }
@@ -19,7 +19,7 @@ public class Data {
         return new DisplayInfoProvider() {
             @Override
             public String headerInfo() {
-                return "Maciek: 2 \t Wojtek: 3";
+                return players.toString();
             }
 
             @Override

@@ -1,4 +1,5 @@
 import Data.*;
+import UserIO.InputParams;
 import UserIO.UserIO;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -11,14 +12,14 @@ public class UserIOTest {
     @BeforeClass
     public void setUp(){
         userIO = new UserIO();
-        exampleData = new Data("Maciek Wojtek 3 3");
+        exampleData = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
     }
 
     @Test
     public void twoDifferentDataObjects_withTheSamePlayersAndBoard_willBeConsideredEqual(){
         // given
         // when
-        Data expectedData = new Data("Maciek Wojtek 3 3");
+        Data expectedData = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
         // then
         Assert.assertEquals(exampleData, expectedData);
     }
@@ -27,16 +28,9 @@ public class UserIOTest {
     public void twoDifferentDataObjects_withDifferentPlayersAndBoard_willBeConsideredDifferent(){
         // given
         // when
-        Data expectedData = new Data("Jarek Jakub 3 3");
+
+        Data expectedData = new Data(String.format("Jarek%cJakub%<c3%<c3", InputParams.SEPARATOR));
         // then
         Assert.assertNotEquals(exampleData, expectedData);
-    }
-
-    @Test
-    public void getGameSettingsFromUser_shouldReturnDataObject(){
-        // given
-        // when
-        // then
-        Assert.assertEquals(new Data(userIO.userGameStartInput()), exampleData);
     }
 }
