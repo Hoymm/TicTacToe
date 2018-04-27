@@ -23,11 +23,9 @@ class XOGame {
     }
 
     private void initGameStartConditions() {
-        // TODO uncomment to start providing  params, and change new Data(...) below to new Data()
-        // gameState = new StartGameState();
-        gameState = new RunningGameState();
+        gameState = new StartGameState();
         gameDisplayer = new GameDisplayer();
-        data = new Data("Maciek Bolek O 7 12");
+        data = new Data();
     }
 
     void runGame() {

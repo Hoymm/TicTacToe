@@ -18,6 +18,6 @@ public class InputParamsValidator {
     }
 
     public boolean isValidSymbol(String symbol) {
-        return symbol.equals(Symbol.O.toString()) || symbol.equals(Symbol.X.toString());
+        return symbol.equals("O") || symbol.equals("X");
     }
 }

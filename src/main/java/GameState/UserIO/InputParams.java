@@ -61,7 +61,8 @@ public class InputParams {
             System.out.println(String.format("Who should start first? Type player symbol (%s or %s): ", Symbol.O, Symbol.X));
             symbolToPlayFirst = scanner.nextLine();
             if (!inputParamsValidator.isValidSymbol(symbolToPlayFirst))
-                System.out.println("Please insert symbol O (big o) or X (big x), any other symbols will not be accepted.");
+                System.out.println(String.format("Please insert symbol %s (big o) or %s (big x), any other symbols will not be accepted."
+                        , Symbol.O, Symbol.X));
         }
         return symbolToPlayFirst;
     }

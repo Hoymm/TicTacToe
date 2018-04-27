@@ -17,12 +17,12 @@ public class GameBoard {
     public String toString() {
         StringBuilder tableDisplayInfoBuilder = new StringBuilder();
 
-        myBoard.put(12, Symbol.X);
-        myBoard.put(13, Symbol.X);
-        myBoard.put(14, Symbol.X);
-        myBoard.put(56, Symbol.O);
-        myBoard.put(67, Symbol.O);
-        myBoard.put(82, Symbol.O);
+        myBoard.put(2, Symbol.X);
+        myBoard.put(3, Symbol.X);
+        myBoard.put(4, Symbol.X);
+        myBoard.put(5, Symbol.O);
+        myBoard.put(6, Symbol.O);
+        myBoard.put(7, Symbol.O);
 
         for (int i = 0; i < height; ++i) {
             for (int j = 1; j <= width; ++j) {
