@@ -4,7 +4,7 @@ import Data.CurGameDataMutator;
 
 public class StartGameState implements GameState {
     @Override
-    public GameState getNextGameState(CurGameDataMutator dataMutator) {
+    public GameState getNextState(CurGameDataMutator dataMutator) {
         return new RunningGameState();
     }
 }

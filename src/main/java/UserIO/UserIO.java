@@ -15,7 +15,7 @@ public class UserIO {
         inputParams = new InputParams(scanner);
     }
 
-    public String getParametersFromUser(GameState gameState) {
+    public String getUserInput(GameState gameState) {
         // TODO think about refactor these if's and instance of
         if (gameState instanceof StartGameState)
             lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();

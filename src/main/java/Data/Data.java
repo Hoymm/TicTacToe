@@ -13,7 +13,7 @@ public class Data {
     }
 
     public Data(String userInput) {
-        getInputFromUser(userInput, new StartGameState());
+        applyUserInput(userInput, new StartGameState());
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Data {
         return players.equals(((Data)obj).players);
     }
 
-    public CurGameDataInfo displayInfo() {
+    public CurGameDataInfo getInfoToDisplay() {
         return new CurGameDataInfo() {
             @Override
             public String headerInfo() {
@@ -54,7 +54,7 @@ public class Data {
         };
     }
 
-    public void getInputFromUser(String userInput, GameState gameState) {
+    public void applyUserInput(String userInput, GameState gameState) {
         if (gameState instanceof StartGameState) {
             String [] userInputArray = userInput.split(InputParams.SEPARATOR);
             this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));

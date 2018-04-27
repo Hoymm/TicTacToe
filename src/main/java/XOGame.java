@@ -1,7 +1,7 @@
 import Data.Data;
 import Data.Colors;
 import Data.CurGameDataInfo;
-import InfoDisplayer.InfoDisplayer;
+import InfoDisplayer.GameDisplayer;
 import PlayGame.GameState;
 import PlayGame.StartGameState;
 import UserIO.UserIO;
@@ -9,7 +9,7 @@ import UserIO.UserIO;
 class XOGame {
     private Data data;
     private CurGameDataInfo curDataInfo;
-    private InfoDisplayer infoDisplayer;
+    private GameDisplayer gameDisplayer;
     private UserIO userIO;
     private GameState gameState;
 
@@ -27,16 +27,16 @@ class XOGame {
     private void initGameStartConditions() {
         gameState = new StartGameState();
         userIO = new UserIO();
-        infoDisplayer = new InfoDisplayer();
+        gameDisplayer = new GameDisplayer();
         data = new Data();
     }
 
     void runGame() {
         while (userDontWantLeaveGame()){
-            String userParamsInserted = userIO.getParametersFromUser(gameState);
-            data.getInputFromUser(userParamsInserted, gameState); // TODO 27.04.2018 Damian why data provides input if there is a UserIO class ????
-            infoDisplayer.displayCurGameData(data.displayInfo());
-            gameState = gameState.getNextGameState(data.getDataMutator());
+            String userInput = userIO.getUserInput(gameState);
+            data.applyUserInput(userInput, gameState); // TODO 27.04.2018 Damian why data provides input if there is a UserIO class ????
+            gameDisplayer.display(data.getInfoToDisplay());
+            gameState.getNextState(data.getDataMutator());
         }
     }
 

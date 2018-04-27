@@ -12,7 +12,7 @@ public class DisplayDataProviderTest {
     @BeforeClass
     public void setUp(){
         data = new Data(String.format("Maciek%sWojtek%<sO%<s3%<s3", InputParams.SEPARATOR));
-        displayDataProvider = data.displayInfo();
+        displayDataProvider = data.getInfoToDisplay();
     }
 
     @Test
