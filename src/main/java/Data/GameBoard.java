@@ -17,7 +17,12 @@ public class GameBoard {
     public String toString() {
         StringBuilder tableDisplayInfoBuilder = new StringBuilder();
 
-        myBoard.put(20, Symbol.X);
+        myBoard.put(12, Symbol.X);
+        myBoard.put(13, Symbol.X);
+        myBoard.put(14, Symbol.X);
+        myBoard.put(56, Symbol.O);
+        myBoard.put(67, Symbol.O);
+        myBoard.put(82, Symbol.O);
 
         for (int i = 0; i < height; ++i) {
             for (int j = 1; j <= width; ++j) {
@@ -26,7 +31,7 @@ public class GameBoard {
                 if (!myBoard.containsKey(key))
                     tableDisplayInfoBuilder.append(String.format("%4d", key));
                 else
-                    tableDisplayInfoBuilder.append(String.format("%4s", myBoard.get(key)));
+                    tableDisplayInfoBuilder.append(String.format("%13s", myBoard.get(key)));
 
             }
             tableDisplayInfoBuilder.append("|");
