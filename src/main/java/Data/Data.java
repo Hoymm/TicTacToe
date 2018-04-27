@@ -1,15 +1,13 @@
 package Data;
 
-import Data.UserIO.UserIO;
-import PlayGame.GameState;
-import PlayGame.RunningGameState;
-import PlayGame.StartGameState;
-import Data.UserIO.InputParams;
+import GameState.GameState;
+import GameState.RunningGameState;
+import GameState.StartGameState;
+import GameState.UserIO.InputParams;
 
 public class Data {
     private Players players;
     private GameBoard gameBoard;
-    public UserIO userIO; // TODO change to private
 
     public Data(){
     }

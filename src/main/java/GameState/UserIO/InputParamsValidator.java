@@ -1,4 +1,4 @@
-package Data.UserIO;
+package GameState.UserIO;
 
 import Data.Symbol;
 

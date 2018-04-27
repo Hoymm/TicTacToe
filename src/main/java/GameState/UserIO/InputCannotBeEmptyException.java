@@ -1,4 +1,4 @@
-package Data.UserIO;
+package GameState.UserIO;
 
 public class InputCannotBeEmptyException extends Exception {
 

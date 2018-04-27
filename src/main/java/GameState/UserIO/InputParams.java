@@ -1,4 +1,4 @@
-package Data.UserIO;
+package GameState.UserIO;
 
 import Data.Symbol;
 
@@ -16,7 +16,7 @@ public class InputParams {
         inputParamsValidator = new InputParamsValidator();
     }
 
-    String getPlayerNamesAndBoardDataFromUser() {
+    public String getPlayerNamesAndBoardDataFromUser() {
         StringBuilder builderUserInput = new StringBuilder();
         builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
         builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
