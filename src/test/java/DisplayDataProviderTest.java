@@ -1,4 +1,4 @@
-import UserIO.InputParams;
+import Data.UserIO.InputParams;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import Data.*;

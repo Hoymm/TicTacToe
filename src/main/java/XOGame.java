@@ -4,13 +4,11 @@ import Data.CurGameDataInfo;
 import InfoDisplayer.GameDisplayer;
 import PlayGame.GameState;
 import PlayGame.StartGameState;
-import UserIO.UserIO;
 
 class XOGame {
     private Data data;
     private CurGameDataInfo curDataInfo;
     private GameDisplayer gameDisplayer;
-    private UserIO userIO;
     private GameState gameState;
 
     XOGame() {
@@ -26,21 +24,20 @@ class XOGame {
 
     private void initGameStartConditions() {
         gameState = new StartGameState();
-        userIO = new UserIO();
         gameDisplayer = new GameDisplayer();
         data = new Data();
     }
 
     void runGame() {
         while (userDontWantLeaveGame()){
-            String userInput = userIO.getUserInput(gameState);
-            data.applyUserInput(userInput, gameState); // TODO 27.04.2018 Damian why data provides input if there is a UserIO class ????
+            String userInput = data.userIO.getUserInput(gameState);
+            data.applyUserInput(userInput, gameState); // TODO 27.04.2018 Damian why data provides input if there is a Data.UserIO class ????
             gameDisplayer.display(data.getInfoToDisplay());
             gameState = gameState.getNextState(data.getDataMutator());
         }
     }
 
     private boolean userDontWantLeaveGame() {
-        return !userIO.lastUserInput().equalsIgnoreCase("quit");
+        return data.userIO.lastUserInput().equalsIgnoreCase("quit");
     }
 }

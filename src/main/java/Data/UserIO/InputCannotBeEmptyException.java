@@ -1,4 +1,4 @@
-package UserIO;
+package Data.UserIO;
 
 public class InputCannotBeEmptyException extends Exception {
 

@@ -1,4 +1,4 @@
-package UserIO;
+package Data.UserIO;
 import PlayGame.GameState;
 import PlayGame.RunningGameState;
 import PlayGame.StartGameState;

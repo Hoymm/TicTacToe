@@ -1,10 +1,7 @@
-import UserIO.InputParams;
-import UserIO.InputParamsValidator;
+import Data.UserIO.InputParamsValidator;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.util.Scanner;
 
 public class InputParamsTest {
     InputParamsValidator inputParamsValidator;

@@ -1,7 +1,7 @@
 import Data.Symbol;
-import UserIO.InputCannotBeEmptyException;
-import UserIO.InputParams;
-import UserIO.InputParamsValidator;
+import Data.UserIO.InputCannotBeEmptyException;
+import Data.UserIO.InputParams;
+import Data.UserIO.InputParamsValidator;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
