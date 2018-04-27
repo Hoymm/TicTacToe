@@ -1,4 +1,5 @@
 import Data.Data;
+import Data.Colors;
 import Data.CurGameDataInfo;
 import InfoDisplayer.InfoDisplayer;
 import PlayGame.GameState;
@@ -19,6 +20,7 @@ class XOGame {
 
     private void showInfoAboutGameToTheUser() {
         System.out.println("Hello in XO game !");
+        System.out.println(String.format("Player who moves in the current game is marked %sgreen%s.", Colors.ACTIVE, Colors.DEFAULT));
         System.out.println("To quit game while playing you can type: quit");
     }
 
