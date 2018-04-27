@@ -11,7 +11,7 @@ public class DisplayDataProviderTest {
 
     @BeforeClass
     public void setUp(){
-        data = new Data(String.format("Maciek%cWojtek%<cO%<c3%<c3", InputParams.SEPARATOR));
+        data = new Data(String.format("Maciek%sWojtek%<sO%<s3%<s3", InputParams.SEPARATOR));
         displayDataProvider = data.displayInfo();
     }
 

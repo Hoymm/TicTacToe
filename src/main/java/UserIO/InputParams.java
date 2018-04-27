@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class InputParams {
     static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
     private InputParamsValidator inputParamsValidator;
-    public final static char SEPARATOR = ';';
+    public final static String SEPARATOR = " ";
     private Scanner scanner;
 
     InputParams(Scanner scanner) {

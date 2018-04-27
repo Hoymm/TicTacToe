@@ -8,20 +8,19 @@ import java.util.Scanner;
 public class UserIO {
     String lastInput = "";
     private Scanner scanner;
-    private InputParams paramsInput;
+    private InputParams inputParams;
 
     public UserIO(){
         scanner = new Scanner(System.in);
-        paramsInput = new InputParams(scanner);
+        inputParams = new InputParams(scanner);
     }
 
     public String getParametersFromUser(GameState gameState) {
         // TODO think about refactor these if's and instance of
         if (gameState instanceof StartGameState)
-            lastInput = paramsInput.getPlayerNamesAndBoardDataFromUser();
+            lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
         else if (gameState instanceof RunningGameState) {
-
-            lastInput = paramsInput.getCoordsToPutOnBoard();
+            lastInput = inputParams.getCoordsToPutOnBoard();
         }
         return lastInput;
     }

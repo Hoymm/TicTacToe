@@ -3,6 +3,7 @@ package Data;
 import PlayGame.GameState;
 import PlayGame.RunningGameState;
 import PlayGame.StartGameState;
+import UserIO.InputParams;
 
 public class Data {
     private Players players;
@@ -44,9 +45,18 @@ public class Data {
         };
     }
 
+    public CurGameDataMutator getDataMutator(){
+        return new CurGameDataMutator() {
+            @Override
+            public void changePlayerToOpposite() {
+                players.changePlayerTurn();
+            }
+        };
+    }
+
     public void getInputFromUser(String userInput, GameState gameState) {
         if (gameState instanceof StartGameState) {
-            String [] userInputArray = userInput.split(";");
+            String [] userInputArray = userInput.split(InputParams.SEPARATOR);
             this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
             this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
         }

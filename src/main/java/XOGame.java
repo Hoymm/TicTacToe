@@ -34,9 +34,9 @@ class XOGame {
     void runGame() {
         while (userDontWantLeaveGame()){
             String userParamsInserted = userIO.getParametersFromUser(gameState);
-            data.getInputFromUser(userParamsInserted, gameState);
+            data.getInputFromUser(userParamsInserted, gameState); // TODO 27.04.2018 Damian why data provides input if there is a UserIO class ????
             infoDisplayer.displayCurGameData(data.displayInfo());
-            gameState = gameState.getNextGameState();
+            gameState = gameState.getNextGameState(data.getDataMutator());
         }
     }
 

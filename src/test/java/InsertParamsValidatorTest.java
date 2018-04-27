@@ -32,7 +32,7 @@ public class InsertParamsValidatorTest {
         // given
         // when
 
-        boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%c%s", "Anna", InputParams.SEPARATOR, "Beata"));
+        boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%s%s", "Anna", InputParams.SEPARATOR, "Beata"));
         // then
         assertFalse(validateNameWithSpecialSign);
     }
