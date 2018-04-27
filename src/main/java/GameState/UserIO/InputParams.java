@@ -1,7 +1,5 @@
 package GameState.UserIO;
-
 import Data.Symbol;
-
 import java.util.Scanner;
 import java.util.logging.Logger;
 

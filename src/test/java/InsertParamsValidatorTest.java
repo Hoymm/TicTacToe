@@ -70,9 +70,8 @@ public class InsertParamsValidatorTest {
     @Test
     public void validateSymbolInsertedViaPlayer_insertOSymbol_shouldReturnTrue(){
         // given
-        String symbolO = Symbol.O.toString();
         // when
-        boolean symbolOShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol(symbolO);
+        boolean symbolOShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("O");
         // then
         assertTrue(symbolOShouldByValidatedAsTrue);
     }
@@ -80,9 +79,8 @@ public class InsertParamsValidatorTest {
     @Test
     public void validateSymbolInsertedViaPlayer_insertXSymbol_shouldReturnTrue(){
         // given
-        String symbolX = Symbol.X.toString();
         // when
-        boolean symbolXShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol(symbolX);
+        boolean symbolXShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("X");
         // then
         assertTrue(symbolXShouldByValidatedAsTrue);
     }
