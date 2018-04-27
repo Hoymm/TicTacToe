@@ -19,7 +19,7 @@ class XOGame {
 
     private void showInfoAboutGameToTheUser() {
         System.out.println("Hello in XO game !");
-        System.out.println("To quit game any moment you can type: quit");
+        System.out.println("To quit game while playing you can type: quit");
     }
 
     private void initGameStartConditions() {
@@ -32,9 +32,9 @@ class XOGame {
     void runGame() {
         while (userDontWantLeaveGame()){
             String userParamsInserted = userIO.getParametersFromUser(gameState);
-            data.modifyDataDependOnState(userParamsInserted, gameState);
-            gameState = gameState.moveToNextState();
+            data.getInputFromUser(userParamsInserted, gameState);
             infoDisplayer.displayCurGameData(data.displayInfo());
+            gameState = gameState.getNextGameState();
         }
     }
 

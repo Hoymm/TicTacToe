@@ -12,7 +12,7 @@ public class Data {
     }
 
     public Data(String userInput) {
-        modifyDataDependOnState(userInput, new StartGameState());
+        getInputFromUser(userInput, new StartGameState());
     }
 
     @Override
@@ -44,15 +44,15 @@ public class Data {
         };
     }
 
-    public void modifyDataDependOnState(String userInput, GameState gameState) {
+    public void getInputFromUser(String userInput, GameState gameState) {
         if (gameState instanceof StartGameState) {
             String [] userInputArray = userInput.split(";");
-            this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X));
-            this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
+            this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
+            this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
         }
         else if (gameState instanceof RunningGameState){
             // TODO modify state
+            System.out.println("I am in running state");
         }
-        return;
     }
 }

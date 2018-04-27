@@ -18,15 +18,12 @@ public class UserIO {
     public String getParametersFromUser(GameState gameState) {
         // TODO think about refactor these if's and instance of
         if (gameState instanceof StartGameState)
-            return paramsInput.getPlayerNamesAndBoardDataFromUser();
-        else if (gameState instanceof RunningGameState)
-            return askUserToInputData();
-        return paramsInput.getMove();
-    }
+            lastInput = paramsInput.getPlayerNamesAndBoardDataFromUser();
+        else if (gameState instanceof RunningGameState) {
 
-    public String askUserToInputData() {
-        System.out.println("Insert something: ");
-        return scanner.nextLine();
+            lastInput = paramsInput.getCoordsToPutOnBoard();
+        }
+        return lastInput;
     }
 
     public String lastUserInput(){

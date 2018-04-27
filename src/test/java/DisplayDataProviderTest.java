@@ -11,17 +11,18 @@ public class DisplayDataProviderTest {
 
     @BeforeClass
     public void setUp(){
-        data = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
+        data = new Data(String.format("Maciek%cWojtek%<cO%<c3%<c3", InputParams.SEPARATOR));
         displayDataProvider = data.displayInfo();
     }
 
     @Test
-    public void displayDataProvider_providesInfoAboutPlayers(){
+    public void displayDataProvider_providesInfoAboutPlayers_providesProperPattern(){
         //given
         //when
         String playersInfo = displayDataProvider.headerInfo();
         //then
-        assertEquals(playersInfo, String.format("%s [%s]: %d \t %s [%s]: %d", "Maciek", Symbol.O, 0, "Wojtek", Symbol.X, 0));
+        assertEquals(playersInfo, String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
+                Colors.ACTIVE, "Maciek", Symbol.O, 0, Colors.INACTIVE , "Wojtek", Symbol.X, 0, Colors.DEFAULT));
     }
 
     @Test

@@ -1,3 +1,4 @@
+import Data.Symbol;
 import UserIO.InputCannotBeEmptyException;
 import UserIO.InputParams;
 import UserIO.InputParamsValidator;
@@ -64,5 +65,35 @@ public class InsertParamsValidatorTest {
         boolean validateTableParamLesserThan2 = inputParamsValidator.isTableParamVaild("tekstksaf");
         // then
         assertFalse(validateTableParamLesserThan2);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayer_insertOSymbol_shouldReturnTrue(){
+        // given
+        String symbolO = Symbol.O.toString();
+        // when
+        boolean symbolOShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol(symbolO);
+        // then
+        assertTrue(symbolOShouldByValidatedAsTrue);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayer_insertXSymbol_shouldReturnTrue(){
+        // given
+        String symbolX = Symbol.X.toString();
+        // when
+        boolean symbolXShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol(symbolX);
+        // then
+        assertTrue(symbolXShouldByValidatedAsTrue);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayer_insertUSymbol_shouldReturnFalse(){
+        // given
+        String wrongSymbol = "U";
+        // when
+        boolean wrongSymbolValidateShouldReturnFalse = inputParamsValidator.isValidSymbol(wrongSymbol);
+        // then
+        assertFalse(wrongSymbolValidateShouldReturnFalse);
     }
 }

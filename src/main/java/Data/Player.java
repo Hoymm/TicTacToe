@@ -24,4 +24,8 @@ public class Player {
     public String toString() {
         return String.format("%s [%s]: %d", playerName, symbol, playerScores);
     }
+
+    public Symbol getSymbol(){
+        return symbol;
+    }
 }

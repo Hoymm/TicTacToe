@@ -16,14 +16,11 @@ public class InputParams {
         inputParamsValidator = new InputParamsValidator();
     }
 
-    String getMove(){
-        return scanner.nextLine();
-    }
-
     String getPlayerNamesAndBoardDataFromUser() {
         StringBuilder builderUserInput = new StringBuilder();
         builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
         builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
+        builderUserInput.append(whoStartsFirst()).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("width")).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("height"));
         return builderUserInput.toString();
@@ -58,4 +55,19 @@ public class InputParams {
         return Integer.valueOf(tableParameter);
     }
 
+    private String whoStartsFirst() {
+        String symbolToPlayFirst = "";
+        while(!inputParamsValidator.isValidSymbol(symbolToPlayFirst)){
+            System.out.println(String.format("Who should start first? Type player symbol (%s or %s): ", Symbol.O, Symbol.X));
+            symbolToPlayFirst = scanner.nextLine();
+            if (!inputParamsValidator.isValidSymbol(symbolToPlayFirst))
+                System.out.println("Please insert symbol O (big o) or X (big x), any other symbols will not be accepted.");
+        }
+        return symbolToPlayFirst;
+    }
+
+    public String getCoordsToPutOnBoard() {
+        System.out.print("Give me coordinates [pattern x y]: ");
+        return scanner.nextLine();
+    }
 }

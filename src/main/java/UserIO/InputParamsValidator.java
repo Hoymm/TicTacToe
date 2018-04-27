@@ -1,5 +1,7 @@
 package UserIO;
 
+import Data.Symbol;
+
 public class InputParamsValidator {
     public boolean validateInsertedName(String name) throws InputCannotBeEmptyException, NumberFormatException {
         if (name.equals(""))
@@ -13,5 +15,9 @@ public class InputParamsValidator {
 
     public boolean isInteger(String tableParameter) {
         return tableParameter.matches("-?\\d+");
+    }
+
+    public boolean isValidSymbol(String symbol) {
+        return symbol.equals(Symbol.O.toString()) || symbol.equals(Symbol.X.toString());
     }
 }
