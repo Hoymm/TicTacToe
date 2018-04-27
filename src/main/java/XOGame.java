@@ -36,7 +36,7 @@ class XOGame {
             String userInput = userIO.getUserInput(gameState);
             data.applyUserInput(userInput, gameState); // TODO 27.04.2018 Damian why data provides input if there is a UserIO class ????
             gameDisplayer.display(data.getInfoToDisplay());
-            gameState.getNextState(data.getDataMutator());
+            gameState = gameState.getNextState(data.getDataMutator());
         }
     }
 
