@@ -21,7 +21,7 @@ public class DisplayDataProviderTest {
         //when
         String playersInfo = displayDataProvider.headerInfo();
         //then
-        assertEquals(playersInfo, String.format("%s: %d \t %s: %d", "Maciek", 0, "Wojtek", 0));
+        assertEquals(playersInfo, String.format("%s [%s]: %d \t %s [%s]: %d", "Maciek", Symbol.O, 0, "Wojtek", Symbol.X, 0));
     }
 
     @Test

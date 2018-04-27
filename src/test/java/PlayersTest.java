@@ -52,6 +52,6 @@ public class PlayersTest {
 
     @Test
     public void test(){
-        assertEquals(examplePlayers.toString(), "Adrian: 0 \t Kasia: 0");
+        assertEquals(examplePlayers.toString(), String.format("%s [%s]: %d \t %s [%s]: %d", "Adrian", Symbol.O, 0, "Kasia", Symbol.X, 0));
     }
 }
