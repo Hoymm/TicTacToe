@@ -3,7 +3,7 @@ import Data.Colors;
 import Data.CurGameDataInfo;
 import InfoDisplayer.GameDisplayer;
 import GameState.GameState;
-import GameState.StartGameState;
+import GameState.*;
 
 class XOGame {
     private Data data;
@@ -23,17 +23,19 @@ class XOGame {
     }
 
     private void initGameStartConditions() {
-        gameState = new StartGameState();
+        // TODO uncomment to start providing  params, and change new Data(...) below to new Data()
+        // gameState = new StartGameState();
+        gameState = new RunningGameState();
         gameDisplayer = new GameDisplayer();
-        data = new Data();
+        data = new Data("Maciek Bolek O 7 12");
     }
 
     void runGame() {
         while (userDontWantLeaveGame()){
             String userInput = gameState.getNewInputFromUser();
             data.applyUserInput(userInput, gameState); // TODO 27.04.2018 Damian why data provides input if there is a GameState.UserIO class ????
-            gameDisplayer.display(data.getInfoToDisplay());
             gameState = gameState.getNextState(data.getDataMutator());
+            gameDisplayer.display(data.getInfoToDisplay());
         }
     }
 

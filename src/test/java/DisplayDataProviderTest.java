@@ -25,13 +25,4 @@ public class DisplayDataProviderTest {
                 Colors.ACTIVE, "Maciek", Symbol.O, 0, Colors.INACTIVE , "Wojtek", Symbol.X, 0, Colors.DEFAULT));
     }
 
-    @Test
-    public void displayDataProvider_providesInfoAboutBoard(){
-        // given
-        // when
-        String boardToDisplay = displayDataProvider.boardInfo();
-        //then
-        assertEquals(boardToDisplay, " | | |\n | | |\n | | |\n");
-    }
-
 }

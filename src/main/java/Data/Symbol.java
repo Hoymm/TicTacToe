@@ -1,7 +1,18 @@
 package Data;
 
 public enum Symbol {
-    X, O;
+    X{
+        @Override
+        public String toString() {
+            return Colors.RED + super.toString() + Colors.DEFAULT;
+        }
+
+    }, O{
+        @Override
+        public String toString() {
+            return Colors.BLUE + super.toString() + Colors.DEFAULT;
+        }
+    };
 
     public Player whoShouldPlay(Player playerO, Player playerX) {
         switch (this){

@@ -34,13 +34,7 @@ public class Data {
 
             @Override
             public String boardInfo() {
-                StringBuilder tableDisplayInfoBuilder = new StringBuilder();
-                for (int width = 0; width < 3; ++width) {
-                    for (int height = 0; height < 3; ++height)
-                        tableDisplayInfoBuilder.append(" ").append("|");
-                    tableDisplayInfoBuilder.append("\n");
-                }
-                return tableDisplayInfoBuilder.toString();
+                return gameBoard.toString();
             }
         };
     }
@@ -55,13 +49,14 @@ public class Data {
     }
 
     public void applyUserInput(String userInput, GameState gameState) {
+        // TODO 27.04.2018 think about refactor these if's
         if (gameState instanceof StartGameState) {
             String [] userInputArray = userInput.split(InputParams.SEPARATOR);
             this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
             this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
         }
         else if (gameState instanceof RunningGameState){
-            // TODO modify state
+            // TODO 26.04.2018 modify state
             System.out.println("I am in running state");
         }
     }
