@@ -1,12 +1,14 @@
 package Data;
 
 public class Players {
-    private Player player1;
-    private Player player2;
+    private Player playerO;
+    private Player playerX;
+    private Symbol curSymbolPlays;
 
-    public Players(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
+    public Players(Player playerO, Player playerX, Symbol startSymbol) {
+        this.playerO = playerO;
+        this.playerX = playerX;
+        this.curSymbolPlays = startSymbol;
     }
 
     @Override
@@ -15,11 +17,20 @@ public class Players {
         if (!(obj instanceof Players)) {
             return false;
         }
-        return player1.equals(((Players)obj).player1) && player2.equals(((Players)obj).player2);
+        return playerO.equals(((Players)obj).playerO) && playerX.equals(((Players)obj).playerX);
     }
 
     @Override
     public String toString() {
-        return String.format("%s \t %s", player1, player2);
+            return String.format("%s%s \t %s%s%s"
+                    , curSymbolPlays.getColor(playerO), playerO, curSymbolPlays.getColor(playerX), playerX, curSymbolPlays.getDefaultColor());
+    }
+
+    public Player getCurrentPlayer() {
+        return curSymbolPlays.whoShouldPlay(playerO, playerX);
+    }
+
+    public void changePlayerTurn() {
+        curSymbolPlays = curSymbolPlays.getOppositeSymbol();
     }
 }

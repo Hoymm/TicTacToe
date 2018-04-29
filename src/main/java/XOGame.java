@@ -1,43 +1,25 @@
-import Data.Data;
-import Data.CurGameDataInfo;
-import InfoDisplayer.InfoDisplayer;
-import PlayGame.GameState;
-import PlayGame.StartGameState;
-import UserIO.UserIO;
+import Data.Colors;
+import GameState.*;
 
 class XOGame {
-    private Data data;
-    private CurGameDataInfo curDataInfo;
-    private InfoDisplayer infoDisplayer;
-    private UserIO userIO;
-    private GameState gameState;
+    private GameController gameController;
 
     XOGame() {
         showInfoAboutGameToTheUser();
-        initGameStartConditions();
+        gameController = new StartGameState();
     }
 
     private void showInfoAboutGameToTheUser() {
-        System.out.println("To quit game any moment you can type: quit");
-    }
-
-    private void initGameStartConditions() {
-        gameState = new StartGameState();
-        userIO = new UserIO();
-        infoDisplayer = new InfoDisplayer();
-        data = new Data();
+        System.out.println("Hello in XO gameController !");
+        System.out.println(String.format("Player who moves in the current game is marked %sgreen%s.", Colors.ACTIVE, Colors.DEFAULT));
+        System.out.println("To quit game while playing you can type: quit");
     }
 
     void runGame() {
-        while (userDontWantLeaveGame()){
-            String userParamsInserted = userIO.getParametersFromUser(gameState);
-            data.modifyDataDependOnState(userParamsInserted, gameState);
-            gameState = gameState.moveToNextState();
-            infoDisplayer.displayCurGameData(data.displayInfo());
+        while (gameController.userWantsToStayInGame()) {
+            gameController.makeUserToInputData();
+            gameController = gameController.getNextState();
+            gameController.displayGame();
         }
-    }
-
-    private boolean userDontWantLeaveGame() {
-        return !userIO.lastUserInput().equalsIgnoreCase("quit");
     }
 }

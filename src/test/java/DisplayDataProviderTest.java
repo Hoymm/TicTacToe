@@ -1,4 +1,3 @@
-import UserIO.InputParams;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import Data.*;
@@ -7,30 +6,24 @@ import static org.testng.Assert.assertEquals;
 
 public class DisplayDataProviderTest {
     private Data data;
-    private CurGameDataInfo displayDataProvider;
 
     @BeforeClass
     public void setUp(){
-        data = new Data(String.format("Maciek%cWojtek%<c3%<c3", InputParams.SEPARATOR));
-        displayDataProvider = data.displayInfo();
+        data = new Data();
+        data.insertGameStartData("Maciek Wojtek O 10 10");
     }
 
     @Test
-    public void displayDataProvider_providesInfoAboutPlayers(){
+    public void displayDataProvider_providesInfoAboutPlayers_providesProperPattern(){
         //given
         //when
-        String playersInfo = displayDataProvider.headerInfo();
+        String playersInfo = data.gameHeaderDisplayInfo();
         //then
-        assertEquals(playersInfo, String.format("%s: %d \t %s: %d", "Maciek", 0, "Wojtek", 0));
+        assertEquals(playersInfo, String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
+                Colors.ACTIVE, "Maciek", Symbol.O, 0, Colors.INACTIVE , "Wojtek", Symbol.X, 0, Colors.DEFAULT));
     }
 
-    @Test
-    public void displayDataProvider_providesInfoAboutBoard(){
-        // given
-        // when
-        String boardToDisplay = displayDataProvider.boardInfo();
-        //then
-        assertEquals(boardToDisplay, " | | |\n | | |\n | | |\n");
-    }
+
+    // TODO create test cheking board format display
 
 }

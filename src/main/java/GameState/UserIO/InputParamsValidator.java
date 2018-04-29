@@ -1,4 +1,4 @@
-package UserIO;
+package GameState.UserIO;
 
 public class InputParamsValidator {
     public boolean validateInsertedName(String name) throws InputCannotBeEmptyException, NumberFormatException {
@@ -13,5 +13,9 @@ public class InputParamsValidator {
 
     public boolean isInteger(String tableParameter) {
         return tableParameter.matches("-?\\d+");
+    }
+
+    public boolean isValidSymbol(String symbol) {
+        return symbol.equals("O") || symbol.equals("X");
     }
 }
