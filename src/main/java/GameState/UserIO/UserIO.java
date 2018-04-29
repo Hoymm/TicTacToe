@@ -11,8 +11,4 @@ public abstract class UserIO {
         scanner = new Scanner(System.in);
         inputParams = new InputParams(scanner);
     }
-
-    public String lastUserInput(){
-        return lastInput;
-    }
 }

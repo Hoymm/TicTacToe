@@ -2,7 +2,7 @@ package GameState;
 
 import Data.Data;
 
-public class RunningGameState extends Game implements GameState {
+public class RunningGameState extends Game {
     RunningGameState(Data data) {
         super(data);
     }

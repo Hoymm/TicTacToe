@@ -2,32 +2,24 @@ import Data.Colors;
 import GameState.*;
 
 class XOGame {
-    private Game game;
+    private GameController gameController;
 
     XOGame() {
         showInfoAboutGameToTheUser();
-        initGameStartConditions();
+        gameController = new StartGameState();
     }
 
     private void showInfoAboutGameToTheUser() {
-        System.out.println("Hello in XO game !");
+        System.out.println("Hello in XO gameController !");
         System.out.println(String.format("Player who moves in the current game is marked %sgreen%s.", Colors.ACTIVE, Colors.DEFAULT));
         System.out.println("To quit game while playing you can type: quit");
     }
 
-    private void initGameStartConditions() {
-        game = new StartGameState();
-    }
-
     void runGame() {
-        while (userDontWantLeaveGame()){
-            game.makeUserToInputData();
-            game = game.getNextState();
-            game.displayGame();
+        while (gameController.userWantsToStayInGame()) {
+            gameController.makeUserToInputData();
+            gameController = gameController.getNextState();
+            gameController.displayGame();
         }
-    }
-
-    private boolean userDontWantLeaveGame() {
-        return !game.lastUserInput().equalsIgnoreCase("quit");
     }
 }

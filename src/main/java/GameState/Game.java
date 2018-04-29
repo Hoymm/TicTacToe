@@ -3,19 +3,21 @@ package GameState;
 import Data.Data;
 import GameState.UserIO.UserIO;
 
-public abstract class Game extends UserIO implements GameState {
+public abstract class Game extends UserIO implements GameController {
     protected Data data;
 
-    public Game(Data data) {
+    Game(Data data) {
         this.data = data;
     }
 
+    @Override
     public void displayGame() {
         System.out.println(data.gameHeaderDisplayInfo());
         System.out.println(data.gameBoardDisplayInfo());
     }
 
-    public String lastUserInput() {
-        return lastInput;
+    @Override
+    public boolean userWantsToStayInGame() {
+        return !lastInput.equalsIgnoreCase("quit");
     }
 }
