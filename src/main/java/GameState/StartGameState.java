@@ -1,22 +1,20 @@
 package GameState;
 
-import Data.CurGameDataMutator;
-import GameState.UserIO.UserIO;
+import Data.Data;
 
-public class StartGameState extends UserIO implements GameState {
-    @Override
-    public GameState getNextState(CurGameDataMutator dataMutator) {
-        return new RunningGameState();
+public class StartGameState extends Game {
+    public StartGameState() {
+        super(new Data());
     }
 
     @Override
-    public String getNewInputFromUser() {
+    public Game getNextState() {
+        return new RunningGameState(data);
+    }
+
+    @Override
+    public void makeUserToInputData() {
         lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
-        return lastInput;
-    }
-
-    @Override
-    public String lastUserInput() {
-        return lastInput;
+        data.insertGameStartData(lastInput);
     }
 }

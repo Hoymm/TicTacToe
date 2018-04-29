@@ -1,9 +1,8 @@
 package GameState;
 
-import Data.CurGameDataMutator;
-
 public interface GameState {
-    GameState getNextState(CurGameDataMutator dataMutator);
-    String getNewInputFromUser();
+    Game getNextState();
+    void makeUserToInputData();
     String lastUserInput();
+    void displayGame();
 }

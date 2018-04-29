@@ -1,23 +1,21 @@
 package GameState;
 
-import Data.CurGameDataMutator;
-import GameState.UserIO.UserIO;
+import Data.Data;
 
-public class RunningGameState extends UserIO implements GameState {
+public class RunningGameState extends Game implements GameState {
+    RunningGameState(Data data) {
+        super(data);
+    }
+
     @Override
-    public GameState getNextState(CurGameDataMutator dataMutator) {
-        dataMutator.changePlayerToOpposite();
+    public Game getNextState() {
+        data.getDataMutator().changePlayerToOpposite();
         return this;
     }
 
     @Override
-    public String getNewInputFromUser() {
+    public void makeUserToInputData() {
         lastInput = inputParams.getCoordsToPutOnBoard();
-        return lastInput;
-    }
-
-    @Override
-    public String lastUserInput() {
-        return lastInput;
+        data.insertNewCoordinates(lastInput);
     }
 }

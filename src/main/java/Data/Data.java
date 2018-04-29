@@ -1,8 +1,5 @@
 package Data;
 
-import GameState.GameState;
-import GameState.RunningGameState;
-import GameState.StartGameState;
 import GameState.UserIO.InputParams;
 
 public class Data {
@@ -13,7 +10,7 @@ public class Data {
     }
 
     public Data(String userInput) {
-        applyUserInput(userInput, new StartGameState());
+        insertGameStartData(userInput);
     }
 
     @Override
@@ -25,18 +22,12 @@ public class Data {
         return players.equals(((Data)obj).players);
     }
 
-    public CurGameDataInfo getInfoToDisplay() {
-        return new CurGameDataInfo() {
-            @Override
-            public String headerInfo() {
-                return players.toString();
-            }
+    public String gameHeaderDisplayInfo() {
+        return players.toString();
+    }
 
-            @Override
-            public String boardInfo() {
-                return gameBoard.toString();
-            }
-        };
+    public String gameBoardDisplayInfo() {
+        return gameBoard.toString();
     }
 
     public CurGameDataMutator getDataMutator(){
@@ -48,16 +39,14 @@ public class Data {
         };
     }
 
-    public void applyUserInput(String userInput, GameState gameState) {
-        // TODO 27.04.2018 think about refactor these if's
-        if (gameState instanceof StartGameState) {
+    public void insertGameStartData(String userInput) {
             String [] userInputArray = userInput.split(InputParams.SEPARATOR);
             this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
             this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
-        }
-        else if (gameState instanceof RunningGameState){
-            // TODO 26.04.2018 modify state
-            System.out.println("I am in running state");
-        }
+    }
+
+    public boolean insertNewCoordinates(String userInput){
+        System.out.println("I am reading coordinates.");
+        return true;
     }
 }

@@ -8,7 +8,7 @@ public class GameBoard {
     private int height;
 
     public GameBoard(int width, int height) {
-        myBoard = new HashMap<>();
+        myBoard = new HashMap<Integer, Symbol>();
         this.height = height;
         this.width = width;
     }
