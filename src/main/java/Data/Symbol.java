@@ -7,22 +7,36 @@ public enum Symbol {
             return Colors.RED + super.toString() + Colors.DEFAULT;
         }
 
+        @Override
+        public Player whoShouldPlay(Player playerO, Player playerX) {
+            return playerX;
+        }
+
+
+        @Override
+        public Symbol getOppositeSymbol() {
+            return O;
+        }
+
     }, O{
         @Override
         public String toString() {
             return Colors.BLUE + super.toString() + Colors.DEFAULT;
         }
+
+        @Override
+        public Player whoShouldPlay(Player playerO, Player playerX) {
+            return playerO;
+        }
+
+        @Override
+        public Symbol getOppositeSymbol() {
+            return X;
+        }
     };
 
-    public Player whoShouldPlay(Player playerO, Player playerX) {
-        switch (this){
-            case X:
-                return playerX;
-            case O:
-                return playerO;
-        }
-        return null;
-    }
+    abstract public Player whoShouldPlay(Player playerO, Player playerX);
+    abstract public Symbol getOppositeSymbol();
 
     public Colors getColor(Player player) {
         if (player.getSymbol() == this)
@@ -33,12 +47,5 @@ public enum Symbol {
 
     public Colors getDefaultColor() {
         return Colors.DEFAULT;
-    }
-
-    public Symbol getOppositeSymbol() {
-        if (this == Symbol.X)
-            return Symbol.O;
-        else
-            return Symbol.X;
     }
 }

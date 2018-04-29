@@ -16,14 +16,6 @@ public class GameBoard {
     @Override
     public String toString() {
         StringBuilder tableDisplayInfoBuilder = new StringBuilder();
-
-        myBoard.put(2, Symbol.X);
-        myBoard.put(3, Symbol.X);
-        myBoard.put(4, Symbol.X);
-        myBoard.put(5, Symbol.O);
-        myBoard.put(6, Symbol.O);
-        myBoard.put(7, Symbol.O);
-
         for (int i = 0; i < height; ++i) {
             for (int j = 1; j <= width; ++j) {
                 int key = width * i + j;
