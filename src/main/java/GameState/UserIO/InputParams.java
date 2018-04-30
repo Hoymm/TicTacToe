@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class InputParams {
+    public static final String QUIT_COMMAND = "quit";
     static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
     private InputParamsValidator inputParamsValidator;
     public final static String SEPARATOR = " ";
@@ -67,13 +68,17 @@ public class InputParams {
 
     public String getCoordsToPutOnBoard() {
         String fieldToMark = "";
-        while(!inputParamsValidator.isVaildBoardField(fieldToMark)){
+        while(!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)){
             System.out.print("Give me number of the field: ");
             fieldToMark = scanner.nextLine();
-            if (!inputParamsValidator.isVaildBoardField(fieldToMark)) {
+            if (!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)) {
                 System.out.println(String.format("Sorry, board fields are described by possitive numbers. \"%s\" is a wrong input.", fieldToMark));
             }
         }
         return fieldToMark;
+    }
+
+    boolean isItQuitCommand(String command) {
+        return command.equalsIgnoreCase(QUIT_COMMAND);
     }
 }
