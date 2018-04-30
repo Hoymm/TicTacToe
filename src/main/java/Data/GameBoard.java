@@ -1,16 +1,20 @@
 package Data;
-import java.util.HashMap;
-import java.util.Map;
+import Data.FinishedChecker.FinishStates;
+import Data.FinishedChecker.FinishedChecker;
+
+import java.util.LinkedHashMap;
 
 public class GameBoard {
-    private Map<Integer, Symbol> myBoard;
+    private LinkedHashMap<Integer, Symbol> myBoard;
     private int width;
     private int height;
+    private FinishedChecker finishedChecker;
 
     public GameBoard(int width, int height) {
-        myBoard = new HashMap<Integer, Symbol>();
+        myBoard = new LinkedHashMap<Integer, Symbol>();
         this.height = height;
         this.width = width;
+        finishedChecker = new FinishedChecker();
     }
 
     @Override
@@ -40,5 +44,9 @@ public class GameBoard {
             myBoard.put(fieldNumber, symbol);
             return true;
         }
+    }
+
+    FinishStates getFinishedState() {
+        return finishedChecker.getGameFinishedState();
     }
 }

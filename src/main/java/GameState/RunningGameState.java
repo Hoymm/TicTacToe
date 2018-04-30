@@ -1,6 +1,7 @@
 package GameState;
 
 import Data.Data;
+import Data.FinishedChecker.FinishStates;
 
 public class RunningGameState extends Game {
     RunningGameState(Data data) {
@@ -9,8 +10,13 @@ public class RunningGameState extends Game {
 
     @Override
     public Game getNextState() {
-        data.getDataMutator().changePlayerToOpposite();
-        return this;
+        if (data.getGameFinishedState() == FinishStates.NotFinished) {
+            data.getDataMutator().changePlayerToOpposite();
+            return this;
+        }
+        else {
+            return new GameFinishedState(data);
+        }
     }
 
     @Override

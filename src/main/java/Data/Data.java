@@ -1,5 +1,6 @@
 package Data;
 
+import Data.FinishedChecker.FinishStates;
 import GameState.UserIO.InputParams;
 
 import java.util.logging.Logger;
@@ -61,5 +62,9 @@ public class Data {
             return false;
         }
         return true;
+    }
+
+    public FinishStates getGameFinishedState() {
+        return gameBoard.getFinishedState();
     }
 }
