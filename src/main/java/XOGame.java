@@ -17,8 +17,8 @@ class XOGame {
 
     void runGame() {
         while (gameController.userWantsToStayInGame()) {
-            gameController.makeUserToInputData();
-            gameController = gameController.getNextState();
+            if (gameController.tryPossessAndProcessValidInputFromUser())
+                gameController = gameController.getNextState();
             gameController.displayGame();
         }
     }

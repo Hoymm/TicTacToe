@@ -18,4 +18,14 @@ public class InputParamsValidator {
     public boolean isValidSymbol(String symbol) {
         return symbol.equals("O") || symbol.equals("X");
     }
+
+    public boolean isVaildBoardField(String negativeNumber) {
+        try {
+            int number = Integer.valueOf(negativeNumber);
+            return number > 0;
+        }
+        catch (NumberFormatException e){
+            return false;
+        }
+    }
 }

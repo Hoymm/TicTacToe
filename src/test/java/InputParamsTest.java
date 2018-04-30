@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class InputParamsTest {
-    InputParamsValidator inputParamsValidator;
+    private InputParamsValidator inputParamsValidator;
 
     @BeforeTest
     public void setUp (){
@@ -25,4 +25,6 @@ public class InputParamsTest {
     public void isInteger_whenPassEmptyString_shouldReturnFalse (){
         Assert.assertFalse(inputParamsValidator.isInteger(""));
     }
+
+
 }

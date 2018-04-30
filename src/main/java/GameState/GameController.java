@@ -3,6 +3,6 @@ package GameState;
 public interface GameController {
     void displayGame();
     boolean userWantsToStayInGame();
-    void makeUserToInputData();
+    boolean tryPossessAndProcessValidInputFromUser();
     Game getNextState();
 }

@@ -30,6 +30,10 @@ public class Players {
         return curSymbolPlays.whoShouldPlay(playerO, playerX);
     }
 
+    public Symbol getCurrentSymbol() {
+        return getCurrentPlayer().getSymbol();
+    }
+
     public void changePlayerTurn() {
         curSymbolPlays = curSymbolPlays.getOppositeSymbol();
     }
