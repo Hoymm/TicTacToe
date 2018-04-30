@@ -45,8 +45,7 @@ public class Data {
             this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
     }
 
-    public boolean insertNewCoordinates(String userInput){
-        System.out.println("I am reading coordinates.");
-        return true;
+    public boolean insertNewCoordinates(int userInput){
+        return gameBoard.markField(userInput, players.getCurrentSymbol());
     }
 }
