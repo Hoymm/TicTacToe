@@ -13,7 +13,7 @@ public class StartGameState extends Game {
     }
 
     @Override
-    public boolean tryPossessAndProcessValidInputFromUser() {
+    public boolean tryFetchAndProcessValidInputFromUser() {
         lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
         return data.insertGameStartData(lastInput);
     }
