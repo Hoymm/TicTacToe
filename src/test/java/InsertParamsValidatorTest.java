@@ -1,4 +1,3 @@
-import Data.Symbol;
 import GameState.UserIO.InputCannotBeEmptyException;
 import GameState.UserIO.InputParams;
 import GameState.UserIO.InputParamsValidator;
@@ -93,5 +92,45 @@ public class InsertParamsValidatorTest {
         boolean wrongSymbolValidateShouldReturnFalse = inputParamsValidator.isValidSymbol(wrongSymbol);
         // then
         assertFalse(wrongSymbolValidateShouldReturnFalse);
+    }
+
+    @Test
+    public void validateFieldNumber_insertNegativeNumber_shouldReturnFalse(){
+        // given
+        String negativeNumber = "-1";
+        // when
+        boolean negativeNumberShouldReturnFalse = inputParamsValidator.isVaildBoardField(negativeNumber);
+        // then
+        assertFalse(negativeNumberShouldReturnFalse);
+    }
+
+    @Test
+    public void validateFieldNumber_insertZeroNumber_shouldReturnFalse(){
+        // given
+        String negativeNumber = "0";
+        // when
+        boolean zeroBoardFieldShouldReturnFalse = inputParamsValidator.isVaildBoardField(negativeNumber);
+        // then
+        assertFalse(zeroBoardFieldShouldReturnFalse);
+    }
+
+    @Test
+    public void validateFieldNumber_insertPossitiveNumber_shouldReturnTrue(){
+        // given
+        String possitiveNumber = "1";
+        // when
+        boolean boardFieldOfValueOneShouldBeValidatedAsTrue = inputParamsValidator.isVaildBoardField(possitiveNumber);
+        // then
+        assertTrue(boardFieldOfValueOneShouldBeValidatedAsTrue);
+    }
+
+    @Test
+    public void validateFieldNumber_insertNonNumberValue_shouldReturnFalse(){
+        // given
+        String possitiveNumber = "abc";
+        // when
+        boolean boardFieldOfValueOneShouldBeValidatedAsTrue = inputParamsValidator.isVaildBoardField(possitiveNumber);
+        // then
+        assertFalse(boardFieldOfValueOneShouldBeValidatedAsTrue);
     }
 }

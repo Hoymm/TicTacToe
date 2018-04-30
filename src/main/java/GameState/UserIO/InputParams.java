@@ -66,7 +66,14 @@ public class InputParams {
     }
 
     public String getCoordsToPutOnBoard() {
-        System.out.print("Give me coordinates [pattern x y]: ");
+        String fieldToMark = "";
+        while(!inputParamsValidator.isVaildBoardField(fieldToMark)){
+            System.out.print("Give me number of the field: ");
+            fieldToMark = scanner.nextLine();
+            if (!inputParamsValidator.isVaildBoardField(fieldToMark)) {
+                System.out.println(String.format("Sorry, board fields are described by possitive numbers. \"%s\" is a wrong input."));
+            }
+        }
         return scanner.nextLine();
     }
 }
