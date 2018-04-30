@@ -71,9 +71,9 @@ public class InputParams {
             System.out.print("Give me number of the field: ");
             fieldToMark = scanner.nextLine();
             if (!inputParamsValidator.isVaildBoardField(fieldToMark)) {
-                System.out.println(String.format("Sorry, board fields are described by possitive numbers. \"%s\" is a wrong input."));
+                System.out.println(String.format("Sorry, board fields are described by possitive numbers. \"%s\" is a wrong input.", fieldToMark));
             }
         }
-        return scanner.nextLine();
+        return fieldToMark;
     }
 }
