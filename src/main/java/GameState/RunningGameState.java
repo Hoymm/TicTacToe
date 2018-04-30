@@ -14,8 +14,8 @@ public class RunningGameState extends Game {
     }
 
     @Override
-    public void makeUserToInputData() {
+    public boolean tryPossessAndProcessValidInputFromUser() {
         lastInput = inputParams.getCoordsToPutOnBoard();
-        data.insertNewCoordinates(Integer.valueOf(lastInput));
+        return data.insertNewCoordinates(Integer.valueOf(lastInput));
     }
 }

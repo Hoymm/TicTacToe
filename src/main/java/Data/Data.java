@@ -2,7 +2,10 @@ package Data;
 
 import GameState.UserIO.InputParams;
 
+import java.util.logging.Logger;
+
 public class Data {
+    private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
     private GameBoard gameBoard;
 
@@ -39,13 +42,24 @@ public class Data {
         };
     }
 
-    public void insertGameStartData(String userInput) {
-            String [] userInputArray = userInput.split(InputParams.SEPARATOR);
+    public boolean insertGameStartData(String userInput) {
+        try {
+            String[] userInputArray = userInput.split(InputParams.SEPARATOR);
             this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
             this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
+            return true;
+        }
+        catch (Exception e){
+            LOGGER.warning("Something went wrong when converting user start data input into data objects");
+            return false;
+        }
     }
 
     public boolean insertNewCoordinates(int userInput){
-        return gameBoard.markField(userInput, players.getCurrentSymbol());
+        if (!gameBoard.tryMarkField(userInput, players.getCurrentSymbol())) {
+            System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
+            return false;
+        }
+        return true;
     }
 }

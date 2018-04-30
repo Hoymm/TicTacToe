@@ -33,7 +33,7 @@ public class GameBoard {
     }
 
 
-    public boolean markField(int fieldNumber, Symbol symbol) {
+    public boolean tryMarkField(int fieldNumber, Symbol symbol) {
         if (myBoard.containsKey(fieldNumber) || fieldNumber < 1 || fieldNumber > width*height)
             return false;
         else{
