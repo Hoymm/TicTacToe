@@ -1,6 +1,4 @@
 package Data;
-
-import Data.FinishedChecker.FinishState;
 import GameState.UserIO.InputParams;
 
 import java.util.logging.Logger;
@@ -8,7 +6,7 @@ import java.util.logging.Logger;
 public class Data {
     private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
-    private GameBoard gameBoard;
+    private BoardController gameBoard;
 
     public Data(){
     }
@@ -47,7 +45,8 @@ public class Data {
         try {
             String[] userInputArray = userInput.split(InputParams.SEPARATOR);
             this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
-            this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
+            BoardData gameBoardData = new BoardData(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
+            this.gameBoard = new BoardController( gameBoardData,3);
             return true;
         }
         catch (Exception e){

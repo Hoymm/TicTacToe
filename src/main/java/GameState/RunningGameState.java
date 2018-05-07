@@ -1,7 +1,6 @@
 package GameState;
 
-import Data.Data;
-import Data.FinishedChecker.FinishState;
+import Data.*;
 
 public class RunningGameState extends Game {
     RunningGameState(Data data) {

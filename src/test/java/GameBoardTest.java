@@ -1,15 +1,17 @@
-import Data.GameBoard;
+import Data.BoardController;
+import Data.BoardData;
 import Data.Symbol;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class GameBoardTest {
-    private GameBoard gameBoard;
+    private BoardController gameBoard;
 
     @BeforeMethod
     public void setUp (){
-        gameBoard = new GameBoard(10, 10);
+        BoardData gameBoardData = new BoardData(10, 10);
+        gameBoard = new BoardController(gameBoardData, 3);
     }
 
     @Test

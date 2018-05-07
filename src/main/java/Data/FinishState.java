@@ -1,4 +1,4 @@
-package Data.FinishedChecker;
+package Data;
 
 public enum FinishState {
     XWon{
@@ -16,7 +16,7 @@ public enum FinishState {
     Draw{
         @Override
         public String toString() {
-            return "Remis O";
+            return "Remis";
         }
     },
     NotFinished{
