@@ -1,21 +1,18 @@
 package Data;
+import GameState.UserIO.InputParams;
 
-import PlayGame.GameState;
-import PlayGame.RunningGameState;
-import PlayGame.StartGameState;
+import java.util.logging.Logger;
 
 public class Data {
+    private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
-    private GameBoard gameBoard;
+    private BoardController gameBoard;
 
     public Data(){
-
     }
 
     public Data(String userInput) {
-        String [] userInputArray = userInput.split(";");
-        this.players = new Players(new Player(userInputArray[0]), new Player(userInputArray[1]));
-        this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
+        insertGameStartData(userInput);
     }
 
     @Override
@@ -27,35 +24,50 @@ public class Data {
         return players.equals(((Data)obj).players);
     }
 
-    public CurGameDataInfo displayInfo() {
-        return new CurGameDataInfo() {
-            @Override
-            public String headerInfo() {
-                return players.toString();
-            }
+    public String gameHeaderDisplayInfo() {
+        return players.toString();
+    }
 
+    public String gameBoardDisplayInfo() {
+        return gameBoard.toString();
+    }
+
+    public CurGameDataMutator getDataMutator(){
+        return new CurGameDataMutator() {
             @Override
-            public String boardInfo() {
-                StringBuilder tableDisplayInfoBuilder = new StringBuilder();
-                for (int width = 0; width < 3; ++width) {
-                    for (int height = 0; height < 3; ++height)
-                        tableDisplayInfoBuilder.append(" ").append("|");
-                    tableDisplayInfoBuilder.append("\n");
-                }
-                return tableDisplayInfoBuilder.toString();
+            public void changePlayerToOpposite() {
+                players.changePlayerTurn();
             }
         };
     }
 
-    public void modifyDataDependOnState(String userInput, GameState gameState) {
-        if (gameState instanceof StartGameState) {
-            String [] userInputArray = userInput.split(";");
-            this.players = new Players(new Player(userInputArray[0]), new Player(userInputArray[1]));
-            this.gameBoard = new GameBoard(Integer.valueOf(userInputArray[2]), Integer.valueOf(userInputArray[3]));
+    public boolean insertGameStartData(String userInput) {
+        try {
+            String[] userInputArray = userInput.split(InputParams.SEPARATOR);
+            this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
+            BoardData gameBoardData = new BoardData(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
+            this.gameBoard = new BoardController( gameBoardData,3);
+            return true;
         }
-        else if (gameState instanceof RunningGameState){
-            // TODO modify state
+        catch (Exception e){
+            LOGGER.warning("Something went wrong when converting user start data input into data objects");
+            return false;
         }
-        return;
+    }
+
+    public boolean insertNewCoordinates(int userInput){
+        if (!gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
+            System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
+            return false;
+        }
+        return true;
+    }
+
+    public FinishState getGameFinishedState() {
+        return gameBoard.getFinishedState();
+    }
+
+    public String getGameScores() {
+        return "";
     }
 }

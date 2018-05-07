@@ -1,8 +1,8 @@
-package UserIO;
+package GameState.UserIO;
 
 public class InputCannotBeEmptyException extends Exception {
 
-    public InputCannotBeEmptyException(String message) {
+    InputCannotBeEmptyException(String message) {
         super(message);
     }
 }

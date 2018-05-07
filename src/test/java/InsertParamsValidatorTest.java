@@ -1,6 +1,6 @@
-import UserIO.InputCannotBeEmptyException;
-import UserIO.InputParams;
-import UserIO.InputParamsValidator;
+import GameState.UserIO.InputCannotBeEmptyException;
+import GameState.UserIO.InputParams;
+import GameState.UserIO.InputParamsValidator;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
@@ -31,7 +31,7 @@ public class InsertParamsValidatorTest {
         // given
         // when
 
-        boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%c%s", "Anna", InputParams.SEPARATOR, "Beata"));
+        boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%s%s", "Anna", InputParams.SEPARATOR, "Beata"));
         // then
         assertFalse(validateNameWithSpecialSign);
     }
@@ -64,5 +64,73 @@ public class InsertParamsValidatorTest {
         boolean validateTableParamLesserThan2 = inputParamsValidator.isTableParamVaild("tekstksaf");
         // then
         assertFalse(validateTableParamLesserThan2);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayer_insertOSymbol_shouldReturnTrue(){
+        // given
+        // when
+        boolean symbolOShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("O");
+        // then
+        assertTrue(symbolOShouldByValidatedAsTrue);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayer_insertXSymbol_shouldReturnTrue(){
+        // given
+        // when
+        boolean symbolXShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("X");
+        // then
+        assertTrue(symbolXShouldByValidatedAsTrue);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayer_insertUSymbol_shouldReturnFalse(){
+        // given
+        String wrongSymbol = "U";
+        // when
+        boolean wrongSymbolValidateShouldReturnFalse = inputParamsValidator.isValidSymbol(wrongSymbol);
+        // then
+        assertFalse(wrongSymbolValidateShouldReturnFalse);
+    }
+
+    @Test
+    public void validateFieldNumber_insertNegativeNumber_shouldReturnFalse(){
+        // given
+        String negativeNumber = "-1";
+        // when
+        boolean negativeNumberShouldReturnFalse = inputParamsValidator.isVaildBoardField(negativeNumber);
+        // then
+        assertFalse(negativeNumberShouldReturnFalse);
+    }
+
+    @Test
+    public void validateFieldNumber_insertZeroNumber_shouldReturnFalse(){
+        // given
+        String negativeNumber = "0";
+        // when
+        boolean zeroBoardFieldShouldReturnFalse = inputParamsValidator.isVaildBoardField(negativeNumber);
+        // then
+        assertFalse(zeroBoardFieldShouldReturnFalse);
+    }
+
+    @Test
+    public void validateFieldNumber_insertPossitiveNumber_shouldReturnTrue(){
+        // given
+        String possitiveNumber = "1";
+        // when
+        boolean boardFieldOfValueOneShouldBeValidatedAsTrue = inputParamsValidator.isVaildBoardField(possitiveNumber);
+        // then
+        assertTrue(boardFieldOfValueOneShouldBeValidatedAsTrue);
+    }
+
+    @Test
+    public void validateFieldNumber_insertNonNumberValue_shouldReturnFalse(){
+        // given
+        String possitiveNumber = "abc";
+        // when
+        boolean boardFieldOfValueOneShouldBeValidatedAsTrue = inputParamsValidator.isVaildBoardField(possitiveNumber);
+        // then
+        assertFalse(boardFieldOfValueOneShouldBeValidatedAsTrue);
     }
 }

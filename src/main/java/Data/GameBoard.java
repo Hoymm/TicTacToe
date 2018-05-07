@@ -1,8 +1,0 @@
-package Data;
-
-public class GameBoard {
-
-    public GameBoard(int width, int height) {
-
-    }
-}
