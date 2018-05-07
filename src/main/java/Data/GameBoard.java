@@ -1,5 +1,5 @@
 package Data;
-import Data.FinishedChecker.FinishStates;
+import Data.FinishedChecker.FinishState;
 import Data.FinishedChecker.FinishedChecker;
 
 import java.util.LinkedHashMap;
@@ -42,11 +42,12 @@ public class GameBoard {
             return false;
         else{
             myBoard.put(fieldNumber, symbol);
+            finishedChecker.updateState(myBoard, fieldNumber);
             return true;
         }
     }
 
-    FinishStates getFinishedState() {
-        return finishedChecker.getGameFinishedState();
+    FinishState getFinishedState() {
+        return finishedChecker.getFinishedState();
     }
 }

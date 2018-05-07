@@ -1,6 +1,6 @@
 package Data;
 
-import Data.FinishedChecker.FinishStates;
+import Data.FinishedChecker.FinishState;
 import GameState.UserIO.InputParams;
 
 import java.util.logging.Logger;
@@ -64,7 +64,11 @@ public class Data {
         return true;
     }
 
-    public FinishStates getGameFinishedState() {
+    public FinishState getGameFinishedState() {
         return gameBoard.getFinishedState();
+    }
+
+    public String getGameScores() {
+        return "O: 1 X: 0";
     }
 }

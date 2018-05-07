@@ -7,7 +7,7 @@ public enum Colors {
     RED("\u001B[31m"),
     BLUE("\u001B[34m");
 
-    String color;
+    private String color;
     Colors(String color){
         this.color = color;
     }
