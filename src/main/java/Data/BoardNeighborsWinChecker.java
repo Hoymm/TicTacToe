@@ -1,10 +1,10 @@
 package Data;
 
-public class MoveAroundNeighbors {
+public class BoardNeighborsWinChecker {
     private int curField;
     private MoveTo directionMove;
 
-    public MoveAroundNeighbors(int centerField, MoveTo directionMove) {
+    public BoardNeighborsWinChecker(int centerField, MoveTo directionMove) {
         this.curField = centerField;
         this.directionMove = directionMove;
     }

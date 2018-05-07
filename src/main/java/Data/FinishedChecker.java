@@ -46,26 +46,27 @@ public class FinishedChecker {
     }
 
     private boolean checkWin(BoardData gameBoardData, int fieldNumber, MoveTo oneSideMove, MoveTo anotherSideMove) {
-        int symbolsInRowOneSide = getHowManyInRow(gameBoardData, new MoveAroundNeighbors(fieldNumber, oneSideMove));
+        int symbolsInRowOneSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, oneSideMove));
 
         // TODO remove that
         if (fieldNumber == 5 && oneSideMove == MoveTo.leftDown && anotherSideMove == MoveTo.rightUp)
             System.out.println("5");
 
-        int symbolsInRowAnotherSide = getHowManyInRow(gameBoardData, new MoveAroundNeighbors(fieldNumber, anotherSideMove));
+        int symbolsInRowAnotherSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, anotherSideMove));
 
         return symbolsInRowAnotherSide + 1 + symbolsInRowOneSide >= howManyInRowToWin;
     }
 
 
-    public int getHowManyInRow(BoardData gameBoardData, MoveAroundNeighbors boardMove) {
+    public int getHowManyInRow(BoardData gameBoardData, BoardNeighborsWinChecker boardNeighborsChecker) {
         int howManyInRow = 0;
-        Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardMove.getCurrentField());
-        boardMove.moveItIfPossible(gameBoardData);
+        Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField());
+        boardNeighborsChecker.moveItIfPossible(gameBoardData);
 
-        while(centerFieldSymbol == gameBoardData.getSymbolFromField(boardMove.getCurrentField())) {
+        while(centerFieldSymbol == gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField())) {
             ++howManyInRow;
-            boardMove.moveItIfPossible(gameBoardData);
+            if(!boardNeighborsChecker.moveItIfPossible(gameBoardData))
+                break;
         }
 
         return howManyInRow;
