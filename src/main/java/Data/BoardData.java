@@ -24,4 +24,8 @@ public class BoardData {
     public boolean isFieldOccupied(int fieldNumber) {
         return myBoard.containsKey(fieldNumber);
     }
+
+    public boolean isBoardFull() {
+        return myBoard.size() == width*height;
+    }
 }

@@ -17,16 +17,16 @@ public class InputParams {
 
     public String getPlayerNamesAndBoardDataFromUser() {
         // TODO comment it to ommit user input
-        StringBuilder builderUserInput = new StringBuilder();
+        /*StringBuilder builderUserInput = new StringBuilder();
         builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
         builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
         builderUserInput.append(whoStartsFirst()).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("width")).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("height"));
-        return builderUserInput.toString();
+        return builderUserInput.toString();*/
 
         // Uncomment it to insert automatic user input
-        //return "Damian Andrzej O 7 7";
+        return "Damian Andrzej O 3 3";
     }
 
     private String insertAndValidatePlayerName(String player) {

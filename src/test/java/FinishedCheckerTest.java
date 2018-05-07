@@ -16,6 +16,19 @@ public class FinishedCheckerTest {
     }
 
     @Test
+    public void onBoard3x3_markOFields135_XFields24_nobodyWinsAGame(){
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.O);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(2, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(3, Symbol.O);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(4, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(5, Symbol.O);
+        // then
+        assertFalse(finishedChecker.isWin(boardData, 5));
+    }
+
+    @Test
     public void onBoard3x3_mark123WithSymbolX_checkIsWinHorizontallyShouldReturnTrue() {
         // given
         // when
@@ -24,7 +37,6 @@ public class FinishedCheckerTest {
         boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(3, Symbol.X);
         // then
         assertTrue(finishedChecker.isWinHorizontally(boardData, 3));
-        //assertEquals(boardController.getFinishedState(), FinishState.XWon);
     }
 
     @Test
@@ -100,6 +112,26 @@ public class FinishedCheckerTest {
         boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(7, Symbol.X);
         // then
         assertFalse(finishedChecker.isWinDiagonally(boardData, 7));
+    }
+
+    @Test
+    public void onBoard3x3_markAllFields_checkIsADrawReturnTrue() {
+        // given
+        // when
+        for (int i = 0; i <= 9; ++i)
+            boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(i, Symbol.X);
+        // then
+        assertTrue(finishedChecker.isDraw(boardData));
+    }
+
+    @Test
+    public void onBoard3x3_mark2Fields_checkIsADrawReturnFalse() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(5, Symbol.O);
+        // then
+        assertFalse(finishedChecker.isDraw(boardData));
     }
 
 }

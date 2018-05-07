@@ -9,7 +9,7 @@ public class MoveAroundNeighbors {
         this.directionMove = directionMove;
     }
 
-    public boolean tryMoveIt(BoardData boardData){
+    public boolean moveItIfPossible(BoardData boardData){
         boolean leaveBoardHorizontallyRight = curField%boardData.width == 0 && directionMove.moveX() == 1;
         boolean leaveBoardHorizontallyLeft = curField%boardData.width <= 1 && directionMove.moveX() == -1;
         boolean leaveBoardVerticallyTop = curField <= boardData.width && directionMove.moveY() == -1;

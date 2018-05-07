@@ -15,12 +15,18 @@ public class FinishedChecker {
     }
 
     public void updateState(BoardData gameBoardData, int fieldNumber) {
-        if (isWin(gameBoardData, fieldNumber))
+        if (isDraw(gameBoardData))
+            finishState = FinishState.Draw;
+        else if (isWin(gameBoardData, fieldNumber))
             finishState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? FinishState.XWon : FinishState.OWon;
-
     }
 
-    private boolean isWin(BoardData gameBoardData, int fieldNumber) {
+
+    public boolean isDraw(BoardData gameBoardData) {
+        return gameBoardData.isBoardFull();
+    }
+
+    public boolean isWin(BoardData gameBoardData, int fieldNumber) {
         return isWinHorizontally(gameBoardData, fieldNumber) || isWinVertically(gameBoardData, fieldNumber)
                 || isWinDiagonally(gameBoardData, fieldNumber);
 
@@ -40,23 +46,26 @@ public class FinishedChecker {
     }
 
     private boolean checkWin(BoardData gameBoardData, int fieldNumber, MoveTo oneSideMove, MoveTo anotherSideMove) {
-        MoveAroundNeighbors moveToRight = new MoveAroundNeighbors(fieldNumber, oneSideMove);
-        int symbolsInRowToTheRight = getHowManyInRow(gameBoardData, moveToRight);
+        int symbolsInRowOneSide = getHowManyInRow(gameBoardData, new MoveAroundNeighbors(fieldNumber, oneSideMove));
 
-        MoveAroundNeighbors moveToLeft = new MoveAroundNeighbors(fieldNumber, anotherSideMove);
-        int symbolsInRowToTheLeft = getHowManyInRow(gameBoardData, moveToLeft);
+        // TODO remove that
+        if (fieldNumber == 5 && oneSideMove == MoveTo.leftDown && anotherSideMove == MoveTo.rightUp)
+            System.out.println("5");
 
-        return symbolsInRowToTheLeft + 1 + symbolsInRowToTheRight >= howManyInRowToWin;
+        int symbolsInRowAnotherSide = getHowManyInRow(gameBoardData, new MoveAroundNeighbors(fieldNumber, anotherSideMove));
+
+        return symbolsInRowAnotherSide + 1 + symbolsInRowOneSide >= howManyInRowToWin;
     }
+
 
     public int getHowManyInRow(BoardData gameBoardData, MoveAroundNeighbors boardMove) {
         int howManyInRow = 0;
         Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardMove.getCurrentField());
-        boardMove.tryMoveIt(gameBoardData);
+        boardMove.moveItIfPossible(gameBoardData);
 
         while(centerFieldSymbol == gameBoardData.getSymbolFromField(boardMove.getCurrentField())) {
-            boardMove.tryMoveIt(gameBoardData);
             ++howManyInRow;
+            boardMove.moveItIfPossible(gameBoardData);
         }
 
         return howManyInRow;
