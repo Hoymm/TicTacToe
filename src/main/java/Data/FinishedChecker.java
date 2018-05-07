@@ -15,10 +15,11 @@ public class FinishedChecker {
     }
 
     public void updateState(BoardData gameBoardData, int fieldNumber) {
-        if (isDraw(gameBoardData))
-            finishState = FinishState.Draw;
-        else if (isWin(gameBoardData, fieldNumber))
+        if (isWin(gameBoardData, fieldNumber)) {
             finishState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? FinishState.XWon : FinishState.OWon;
+        } else if (isDraw(gameBoardData)){
+            finishState = FinishState.Draw;
+        }
     }
 
 
