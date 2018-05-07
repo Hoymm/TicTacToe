@@ -3,8 +3,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.*;
 
 public class FinishedCheckerTest {
-    // TODO uncomment and go on with TDD here
-    final static int howManyInRowToWin = 3;
+    private final static int howManyInRowToWin = 3;
     private FinishedChecker finishedChecker;
     private BoardController boardController;
     private BoardData boardData;
@@ -20,12 +19,11 @@ public class FinishedCheckerTest {
     public void onBoard3x3_mark123WithSymbolX_checkIsWinHorizontallyShouldReturnTrue() {
         // given
         // when
-        boardController.tryMarkField(1, Symbol.X);
-        boardController.tryMarkField(2, Symbol.X);
-        int lastInputField = 3;
-        boardController.tryMarkField(lastInputField, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(2, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(3, Symbol.X);
         // then
-        assertTrue(finishedChecker.checkIsWinHorizontally(boardData, lastInputField));
+        assertTrue(finishedChecker.isWinHorizontally(boardData, 3));
         //assertEquals(boardController.getFinishedState(), FinishState.XWon);
     }
 
@@ -33,11 +31,75 @@ public class FinishedCheckerTest {
     public void onBoard3x3_mark12WithSymbolX_checkIsWinHorizontallyShouldReturnFalse() {
         // given
         // when
-        boardController.tryMarkField(1, Symbol.X);
-        int lastInputField = 2;
-        boardController.tryMarkField(lastInputField, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(2, Symbol.X);
         // then
-        assertFalse(finishedChecker.checkIsWinHorizontally(boardData, lastInputField));
+        assertFalse(finishedChecker.isWinHorizontally(boardData, 2));
+    }
+
+
+    @Test
+    public void onBoard3x3_mark147WithSymbolX_checkIsWinVerticallyShouldReturnTrue() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(4, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(7, Symbol.X);
+        // then
+        assertTrue(finishedChecker.isWinVertically(boardData, 7));
+    }
+
+
+    @Test
+    public void onBoard3x3_mark14WithSymbolX_checkIsWinVerticallyShouldReturnFalse() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(4, Symbol.X);
+        // then
+        assertFalse(finishedChecker.isWinVertically(boardData, 4));
+    }
+
+    @Test
+    public void onBoard3x3_mark159WithSymbolX_checkIsWinDiagonallyShouldReturnTrue() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(5, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(9, Symbol.X);
+        // then
+        assertTrue(finishedChecker.isWinDiagonally(boardData, 9));
+    }
+
+    @Test
+    public void onBoard3x3_mark159WithSymbolX_checkIsWinDiagonallyShouldReturnFalse() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(5, Symbol.X);
+        // then
+        assertFalse(finishedChecker.isWinDiagonally(boardData, 5));
+    }
+
+    @Test
+    public void onBoard3x3_mark357WithSymbolX_checkIsWinDiagonallyShouldReturnTrue() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(3, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(5, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(7, Symbol.X);
+        // then
+        assertTrue(finishedChecker.isWinDiagonally(boardData, 7));
+    }
+
+    @Test
+    public void onBoard3x3_mark37WithSymbolX_checkIsWinDiagonallyShouldReturnFalse() {
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(3, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(7, Symbol.X);
+        // then
+        assertFalse(finishedChecker.isWinDiagonally(boardData, 7));
     }
 
 }

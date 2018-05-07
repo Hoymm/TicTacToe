@@ -18,7 +18,7 @@ public class GameBoardTest {
     public void onEmptyBoard10x10_markXOn100_shouldResultTrue (){
         // given
         // when
-        boolean fieldMarked = gameBoard.tryMarkField(100, Symbol.X);
+        boolean fieldMarked = gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(100, Symbol.X);
         // then
         assertTrue(fieldMarked);
     }
@@ -27,7 +27,7 @@ public class GameBoardTest {
     public void onEmptyBoard10x10_markXOn101_shouldResultFalse (){
         // given
         // when
-        boolean fieldMarked = gameBoard.tryMarkField(101, Symbol.X);
+        boolean fieldMarked = gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(101, Symbol.X);
         // then
         assertFalse(fieldMarked);
     }
@@ -36,7 +36,7 @@ public class GameBoardTest {
     public void onEmptyBoard10x10_markXOn0_shouldResultFalse (){
         // given
         // when
-        boolean fieldMarked = gameBoard.tryMarkField(0, Symbol.X);
+        boolean fieldMarked = gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(0, Symbol.X);
         // then
         assertFalse(fieldMarked);
     }

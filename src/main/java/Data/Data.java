@@ -56,7 +56,7 @@ public class Data {
     }
 
     public boolean insertNewCoordinates(int userInput){
-        if (!gameBoard.tryMarkField(userInput, players.getCurrentSymbol())) {
+        if (!gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
             System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
             return false;
         }
@@ -68,6 +68,6 @@ public class Data {
     }
 
     public String getGameScores() {
-        return "O: 1 X: 0";
+        return "";
     }
 }

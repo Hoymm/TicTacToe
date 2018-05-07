@@ -24,4 +24,9 @@ public class GameFinishedState extends Game {
         finishMessageToTheUser.append(data.getGameScores());
         System.out.println(finishMessageToTheUser.toString());
     }
+
+    @Override
+    public boolean userWantsToStayInGame() {
+        return false;
+    }
 }

@@ -29,7 +29,7 @@ public class BoardController {
     }
 
 
-    public boolean tryMarkField(int fieldNumber, Symbol symbol) {
+    public boolean tryMarkFieldAndChangeWinnerStateIfNeeded(int fieldNumber, Symbol symbol) {
         if (gameBoardData.isFieldOccupied(fieldNumber) || fieldNumber < 1 || fieldNumber > gameBoardData.width*gameBoardData.height)
             return false;
         else{

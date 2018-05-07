@@ -14,6 +14,7 @@ public class RunningGameState extends Game {
             return this;
         }
         else {
+            displayGame();
             return new GameFinishedState(data);
         }
     }

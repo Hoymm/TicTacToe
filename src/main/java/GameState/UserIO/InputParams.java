@@ -16,13 +16,16 @@ public class InputParams {
     }
 
     public String getPlayerNamesAndBoardDataFromUser() {
-        StringBuilder builderUserInput = new StringBuilder();
+        // TODO uncomment it to get user input
+        /*StringBuilder builderUserInput = new StringBuilder();
         builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
         builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
         builderUserInput.append(whoStartsFirst()).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("width")).append(SEPARATOR);
         builderUserInput.append(insertAndValidateTableParam("height"));
-        return builderUserInput.toString();
+        return builderUserInput.toString();*/
+
+        return "Damian Andrzej O 3 3";
     }
 
     private String insertAndValidatePlayerName(String player) {
