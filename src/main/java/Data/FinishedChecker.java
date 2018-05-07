@@ -36,10 +36,10 @@ public class FinishedChecker {
     public int getHowManyInRow(BoardData gameBoardData, MoveAroundNeighbors boardMove) {
         int howManyInRow = 0;
         Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardMove.getCurrentField());
-        boardMove.moveIt(gameBoardData);
+        boardMove.tryMoveIt(gameBoardData);
 
         while(centerFieldSymbol == gameBoardData.getSymbolFromField(boardMove.getCurrentField())) {
-            boardMove.moveIt(gameBoardData);
+            boardMove.tryMoveIt(gameBoardData);
             ++howManyInRow;
         }
 

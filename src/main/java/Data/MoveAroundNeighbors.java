@@ -9,8 +9,9 @@ public class MoveAroundNeighbors {
         this.directionMove = directionMove;
     }
 
-    public void moveIt(BoardData boardData){
+    public boolean tryMoveIt(BoardData boardData){
         curField += directionMove.moveX() + directionMove.moveY()*boardData.width;
+        return true;
     }
 
     public int getCurrentField(){
