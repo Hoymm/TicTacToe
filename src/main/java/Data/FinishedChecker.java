@@ -24,8 +24,25 @@ public class FinishedChecker {
     }
 
     public boolean checkIsWinHorizontally(BoardData gameBoardData, int fieldNumber) {
-        int howManySymbolsInRow = 0;
-        Symbol checkingSymbol = gameBoardData.getSymbolFromField(fieldNumber);
-        return true;
+        FinishedCheckerMoveDirection directionMoveToRight = new FinishedCheckerMoveDirection(fieldNumber,1, 0);
+        int symbolsInRowToTheRight = getHowManyInRow(gameBoardData, directionMoveToRight);
+
+        FinishedCheckerMoveDirection directionMoveToLeft = new FinishedCheckerMoveDirection(fieldNumber,-1, 0);
+        int symbolsInRowToTheLeft = getHowManyInRow(gameBoardData, directionMoveToLeft);
+
+        return symbolsInRowToTheLeft + 1 + symbolsInRowToTheRight >= howManyInRowToWin;
+    }
+
+    public int getHowManyInRow(BoardData gameBoardData, FinishedCheckerMoveDirection boardMove) {
+        int howManyInRow = 0;
+        Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardMove.getCurrentField());
+        boardMove.moveIt(gameBoardData);
+
+        while(centerFieldSymbol == gameBoardData.getSymbolFromField(boardMove.getCurrentField())) {
+            boardMove.moveIt(gameBoardData);
+            ++howManyInRow;
+        }
+
+        return howManyInRow;
     }
 }

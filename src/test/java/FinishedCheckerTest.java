@@ -29,8 +29,8 @@ public class FinishedCheckerTest {
         //assertEquals(boardController.getFinishedState(), FinishState.XWon);
     }
 
-    /*@Test
-    public void onBoard3x3_mark12WithSymbolX_checkoIsWinHorizontallyShouldReturnFalse() {
+    @Test
+    public void onBoard3x3_mark12WithSymbolX_checkIsWinHorizontallyShouldReturnFalse() {
         // given
         // when
         boardController.tryMarkField(1, Symbol.X);
@@ -38,6 +38,6 @@ public class FinishedCheckerTest {
         boardController.tryMarkField(lastInputField, Symbol.X);
         // then
         assertFalse(finishedChecker.checkIsWinHorizontally(boardData, lastInputField));
-    }*/
+    }
 
 }
