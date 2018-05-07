@@ -19,11 +19,13 @@ public class FinishedChecker {
             finishState = FinishState.OWon;
 
         if (checkIsWinHorizontally(gameBoardData, fieldNumber))
-            finishState = gameBoardData.myBoard.get(fieldNumber) == Symbol.X ? FinishState.XWon : FinishState.OWon;
+            finishState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? FinishState.XWon : FinishState.OWon;
 
     }
 
     public boolean checkIsWinHorizontally(BoardData gameBoardData, int fieldNumber) {
+        int howManySymbolsInRow = 0;
+        Symbol checkingSymbol = gameBoardData.getSymbolFromField(fieldNumber);
         return true;
     }
 }

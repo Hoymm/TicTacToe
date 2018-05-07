@@ -3,7 +3,7 @@ package Data;
 import java.util.LinkedHashMap;
 
 public class BoardData {
-    LinkedHashMap<Integer, Symbol> myBoard;
+    private LinkedHashMap<Integer, Symbol> myBoard;
     int width;
     int height;
 
@@ -11,5 +11,17 @@ public class BoardData {
         this.width = width;
         this.height = height;
         myBoard = new LinkedHashMap<>();
+    }
+
+    public void putSymbolToField(Symbol symbol, int fieldNumber) {
+        myBoard.put(fieldNumber, symbol);
+    }
+
+    public Symbol getSymbolFromField(int fieldNumber) {
+        return myBoard.get(fieldNumber);
+    }
+
+    public boolean isFieldOccupied(int fieldNumber) {
+        return myBoard.containsKey(fieldNumber);
     }
 }
