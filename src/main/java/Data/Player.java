@@ -1,5 +1,7 @@
 package Data;
 
+import java.util.Objects;
+
 public class Player {
     private String playerName;
     private int playerScores;
@@ -12,12 +14,19 @@ public class Player {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof Player)) {
-            return false;
-        }
-        return this.playerName.equals(((Player)obj).playerName) && this.playerScores == ((Player)obj).playerScores;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return playerScores == player.playerScores &&
+                Objects.equals(playerName, player.playerName) &&
+                symbol == player.symbol;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(playerName, playerScores, symbol);
     }
 
     @Override

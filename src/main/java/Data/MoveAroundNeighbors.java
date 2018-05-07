@@ -20,10 +20,6 @@ public class MoveAroundNeighbors {
         return !(leaveBoardHorizontallyLeft || leaveBoardHorizontallyRight || leaveBoardVerticallyTop || leaveBoardVerticallyBottom);
     }
 
-    private boolean isInBoardBorders(BoardData boardData) {
-        return curField <= boardData.width*boardData.height && curField >= 1;
-    }
-
     public int getCurrentField(){
         return curField;
     }
