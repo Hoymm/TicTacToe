@@ -47,13 +47,7 @@ public class FinishedChecker {
 
     private boolean checkWin(BoardData gameBoardData, int fieldNumber, MoveTo oneSideMove, MoveTo anotherSideMove) {
         int symbolsInRowOneSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, oneSideMove));
-
-        // TODO remove that
-        if (fieldNumber == 6 && oneSideMove == MoveTo.leftDown && anotherSideMove == MoveTo.rightUp)
-            System.out.println("ABRA KADABRA !! !!! !!!!");
-
         int symbolsInRowAnotherSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, anotherSideMove));
-
         return symbolsInRowAnotherSide + 1 + symbolsInRowOneSide >= howManyInRowToWin;
     }
 
