@@ -4,25 +4,25 @@ public enum FinishState {
     XWon{
         @Override
         public String toString() {
-            return "Wygrywa X";
+            return "Wins " + Symbol.X;
         }
     },
     OWon{
         @Override
         public String toString() {
-            return "Wygrywa O";
+            return "Wins " + Symbol.O;
         }
     },
     Draw{
         @Override
         public String toString() {
-            return "Remis";
+            return "Draw !";
         }
     },
     NotFinished{
         @Override
         public String toString() {
-            return "Gra niezakończona";
+            return "Game unfinished.";
         }
     }
 

@@ -1,6 +1,7 @@
 package Data;
 import GameState.UserIO.InputParams;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Data {
@@ -15,13 +16,19 @@ public class Data {
         insertGameStartData(userInput);
     }
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof Data)) {
-            return false;
-        }
-        return players.equals(((Data)obj).players);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Data data = (Data) o;
+        return Objects.equals(players, data.players);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(players, gameBoard);
     }
 
     public String gameHeaderDisplayInfo() {
