@@ -29,6 +29,20 @@ public class FinishedCheckerTest {
     }
 
     @Test
+    public void onBoard3x3_markOFields135_XFields246_nobodyWinsAGame(){
+        // given
+        // when
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(1, Symbol.O);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(2, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(3, Symbol.O);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(4, Symbol.X);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(5, Symbol.O);
+        boardController.tryMarkFieldAndChangeWinnerStateIfNeeded(6, Symbol.X);
+        // then
+        assertFalse(finishedChecker.isWin(boardData, 6));
+    }
+
+    @Test
     public void onBoard3x3_mark123WithSymbolX_checkIsWinHorizontallyShouldReturnTrue() {
         // given
         // when

@@ -49,8 +49,8 @@ public class FinishedChecker {
         int symbolsInRowOneSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, oneSideMove));
 
         // TODO remove that
-        if (fieldNumber == 5 && oneSideMove == MoveTo.leftDown && anotherSideMove == MoveTo.rightUp)
-            System.out.println("5");
+        if (fieldNumber == 6 && oneSideMove == MoveTo.leftDown && anotherSideMove == MoveTo.rightUp)
+            System.out.println("ABRA KADABRA !! !!! !!!!");
 
         int symbolsInRowAnotherSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, anotherSideMove));
 
@@ -61,13 +61,10 @@ public class FinishedChecker {
     public int getHowManyInRow(BoardData gameBoardData, BoardNeighborsWinChecker boardNeighborsChecker) {
         int howManyInRow = 0;
         Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField());
-        boardNeighborsChecker.moveItIfPossible(gameBoardData);
 
-        while(centerFieldSymbol == gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField())) {
+        while(boardNeighborsChecker.moveItIfPossible(gameBoardData)
+                && centerFieldSymbol == gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField()))
             ++howManyInRow;
-            if(!boardNeighborsChecker.moveItIfPossible(gameBoardData))
-                break;
-        }
 
         return howManyInRow;
     }
