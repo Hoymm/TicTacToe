@@ -10,8 +10,8 @@ public class MoveAroundNeighbors {
     }
 
     public boolean tryMoveIt(BoardData boardData){
-        curField += directionMove.moveX() + directionMove.moveY()*boardData.width;
-        return true;
+        curField += directionMove.moveX() + directionMove.moveY() * boardData.width;
+        return curField <= boardData.width*boardData.height && curField >= 1;
     }
 
     public int getCurrentField(){

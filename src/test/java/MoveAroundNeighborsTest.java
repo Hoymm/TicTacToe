@@ -172,4 +172,84 @@ public class MoveAroundNeighborsTest {
         // then
         assertTrue(moveLeftDownShouldReturnTrue);
     }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs1_moveLeft_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(1, MoveTo.left);
+        // when
+        boolean moveLeftShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveLeftShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs1_moveUp_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(1, MoveTo.up);
+        // when
+        boolean moveRightShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveRightShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs1_leftUp_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(1, MoveTo.leftUp);
+        // when
+        boolean moveLeftUpShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveLeftUpShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs1_RightUp_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(1, MoveTo.rightUp);
+        // when
+        boolean moveRightUpShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveRightUpShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs9_Right_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(9, MoveTo.right);
+        // when
+        boolean moveRightShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveRightShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs9_Down_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(9, MoveTo.down);
+        // when
+        boolean moveDownShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveDownShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs9_RightDown_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(9, MoveTo.rightDown);
+        // when
+        boolean moveRightDownShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveRightDownShouldReturnFalse);
+    }
+
+    @Test
+    public void moveOnBoard3x3_startFieldIs9_LeftDown_shouldReturnFalse() {
+        // given
+        MoveAroundNeighbors finishedCheckerMoveDirection = new MoveAroundNeighbors(9, MoveTo.leftDown);
+        // when
+        boolean moveLeftDownShouldReturnFalse = finishedCheckerMoveDirection.tryMoveIt(boardData);
+        // then
+        assertFalse(moveLeftDownShouldReturnFalse);
+    }
 }
