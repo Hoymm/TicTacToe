@@ -24,13 +24,14 @@ public class InputParams {
             builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
             builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
             builderUserInput.append(whoStartsFirst()).append(SEPARATOR);
+            builderUserInput.append(howManyPointsToWinGame()).append(SEPARATOR);
             builderUserInput.append(insertAndValidateTableParam("width")).append(SEPARATOR);
             builderUserInput.append(insertAndValidateTableParam("height"));
             return builderUserInput.toString();
         }
         else{
             System.out.println("Default game choosen.");
-            return "Damian Andrzej O 3 3";
+            return "Damian Andrzej O 3 3 3";
         }
     }
 
@@ -73,6 +74,24 @@ public class InputParams {
                         , Symbol.O, Symbol.X));
         }
         return symbolToPlayFirst;
+    }
+
+    private String howManyPointsToWinGame() {
+        int minimumAmountOfPointsInRowToWin = 3;
+        String pointsToWinGame = "";
+        while(howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)){
+            System.out.print("How many symbols (unbroken line) to win round: ");
+            pointsToWinGame = scanner.nextLine();
+            if (howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)) {
+                System.out.println(String.format("Sorry, you must insert at least 3 symbols in row. \"%s\" is a wrong input.", pointsToWinGame));
+            }
+        }
+        return pointsToWinGame;
+
+    }
+
+    private boolean howManyPointsToWinGameConditionChecker(int minimumAmountOfPointsInRowToWin, String pointsToWinGame) {
+        return !inputParamsValidator.isItIntegerAndGraterOrEqualTo(pointsToWinGame, minimumAmountOfPointsInRowToWin) && !isItQuitCommand(pointsToWinGame);
     }
 
     public String getCoordsToPutOnBoard() {

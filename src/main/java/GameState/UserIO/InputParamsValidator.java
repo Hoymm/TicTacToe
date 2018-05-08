@@ -11,6 +11,12 @@ public class InputParamsValidator {
         return isInteger(tableParameter) && Integer.valueOf(tableParameter) >= 3;
     }
 
+    public boolean isItIntegerAndGraterOrEqualTo(String tableParameter, int compareTo) {
+        if (isInteger(tableParameter))
+            return Integer.valueOf(tableParameter) >= compareTo;
+        return false;
+    }
+
     public boolean isInteger(String tableParameter) {
         return tableParameter.matches("-?\\d+");
     }
