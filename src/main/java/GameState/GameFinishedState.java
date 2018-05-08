@@ -18,11 +18,7 @@ public class GameFinishedState extends Game {
 
     @Override
     public void displayGame() {
-        StringBuilder finishMessageToTheUser = new StringBuilder();
-        finishMessageToTheUser.append(dataMutator.getRoundState().toString());
-        finishMessageToTheUser.append(". ");
-        finishMessageToTheUser.append(dataMutator.getGameScores());
-        System.out.println(finishMessageToTheUser.toString());
+        System.out.println(dataMutator.gameFinishResult());
     }
 
     @Override

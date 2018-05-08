@@ -47,14 +47,21 @@ public class Players {
         curSymbolPlays = curSymbolPlays.getOppositeSymbol();
     }
 
-    public void addPointsToPlayer(Symbol symbol) {
-        switch (symbol){
-            case X:
-                playerX.addPoint();
-            break;
-            case O:
-                playerO.addPoint();
-            break;
+    public void addPointsToX(int points) {
+        playerX.addPoints(points);
+    }
+
+    public void addPointsToO(int points) {
+        playerO.addPoints(points);
+    }
+
+    public String gameFinishedMessage() {
+        if (playerO.getPlayerScores() == playerX.getPlayerScores())
+            return "Gra zakończona remisem !";
+        else {
+            Player winner = playerO.getPlayerScores() > playerX.getPlayerScores() ? playerO : playerX;
+            return String.format("Wygrywa %s. %s: %d %s: %d"
+                    , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores(), playerX.getSymbol(), playerX.getPlayerScores());
         }
     }
 }

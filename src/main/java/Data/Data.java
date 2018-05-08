@@ -85,38 +85,31 @@ public class Data implements DataMutator{
     }
 
     @Override
-    public String getGameScores() {
-        // TODO return game scores
-        return "";
-    }
-
-    @Override
-    public void addPointsToPlayer(Symbol symbol) {
-        players.addPointsToPlayer(symbol);
-    }
-
-    @Override
     public boolean isGameFinished() {
         return roundsPlayed == 3;
     }
 
     @Override
+    public void incrementRoundsPlayed() {
+        roundsPlayed++;
+    }
+
+    @Override
     public void prepareNewRound() {
-        // TODO reset settings for incoming new round
-        ++roundsPlayed;
         gameBoardController.resetBoard();
         gameBoardController.setRoundStateToUnfinished();
     }
 
     @Override
-    public void addScoresToWinner() {
-        switch (getRoundState()){
-            case XWon:
-                addPointsToPlayer(Symbol.X);
-                break;
-            case OWon:
-                addPointsToPlayer(Symbol.O);
-                break;
-        }
+    public void addNewPointsToPlayers() {
+        getRoundState().addPointsAccordingRoundFinishedState(players);
+    }
+
+    @Override
+    public String gameFinishResult() {
+        if (isGameFinished())
+            return players.gameFinishedMessage();
+        else
+            return "Gra w trakcie";
     }
 }

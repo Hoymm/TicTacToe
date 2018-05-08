@@ -47,7 +47,7 @@ public class InputParams {
                 LOGGER.warning("User tried to insert empty name");
             }
             if (!validationPassed)
-                System.out.println(String.format("Name should contain only letters. \"%s\" is not acceptable name.", playerName));
+                System.out.printf("Name should contain only letters. \"%s\" is not acceptable name.", playerName);
         }
         return playerName;
     }
@@ -58,8 +58,8 @@ public class InputParams {
             System.out.println(String.format("Insert board %s: ", paramToGet));
             tableParameter = scanner.nextLine();
             if (!inputParamsValidator.isTableParamVaild(tableParameter))
-                System.out.println(String.format("Please insert integer value, greater or equal 3. \n \"%s\" is not acceptable table %s"
-                        , tableParameter, paramToGet));
+                System.out.printf("Please insert integer value, greater or equal 3. \n \"%s\" is not acceptable table %s"
+                        , tableParameter, paramToGet);
         }
         return Integer.valueOf(tableParameter);
     }

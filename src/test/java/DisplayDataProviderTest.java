@@ -22,8 +22,4 @@ public class DisplayDataProviderTest {
         assertEquals(playersInfo, String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
                 Colors.ACTIVE, "Maciek", Symbol.O, 0, Colors.INACTIVE , "Wojtek", Symbol.X, 0, Colors.DEFAULT));
     }
-
-
-    // TODO create test cheking board format display
-
 }

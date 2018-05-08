@@ -38,7 +38,11 @@ public class Player {
         return symbol;
     }
 
-    public void addPoint() {
-        ++playerScores;
+    public int getPlayerScores() {
+        return playerScores;
+    }
+
+    public void addPoints(int points) {
+        playerScores += points;
     }
 }

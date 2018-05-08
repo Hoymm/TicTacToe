@@ -47,9 +47,11 @@ public class GameRoundState {
     }
 
     private boolean checkWin(BoardData gameBoardData, int fieldNumber, MoveTo oneSideMove, MoveTo anotherSideMove) {
-        int symbolsInRowOneSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, oneSideMove));
-        int symbolsInRowAnotherSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, anotherSideMove));
-        return symbolsInRowAnotherSide + 1 + symbolsInRowOneSide >= howManyInRowToWin;
+        int middleFieldPoint = 1;
+
+        int symbolsInRowToOneSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, oneSideMove));
+        int symbolsInRowToAnotherSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, anotherSideMove));
+        return symbolsInRowToOneSide + middleFieldPoint + symbolsInRowToAnotherSide >= howManyInRowToWin;
     }
 
 
