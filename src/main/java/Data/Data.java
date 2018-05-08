@@ -85,12 +85,6 @@ public class Data implements DataMutator{
     }
 
     @Override
-    public String getGameScores() {
-        // TODO return game scores
-        return "";
-    }
-
-    @Override
     public void addPointsToPlayer(Symbol symbol) {
         players.addPointsToPlayer(symbol);
     }
@@ -101,9 +95,12 @@ public class Data implements DataMutator{
     }
 
     @Override
+    public void incrementRoundsPlayed() {
+        roundsPlayed++;
+    }
+
+    @Override
     public void prepareNewRound() {
-        // TODO reset settings for incoming new round
-        ++roundsPlayed;
         gameBoardController.resetBoard();
         gameBoardController.setRoundStateToUnfinished();
     }
@@ -118,5 +115,13 @@ public class Data implements DataMutator{
                 addPointsToPlayer(Symbol.O);
                 break;
         }
+    }
+
+    @Override
+    public String gameFinishResult() {
+        if (isGameFinished())
+            return players.gameFinishedMessage();
+        else
+            return "Gra w trakcie";
     }
 }

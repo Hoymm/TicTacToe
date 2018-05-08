@@ -4,13 +4,13 @@ public enum RoundState {
     XWon{
         @Override
         public String toString() {
-            return "Rundę wygrywa X.";
+            return String.format("Rundę wygrywa %s.", Symbol.X);
         }
     },
     OWon{
         @Override
         public String toString() {
-            return "Rundę wygrywa O.";
+            return String.format("Rundę wygrywa %s.", Symbol.O);
         }
     },
     Draw{

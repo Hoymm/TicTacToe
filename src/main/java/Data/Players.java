@@ -50,11 +50,21 @@ public class Players {
     public void addPointsToPlayer(Symbol symbol) {
         switch (symbol){
             case X:
-                playerX.addPoint();
+                playerX.addPoints();
             break;
             case O:
-                playerO.addPoint();
+                playerO.addPoints();
             break;
+        }
+    }
+
+    public String gameFinishedMessage() {
+        if (playerO.getPlayerScores() == playerX.getPlayerScores())
+            return "Gra zakończona remisem !";
+        else {
+            Player winner = playerO.getPlayerScores() > playerX.getPlayerScores() ? playerO : playerX;
+            return String.format("Wygrywa %s. %s: %d %s: %d"
+                    , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores(), playerX.getSymbol(), playerX.getPlayerScores());
         }
     }
 }
