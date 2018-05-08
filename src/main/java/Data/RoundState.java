@@ -4,22 +4,22 @@ public enum RoundState {
     XWon{
         @Override
         public String toString() {
-            return "Wygrywa X.";
+            return "Rundę wygrywa X.";
         }
     },
     OWon{
         @Override
         public String toString() {
-            return "Wygrywa O.";
+            return "Rundę wygrywa O.";
         }
     },
     Draw{
         @Override
         public String toString() {
-            return "Remis !";
+            return "Runda zakończona remisem !";
         }
     },
-    NotFinished{
+    Unfinished {
         @Override
         public String toString() {
             return "Gra niezakończona.";

@@ -9,32 +9,19 @@ public class RunningGameState extends Game {
 
     @Override
     public Game getNextState() {
-        if (dataMutator.getRoundState() == RoundState.NotFinished) {
-            dataMutator.changePlayerToOpposite();
-            return this;
-        }
-        else {
-            // runda zakonczona, przyznaj punkty zwyciescy i rozpocznij nową rundę lub zakończ grę
-            addScoresIfWinner();
+        dataMutator.changePlayerToOpposite();
+        if (dataMutator.getRoundState() != RoundState.Unfinished) {
+            dataMutator.addScoresToWinner();
+            displayGame();
             if (dataMutator.isGameFinished()) {
-                displayGame();
                 return new GameFinishedState(dataMutator);
             }
             else {
-                return new RunningGameState(dataMutator.prepareNewRound());
+                System.out.println(dataMutator.getRoundState());
+                dataMutator.prepareNewRound();
             }
         }
-    }
-
-    private void addScoresIfWinner() {
-        switch (dataMutator.getRoundState()){
-            case XWon:
-                dataMutator.addPointsToPlayer(Symbol.X);
-                break;
-            case OWon:
-                dataMutator.addPointsToPlayer(Symbol.O);
-                break;
-        }
+        return this;
     }
 
     @Override

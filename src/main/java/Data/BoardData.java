@@ -28,4 +28,8 @@ public class BoardData {
     public boolean isBoardFull() {
         return myBoard.size() == width*height;
     }
+
+    public void clearSymbolsFromBoard() {
+        myBoard = new LinkedHashMap<>();
+    }
 }

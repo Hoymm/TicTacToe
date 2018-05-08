@@ -4,13 +4,13 @@ import static org.testng.Assert.*;
 
 public class FinishedCheckerTest {
     private final static int howManyInRowToWin = 3;
-    private FinishedChecker finishedChecker;
+    private GameRoundState finishedChecker;
     private BoardController boardController;
     private BoardData boardData;
 
     @BeforeMethod
     public void setUp() {
-        finishedChecker = new FinishedChecker(howManyInRowToWin);
+        finishedChecker = new GameRoundState(howManyInRowToWin);
         boardData = new BoardData(3,3);
         boardController = new BoardController(boardData, howManyInRowToWin);
     }

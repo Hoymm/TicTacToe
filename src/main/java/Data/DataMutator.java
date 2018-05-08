@@ -10,5 +10,6 @@ public interface DataMutator {
     String getGameScores();
     void addPointsToPlayer(Symbol symbol);
     boolean isGameFinished();
-    DataMutator prepareNewRound();
+    void prepareNewRound();
+    void addScoresToWinner();
 }

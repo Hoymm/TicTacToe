@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public class Data implements DataMutator{
     private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
-    private BoardController gameBoard;
+    private BoardController gameBoardController;
     private int roundsPlayed;
 
     public Data(){
@@ -29,8 +29,7 @@ public class Data implements DataMutator{
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(players, gameBoard);
+        return Objects.hash(players, gameBoardController);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class Data implements DataMutator{
 
     @Override
     public String gameBoardDisplayInfo() {
-        return gameBoard.toString();
+        return gameBoardController.toString();
     }
 
     @Override
@@ -62,7 +61,7 @@ public class Data implements DataMutator{
 
             players = new Players(playerO, playerX, startSymbol);
             BoardData gameBoardData = new BoardData(width, height);
-            gameBoard = new BoardController(gameBoardData, howManySymbolsInRowToWin);
+            gameBoardController = new BoardController(gameBoardData, howManySymbolsInRowToWin);
             return true;
         }
         catch (Exception e){
@@ -73,12 +72,12 @@ public class Data implements DataMutator{
 
     @Override
     public RoundState getRoundState() {
-        return gameBoard.getFinishedState();
+        return gameBoardController.getFinishedState();
     }
 
     @Override
     public boolean insertNewCoordinates(int userInput){
-        if (!gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
+        if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
             System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
             return false;
         }
@@ -102,8 +101,22 @@ public class Data implements DataMutator{
     }
 
     @Override
-    public DataMutator prepareNewRound() {
+    public void prepareNewRound() {
         // TODO reset settings for incoming new round
-        return null;
+        ++roundsPlayed;
+        gameBoardController.resetBoard();
+        gameBoardController.setRoundStateToUnfinished();
+    }
+
+    @Override
+    public void addScoresToWinner() {
+        switch (getRoundState()){
+            case XWon:
+                addPointsToPlayer(Symbol.X);
+                break;
+            case OWon:
+                addPointsToPlayer(Symbol.O);
+                break;
+        }
     }
 }
