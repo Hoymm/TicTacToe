@@ -1,20 +1,19 @@
 package GameState;
-
-import Data.Data;
+import Data.*;
 
 public class StartGameState extends Game {
     public StartGameState() {
-        super(new Data());
+        super((DataMutator)new Data());
     }
 
     @Override
     public Game getNextState() {
-        return new RunningGameState(data);
+        return new RunningGameState(dataMutator);
     }
 
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
         lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
-        return data.insertGameStartData(lastInput);
+        return dataMutator.insertGameStartData(lastInput);
     }
 }

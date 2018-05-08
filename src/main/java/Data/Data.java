@@ -4,12 +4,14 @@ import GameState.UserIO.InputParams;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-public class Data {
+public class Data implements DataMutator{
     private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
-    private BoardController gameBoard;
+    private BoardController gameBoardController;
+    private int roundsPlayed;
 
     public Data(){
+        roundsPlayed = 0;
     }
 
     public Data(String userInput) {
@@ -27,23 +29,26 @@ public class Data {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(players, gameBoard);
+        return Objects.hash(players, gameBoardController);
     }
 
+    @Override
+    public void changePlayerToOpposite() {
+        players.changePlayerTurn();
+    }
+
+    @Override
     public String gameHeaderDisplayInfo() {
         return players.toString();
     }
 
+    @Override
     public String gameBoardDisplayInfo() {
-        return gameBoard.toString();
+        return gameBoardController.toString();
     }
 
-    public CurGameDataMutator getDataMutator(){
-        return () -> players.changePlayerTurn();
-    }
-
-    public boolean insertGameStartData(String userInput) {
+    @Override
+        public boolean insertGameStartData(String userInput) {
         try {
             String[] userInputArray = userInput.split(InputParams.SEPARATOR);
 
@@ -54,9 +59,9 @@ public class Data {
             int width = Integer.valueOf(userInputArray[4]);
             Integer height = Integer.valueOf(userInputArray[5]);
 
-            this.players = new Players(playerO, playerX, startSymbol);
+            players = new Players(playerO, playerX, startSymbol);
             BoardData gameBoardData = new BoardData(width, height);
-            this.gameBoard = new BoardController(gameBoardData, howManySymbolsInRowToWin);
+            gameBoardController = new BoardController(gameBoardData, howManySymbolsInRowToWin);
             return true;
         }
         catch (Exception e){
@@ -65,19 +70,53 @@ public class Data {
         }
     }
 
+    @Override
+    public RoundState getRoundState() {
+        return gameBoardController.getFinishedState();
+    }
+
+    @Override
     public boolean insertNewCoordinates(int userInput){
-        if (!gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
+        if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
             System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
             return false;
         }
         return true;
     }
 
-    public FinishState getGameFinishedState() {
-        return gameBoard.getFinishedState();
+    @Override
+    public String getGameScores() {
+        // TODO return game scores
+        return "";
     }
 
-    public String getGameScores() {
-        return "";
+    @Override
+    public void addPointsToPlayer(Symbol symbol) {
+        players.addPointsToPlayer(symbol);
+    }
+
+    @Override
+    public boolean isGameFinished() {
+        return roundsPlayed == 3;
+    }
+
+    @Override
+    public void prepareNewRound() {
+        // TODO reset settings for incoming new round
+        ++roundsPlayed;
+        gameBoardController.resetBoard();
+        gameBoardController.setRoundStateToUnfinished();
+    }
+
+    @Override
+    public void addScoresToWinner() {
+        switch (getRoundState()){
+            case XWon:
+                addPointsToPlayer(Symbol.X);
+                break;
+            case OWon:
+                addPointsToPlayer(Symbol.O);
+                break;
+        }
     }
 }

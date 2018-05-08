@@ -1,24 +1,24 @@
 package Data;
 
-public class FinishedChecker {
+public class GameRoundState {
     private int howManyInRowToWin;
-    private FinishState finishState;
+    private RoundState roundState;
 
-    public FinishedChecker(int howManyInRowToWin) {
+    public GameRoundState(int howManyInRowToWin) {
         this.howManyInRowToWin = howManyInRowToWin;
-        this.finishState = FinishState.NotFinished;
+        this.roundState = RoundState.Unfinished;
     }
 
 
-    public FinishState getFinishedState(){
-        return finishState;
+    public RoundState getFinishedState(){
+        return roundState;
     }
 
     public void updateState(BoardData gameBoardData, int fieldNumber) {
         if (isWin(gameBoardData, fieldNumber)) {
-            finishState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? FinishState.XWon : FinishState.OWon;
+            roundState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? RoundState.XWon : RoundState.OWon;
         } else if (isDraw(gameBoardData)){
-            finishState = FinishState.Draw;
+            roundState = RoundState.Draw;
         }
     }
 
@@ -62,5 +62,9 @@ public class FinishedChecker {
             ++howManyInRow;
 
         return howManyInRow;
+    }
+
+    public void setStateUnfinished() {
+        roundState = RoundState.Unfinished;
     }
 }

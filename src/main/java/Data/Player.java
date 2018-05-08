@@ -37,4 +37,8 @@ public class Player {
     public Symbol getSymbol(){
         return symbol;
     }
+
+    public void addPoint() {
+        ++playerScores;
+    }
 }

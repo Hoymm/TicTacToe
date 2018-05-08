@@ -3,25 +3,30 @@ package GameState;
 import Data.*;
 
 public class RunningGameState extends Game {
-    RunningGameState(Data data) {
-        super(data);
+    RunningGameState(DataMutator dataMutator) {
+        super(dataMutator);
     }
 
     @Override
     public Game getNextState() {
-        if (data.getGameFinishedState() == FinishState.NotFinished) {
-            data.getDataMutator().changePlayerToOpposite();
-            return this;
-        }
-        else {
+        dataMutator.changePlayerToOpposite();
+        if (dataMutator.getRoundState() != RoundState.Unfinished) {
+            dataMutator.addScoresToWinner();
             displayGame();
-            return new GameFinishedState(data);
+            if (dataMutator.isGameFinished()) {
+                return new GameFinishedState(dataMutator);
+            }
+            else {
+                System.out.println(dataMutator.getRoundState());
+                dataMutator.prepareNewRound();
+            }
         }
+        return this;
     }
 
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
         lastInput = inputParams.getCoordsToPutOnBoard();
-        return userWantsToStayInGame() && data.insertNewCoordinates(Integer.valueOf(lastInput));
+        return userWantsToStayInGame() && dataMutator.insertNewCoordinates(Integer.valueOf(lastInput));
     }
 }
