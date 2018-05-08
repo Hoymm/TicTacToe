@@ -15,12 +15,25 @@ public class RunningGameState extends Game {
         }
         else {
             // runda zakonczona, przyznaj punkty zwyciescy i rozpocznij nową rundę lub zakończ grę
-            dataMutator.addPointsToPlayer();
+            addScoresIfWinner();
             if (dataMutator.isGameFinished()) {
                 displayGame();
                 return new GameFinishedState(dataMutator);
             }
-            return new GameFinishedState(dataMutator);
+            else {
+                return new RunningGameState(dataMutator.prepareNewRound());
+            }
+        }
+    }
+
+    private void addScoresIfWinner() {
+        switch (dataMutator.getRoundState()){
+            case XWon:
+                dataMutator.addPointsToPlayer(Symbol.X);
+                break;
+            case OWon:
+                dataMutator.addPointsToPlayer(Symbol.O);
+                break;
         }
     }
 

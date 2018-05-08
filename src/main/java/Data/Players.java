@@ -46,4 +46,15 @@ public class Players {
     public void changePlayerTurn() {
         curSymbolPlays = curSymbolPlays.getOppositeSymbol();
     }
+
+    public void addPointsToPlayer(Symbol symbol) {
+        switch (symbol){
+            case X:
+                playerX.addPoint();
+            break;
+            case O:
+                playerO.addPoint();
+            break;
+        }
+    }
 }

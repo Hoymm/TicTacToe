@@ -8,8 +8,10 @@ public class Data implements DataMutator{
     private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
     private BoardController gameBoard;
+    private int roundsPlayed;
 
     public Data(){
+        roundsPlayed = 0;
     }
 
     public Data(String userInput) {
@@ -90,13 +92,18 @@ public class Data implements DataMutator{
     }
 
     @Override
-    public void addPointsToPlayer() {
-        // TODO add points to a player
+    public void addPointsToPlayer(Symbol symbol) {
+        players.addPointsToPlayer(symbol);
     }
 
     @Override
     public boolean isGameFinished() {
-        // TODO
-        return true;
+        return roundsPlayed == 3;
+    }
+
+    @Override
+    public DataMutator prepareNewRound() {
+        // TODO reset settings for incoming new round
+        return null;
     }
 }

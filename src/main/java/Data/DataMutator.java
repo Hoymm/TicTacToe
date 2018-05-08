@@ -8,6 +8,7 @@ public interface DataMutator {
     RoundState getRoundState();
     boolean insertNewCoordinates(int userInput);
     String getGameScores();
-    void addPointsToPlayer();
+    void addPointsToPlayer(Symbol symbol);
     boolean isGameFinished();
+    DataMutator prepareNewRound();
 }
