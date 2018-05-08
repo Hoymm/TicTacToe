@@ -42,7 +42,6 @@ public class Player {
         return playerScores;
     }
 
-    // TODO add more points than 1
     public void addPoints(int points) {
         playerScores += points;
     }
