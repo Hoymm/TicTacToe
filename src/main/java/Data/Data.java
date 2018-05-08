@@ -4,7 +4,7 @@ import GameState.UserIO.InputParams;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-public class Data implements DataMutator{
+public class Data {
     private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
     private BoardController gameBoardController;
@@ -32,23 +32,22 @@ public class Data implements DataMutator{
         return Objects.hash(players, gameBoardController);
     }
 
-    @Override
+
     public void changePlayerToOpposite() {
         players.changePlayerTurn();
     }
 
-    @Override
+
     public String gameHeaderDisplayInfo() {
         return players.toString();
     }
 
-    @Override
+
     public String gameBoardDisplayInfo() {
         return gameBoardController.toString();
     }
 
-    @Override
-        public boolean insertGameStartData(String userInput) {
+    public boolean insertGameStartData(String userInput) {
         try {
             String[] userInputArray = userInput.split(InputParams.SEPARATOR);
 
@@ -70,12 +69,12 @@ public class Data implements DataMutator{
         }
     }
 
-    @Override
+
     public RoundState getRoundState() {
         return gameBoardController.getFinishedState();
     }
 
-    @Override
+
     public boolean insertNewCoordinates(int userInput){
         if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
             System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
@@ -84,28 +83,28 @@ public class Data implements DataMutator{
         return true;
     }
 
-    @Override
+
     public boolean isGameFinished() {
         return roundsPlayed == 3;
     }
 
-    @Override
+
     public void incrementRoundsPlayed() {
         roundsPlayed++;
     }
 
-    @Override
+
     public void prepareNewRound() {
         gameBoardController.resetBoard();
         gameBoardController.setRoundStateToUnfinished();
     }
 
-    @Override
+
     public void addNewPointsToPlayers() {
         getRoundState().addPointsAccordingRoundFinishedState(players);
     }
 
-    @Override
+
     public String gameFinishResult() {
         if (isGameFinished())
             return players.gameFinishedMessage();

@@ -3,17 +3,17 @@ package GameState;
 import Data.*;
 
 public class RunningGameState extends Game {
-    RunningGameState(DataMutator dataMutator) {
-        super(dataMutator);
+    RunningGameState(Data data) {
+        super(data);
     }
 
     @Override
     public Game getNextState() {
-        dataMutator.changePlayerToOpposite();
-        if (dataMutator.getRoundState() != RoundState.Unfinished) {
-            dataMutator.incrementRoundsPlayed();
-            dataMutator.addNewPointsToPlayers();
-            return new RoundFinishedState(dataMutator);
+        data.changePlayerToOpposite();
+        if (data.getRoundState() != RoundState.Unfinished) {
+            data.incrementRoundsPlayed();
+            data.addNewPointsToPlayers();
+            return new RoundFinishedState(data);
         }
         return this;
     }
@@ -21,6 +21,6 @@ public class RunningGameState extends Game {
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
         lastInput = inputParams.getCoordsToPutOnBoard();
-        return userWantsToStayInGame() && dataMutator.insertNewCoordinates(Integer.valueOf(lastInput));
+        return userWantsToStayInGame() && data.insertNewCoordinates(Integer.valueOf(lastInput));
     }
 }

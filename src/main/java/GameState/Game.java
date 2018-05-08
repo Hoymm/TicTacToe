@@ -5,16 +5,16 @@ import GameState.UserIO.UserIO;
 import static GameState.UserIO.InputParams.QUIT_COMMAND;
 
 public abstract class Game extends UserIO implements GameController {
-    protected DataMutator dataMutator;
+    protected Data data;
 
-    Game(DataMutator dataMutator) {
-        this.dataMutator = dataMutator;
+    Game(Data data) {
+        this.data = data;
     }
 
     @Override
     public void displayGame() {
-        System.out.println(dataMutator.gameHeaderDisplayInfo());
-        System.out.println(dataMutator.gameBoardDisplayInfo());
+        System.out.println(data.gameHeaderDisplayInfo());
+        System.out.println(data.gameBoardDisplayInfo());
     }
 
     @Override

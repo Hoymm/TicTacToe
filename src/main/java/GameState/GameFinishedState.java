@@ -2,8 +2,8 @@ package GameState;
 import Data.*;
 
 public class GameFinishedState extends Game {
-    public GameFinishedState(DataMutator dataMutator) {
-        super(dataMutator);
+    public GameFinishedState(Data data) {
+        super(data);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class GameFinishedState extends Game {
 
     @Override
     public void displayGame() {
-        System.out.println(dataMutator.gameFinishResult());
+        System.out.println(data.gameFinishResult());
     }
 
     @Override

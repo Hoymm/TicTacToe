@@ -1,10 +1,10 @@
 package GameState;
 
-import Data.DataMutator;
+import Data.Data;
 
 public class RoundFinishedState extends Game {
-    public RoundFinishedState(DataMutator dataMutator) {
-        super(dataMutator);
+    public RoundFinishedState(Data data) {
+        super(data);
     }
 
     @Override
@@ -14,13 +14,13 @@ public class RoundFinishedState extends Game {
 
     @Override
     public Game getNextState() {
-        System.out.println(dataMutator.getRoundState());
-        if (dataMutator.isGameFinished()) {
-            return new GameFinishedState(dataMutator);
+        System.out.println(data.getRoundState());
+        if (data.isGameFinished()) {
+            return new GameFinishedState(data);
         }
         else {
-            dataMutator.prepareNewRound();
-            return new RunningGameState(dataMutator);
+            data.prepareNewRound();
+            return new RunningGameState(data);
         }
     }
 

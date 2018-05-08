@@ -3,17 +3,17 @@ import Data.*;
 
 public class StartGameState extends Game {
     public StartGameState() {
-        super((DataMutator)new Data());
+        super(new Data());
     }
 
     @Override
     public Game getNextState() {
-        return new RunningGameState(dataMutator);
+        return new RunningGameState(data);
     }
 
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
         lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
-        return dataMutator.insertGameStartData(lastInput);
+        return data.insertGameStartData(lastInput);
     }
 }
