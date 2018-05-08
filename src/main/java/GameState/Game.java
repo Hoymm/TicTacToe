@@ -1,24 +1,24 @@
 package GameState;
-import Data.*;
+import Data.Data;
+import Data.Messeger;
 import GameState.UserIO.UserIO;
-
-import static GameState.UserIO.InputParams.QUIT_COMMAND;
 
 public abstract class Game extends UserIO implements GameController {
     protected Data data;
 
-    Game(Data data) {
+    Game(Data data, Messeger messeger) {
+        super(messeger);
         this.data = data;
     }
 
     @Override
     public void displayGame() {
-        System.out.println(data.gameHeaderDisplayInfo());
-        System.out.println(data.gameBoardDisplayInfo());
+        messeger.print(data.gameHeaderDisplayInfo());
+        messeger.print(data.gameBoardDisplayInfo());
     }
 
     @Override
     public boolean userWantsToStayInGame() {
-        return !lastInput.equalsIgnoreCase(QUIT_COMMAND);
+        return !lastInput.equalsIgnoreCase(inputParams.getQuitCommand());
     }
 }

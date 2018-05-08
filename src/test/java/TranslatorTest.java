@@ -1,4 +1,4 @@
-import Data.Message;
+import Data.MessageKeys;
 import Data.Translator;
 import org.testng.annotations.Test;
 
@@ -14,7 +14,7 @@ public class TranslatorTest {
         // given
         translator = new Translator(Locale.ENGLISH);
         // when
-        assertEquals(translator.getMessage(Message.hello), "hello");
+        assertEquals(translator.getMessage(MessageKeys.hello), "hello");
         // then
     }
 
@@ -23,7 +23,7 @@ public class TranslatorTest {
         // given
         translator = new Translator(new Locale("pl", "PL"));
         // when
-        assertEquals(translator.getMessage(Message.hello), "czesc");
+        assertEquals(translator.getMessage(MessageKeys.hello), "czesc");
         // then
     }
 }

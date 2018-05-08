@@ -3,8 +3,8 @@ package GameState;
 import Data.*;
 
 public class RunningGameState extends Game {
-    RunningGameState(Data data) {
-        super(data);
+    RunningGameState(Data data, Messeger messeger) {
+        super(data, messeger);
     }
 
     @Override
@@ -13,7 +13,7 @@ public class RunningGameState extends Game {
         if (data.getRoundState() != RoundState.Unfinished) {
             data.incrementRoundsPlayed();
             data.addNewPointsToPlayers();
-            return new RoundFinishedState(data);
+            return new RoundFinishedState(data, messeger);
         }
         return this;
     }

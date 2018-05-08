@@ -2,13 +2,14 @@ package GameState;
 import Data.*;
 
 public class StartGameState extends Game {
-    public StartGameState() {
-        super(new Data());
+
+    public StartGameState(Messeger messeger) {
+        super(new Data(), messeger);
     }
 
     @Override
     public Game getNextState() {
-        return new RunningGameState(data);
+        return new RunningGameState(data, messeger);
     }
 
     @Override

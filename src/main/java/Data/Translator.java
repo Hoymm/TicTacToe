@@ -11,8 +11,8 @@ public class Translator {
         this.language = language;
     }
 
-    public String getMessage(Message keyForMessage) {
+    public String getMessage(MessageKeys keyForMessageKeys) {
         ResourceBundle bundle = ResourceBundle.getBundle("language", language);
-        return bundle.getString(keyForMessage.name());
+        return bundle.getString(keyForMessageKeys.name());
     }
 }

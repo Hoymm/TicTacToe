@@ -1,6 +1,7 @@
 package Data;
 
 public enum RoundState {
+    // TODO translate it
     XWon{
         @Override
         public String toString() {

@@ -2,8 +2,8 @@ package GameState;
 import Data.*;
 
 public class GameFinishedState extends Game {
-    public GameFinishedState(Data data) {
-        super(data);
+    public GameFinishedState(Data data, Messeger messeger) {
+        super(data, messeger);
     }
 
     @Override

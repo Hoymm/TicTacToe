@@ -1,10 +1,10 @@
 package GameState;
-
+import Data.Messeger;
 import Data.Data;
 
 public class RoundFinishedState extends Game {
-    public RoundFinishedState(Data data) {
-        super(data);
+    public RoundFinishedState(Data data, Messeger messeger) {
+        super(data, messeger);
     }
 
     @Override
@@ -16,11 +16,11 @@ public class RoundFinishedState extends Game {
     public Game getNextState() {
         System.out.println(data.getRoundState());
         if (data.isGameFinished()) {
-            return new GameFinishedState(data);
+            return new GameFinishedState(data, messeger);
         }
         else {
             data.prepareNewRound();
-            return new RunningGameState(data);
+            return new RunningGameState(data, messeger);
         }
     }
 

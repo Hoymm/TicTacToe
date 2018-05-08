@@ -1,36 +1,38 @@
 package GameState.UserIO;
+import Data.MessageKeys;
+import Data.Messeger;
 import Data.Symbol;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class InputParams {
-    public static final String QUIT_COMMAND = "quit";
     static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
     private InputParamsValidator inputParamsValidator;
     public final static String SEPARATOR = " ";
     private Scanner scanner;
+    private Messeger messeger;
 
-    InputParams(Scanner scanner) {
+    InputParams(Scanner scanner, Messeger messeger) {
         this.scanner = scanner;
+        this.messeger = messeger;
         inputParamsValidator = new InputParamsValidator();
     }
 
     public String getPlayerNamesAndBoardDataFromUser() {
-
-        System.out.println("Custom [c] or default [d] game:");
+        messeger.print(MessageKeys.chooseCustomOrDefaultGameSettings);
         if (scanner.nextLine().equalsIgnoreCase("c")){
-            System.out.println("Custom game choosen.");
+            messeger.print(MessageKeys.customGameChoosen);
             StringBuilder builderUserInput = new StringBuilder();
             builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR)
                     .append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR)
                     .append(whoStartsFirst()).append(SEPARATOR)
                     .append(howManyPointsToWinGame()).append(SEPARATOR)
-                    .append(insertAndValidateTableParam("width")).append(SEPARATOR)
-                    .append(insertAndValidateTableParam("height"));
+                    .append(insertAndValidateTableParam(messeger.translateKey(MessageKeys.width))).append(SEPARATOR)
+                    .append(insertAndValidateTableParam(messeger.translateKey(MessageKeys.height)));
             return builderUserInput.toString();
         }
         else{
-            System.out.println("Default game choosen.");
+            messeger.print(MessageKeys.defaultGameChoosen);
             return "Damian Andrzej O 3 3 3";
         }
     }
@@ -39,7 +41,7 @@ public class InputParams {
         String playerName = "";
         boolean validationPassed = false;
         while (!validationPassed){
-            System.out.println(String.format("Insert %s player name: ", player));
+            messeger.print(MessageKeys.insertPlayerName, player);
             try {
                 playerName = scanner.nextLine();
                 validationPassed = inputParamsValidator.validateInsertedName(playerName);
@@ -47,19 +49,19 @@ public class InputParams {
                 LOGGER.warning("User tried to insert empty name");
             }
             if (!validationPassed)
-                System.out.printf("Name should contain only letters. \"%s\" is not acceptable name.", playerName);
+                messeger.print(MessageKeys.nameShouldContainOnlyLetters, playerName);
         }
         return playerName;
     }
 
-    private int insertAndValidateTableParam(String paramToGet) {
+    private int insertAndValidateTableParam(String widthOrHeight) {
         String tableParameter = "";
         while(!inputParamsValidator.isTableParamVaild(tableParameter)){
-            System.out.println(String.format("Insert board %s: ", paramToGet));
+            messeger.print(MessageKeys.insertBoard, widthOrHeight);
             tableParameter = scanner.nextLine();
-            if (!inputParamsValidator.isTableParamVaild(tableParameter))
-                System.out.printf("Please insert integer value, greater or equal 3. \n \"%s\" is not acceptable table %s"
-                        , tableParameter, paramToGet);
+            if (!inputParamsValidator.isTableParamVaild(tableParameter)) {
+                messeger.print(MessageKeys.wrongBoardParameterInserted, tableParameter, widthOrHeight);
+            }
         }
         return Integer.valueOf(tableParameter);
     }
@@ -67,11 +69,11 @@ public class InputParams {
     private String whoStartsFirst() {
         String symbolToPlayFirst = "";
         while(!inputParamsValidator.isValidSymbol(symbolToPlayFirst)){
-            System.out.println(String.format("Who should start first? Type player symbol (%s or %s): ", Symbol.O, Symbol.X));
+            messeger.print(MessageKeys.askWhichPlayerShouldStartFirst, Symbol.O, Symbol.X);
             symbolToPlayFirst = scanner.nextLine();
-            if (!inputParamsValidator.isValidSymbol(symbolToPlayFirst))
-                System.out.println(String.format("Please insert symbol %s (big o) or %s (big x), any other symbols will not be accepted."
-                        , Symbol.O, Symbol.X));
+            if (!inputParamsValidator.isValidSymbol(symbolToPlayFirst)) {
+                messeger.print(MessageKeys.wrongSymbolToStartFirstInserted, Symbol.O, Symbol.X);
+            }
         }
         return symbolToPlayFirst;
     }
@@ -80,10 +82,10 @@ public class InputParams {
         int minimumAmountOfPointsInRowToWin = 3;
         String pointsToWinGame = "";
         while(howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)){
-            System.out.print("How many symbols (unbroken line) to win round: ");
+            messeger.print(MessageKeys.askHowManySymbolsInUnbrokenLineToWinGame);
             pointsToWinGame = scanner.nextLine();
             if (howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)) {
-                System.out.println(String.format("Sorry, you must insert at least 3 symbols in row. \"%s\" is a wrong input.", pointsToWinGame));
+                messeger.print(MessageKeys.howManySymbolsInUnbrokenLineToWinGameWrongInput, pointsToWinGame);
             }
         }
         return pointsToWinGame;
@@ -97,16 +99,20 @@ public class InputParams {
     public String getCoordsToPutOnBoard() {
         String fieldToMark = "";
         while(!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)){
-            System.out.print("Give me number of the field: ");
+            messeger.print(MessageKeys.giveMeNumberOfField);
             fieldToMark = scanner.nextLine();
             if (!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)) {
-                System.out.println(String.format("Sorry, board fields are described by possitive numbers. \"%s\" is a wrong input.", fieldToMark));
+                messeger.print(MessageKeys.boardFieldMustBePossitiveNumber, fieldToMark);
             }
         }
         return fieldToMark;
     }
 
     boolean isItQuitCommand(String command) {
-        return command.equalsIgnoreCase(QUIT_COMMAND);
+        return command.equalsIgnoreCase(getQuitCommand());
+    }
+
+    public String getQuitCommand(){
+        return messeger.translateKey(MessageKeys.quit);
     }
 }

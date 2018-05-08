@@ -56,6 +56,7 @@ public class Players {
     }
 
     public String gameFinishedMessage() {
+        // TODO translate
         if (playerO.getPlayerScores() == playerX.getPlayerScores())
             return "Gra zakończona remisem !";
         else {

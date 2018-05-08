@@ -77,6 +77,7 @@ public class Data {
 
     public boolean insertNewCoordinates(int userInput){
         if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
+            // TODO translate it
             System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
             return false;
         }
@@ -108,7 +109,7 @@ public class Data {
     public String gameFinishResult() {
         if (isGameFinished())
             return players.gameFinishedMessage();
-        else
+        else    // TODO translate
             return "Gra w trakcie";
     }
 }
