@@ -1,20 +1,27 @@
 import Data.Colors;
+import Data.Message;
+import Data.Speaker;
 import GameState.*;
+
+import java.util.Locale;
 
 import static GameState.UserIO.InputParams.QUIT_COMMAND;
 
 class XOGame {
     private GameController gameController;
+    private Speaker journalist;
 
     XOGame() {
+        Locale PL = new Locale("pl", "PL");
+        Locale ENG = Locale.ENGLISH;
+        journalist = new Speaker(PL, System.out::println);
         showInfoAboutGameToTheUser();
         gameController = new StartGameState();
     }
 
     private void showInfoAboutGameToTheUser() {
-        System.out.println("Hello in XO gameController !");
-        System.out.println(String.format("Player who moves in the current game is marked %sgreen%s.", Colors.ACTIVE, Colors.DEFAULT));
-        System.out.println(String.format("To quit game while playing you can type: %s", QUIT_COMMAND));
+        journalist.printOutputViaKey(Message.hello);
+        System.out.printf("Hello in XO gameController !\nPlayer who moves in the current game is marked %sgreen%s.\nTo quit game while playing you can type: %s", Colors.ACTIVE, Colors.DEFAULT, QUIT_COMMAND);
     }
 
     void runGame() {
