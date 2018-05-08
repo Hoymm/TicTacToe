@@ -21,12 +21,12 @@ public class InputParams {
         if (scanner.nextLine().equalsIgnoreCase("c")){
             System.out.println("Custom game choosen.");
             StringBuilder builderUserInput = new StringBuilder();
-            builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR);
-            builderUserInput.append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR);
-            builderUserInput.append(whoStartsFirst()).append(SEPARATOR);
-            builderUserInput.append(howManyPointsToWinGame()).append(SEPARATOR);
-            builderUserInput.append(insertAndValidateTableParam("width")).append(SEPARATOR);
-            builderUserInput.append(insertAndValidateTableParam("height"));
+            builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR)
+                    .append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR)
+                    .append(whoStartsFirst()).append(SEPARATOR)
+                    .append(howManyPointsToWinGame()).append(SEPARATOR)
+                    .append(insertAndValidateTableParam("width")).append(SEPARATOR)
+                    .append(insertAndValidateTableParam("height"));
             return builderUserInput.toString();
         }
         else{
