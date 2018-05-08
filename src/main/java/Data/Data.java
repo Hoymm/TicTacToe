@@ -4,7 +4,7 @@ import GameState.UserIO.InputParams;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-public class Data {
+public class Data implements DataMutator{
     private static final Logger LOGGER = Logger.getLogger(Data.class.getName());
     private Players players;
     private BoardController gameBoard;
@@ -31,19 +31,23 @@ public class Data {
         return Objects.hash(players, gameBoard);
     }
 
+    @Override
+    public void changePlayerToOpposite() {
+        players.changePlayerTurn();
+    }
+
+    @Override
     public String gameHeaderDisplayInfo() {
         return players.toString();
     }
 
+    @Override
     public String gameBoardDisplayInfo() {
         return gameBoard.toString();
     }
 
-    public CurGameDataMutator getDataMutator(){
-        return () -> players.changePlayerTurn();
-    }
-
-    public boolean insertGameStartData(String userInput) {
+    @Override
+        public boolean insertGameStartData(String userInput) {
         try {
             String[] userInputArray = userInput.split(InputParams.SEPARATOR);
 
@@ -54,9 +58,9 @@ public class Data {
             int width = Integer.valueOf(userInputArray[4]);
             Integer height = Integer.valueOf(userInputArray[5]);
 
-            this.players = new Players(playerO, playerX, startSymbol);
+            players = new Players(playerO, playerX, startSymbol);
             BoardData gameBoardData = new BoardData(width, height);
-            this.gameBoard = new BoardController(gameBoardData, howManySymbolsInRowToWin);
+            gameBoard = new BoardController(gameBoardData, howManySymbolsInRowToWin);
             return true;
         }
         catch (Exception e){
@@ -65,6 +69,12 @@ public class Data {
         }
     }
 
+    @Override
+    public RoundState getRoundState() {
+        return gameBoard.getFinishedState();
+    }
+
+    @Override
     public boolean insertNewCoordinates(int userInput){
         if (!gameBoard.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
             System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
@@ -73,11 +83,20 @@ public class Data {
         return true;
     }
 
-    public FinishState getGameFinishedState() {
-        return gameBoard.getFinishedState();
+    @Override
+    public String getGameScores() {
+        // TODO return game scores
+        return "";
     }
 
-    public String getGameScores() {
-        return "";
+    @Override
+    public void addPointsToPlayer() {
+        // TODO add points to a player
+    }
+
+    @Override
+    public boolean isGameFinished() {
+        // TODO
+        return true;
     }
 }

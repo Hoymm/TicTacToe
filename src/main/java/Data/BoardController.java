@@ -39,7 +39,7 @@ public class BoardController {
         }
     }
 
-    public FinishState getFinishedState() {
+    public RoundState getFinishedState() {
         return finishedChecker.getFinishedState();
     }
 }

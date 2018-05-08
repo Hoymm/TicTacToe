@@ -1,21 +1,20 @@
 package GameState;
-
-import Data.Data;
+import Data.*;
 import GameState.UserIO.UserIO;
 
 import static GameState.UserIO.InputParams.QUIT_COMMAND;
 
 public abstract class Game extends UserIO implements GameController {
-    protected Data data;
+    protected DataMutator dataMutator;
 
-    Game(Data data) {
-        this.data = data;
+    Game(DataMutator dataMutator) {
+        this.dataMutator = dataMutator;
     }
 
     @Override
     public void displayGame() {
-        System.out.println(data.gameHeaderDisplayInfo());
-        System.out.println(data.gameBoardDisplayInfo());
+        System.out.println(dataMutator.gameHeaderDisplayInfo());
+        System.out.println(dataMutator.gameBoardDisplayInfo());
     }
 
     @Override

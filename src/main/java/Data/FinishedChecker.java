@@ -2,23 +2,23 @@ package Data;
 
 public class FinishedChecker {
     private int howManyInRowToWin;
-    private FinishState finishState;
+    private RoundState finishState;
 
     public FinishedChecker(int howManyInRowToWin) {
         this.howManyInRowToWin = howManyInRowToWin;
-        this.finishState = FinishState.NotFinished;
+        this.finishState = RoundState.NotFinished;
     }
 
 
-    public FinishState getFinishedState(){
+    public RoundState getFinishedState(){
         return finishState;
     }
 
     public void updateState(BoardData gameBoardData, int fieldNumber) {
         if (isWin(gameBoardData, fieldNumber)) {
-            finishState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? FinishState.XWon : FinishState.OWon;
+            finishState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? RoundState.XWon : RoundState.OWon;
         } else if (isDraw(gameBoardData)){
-            finishState = FinishState.Draw;
+            finishState = RoundState.Draw;
         }
     }
 

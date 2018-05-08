@@ -1,9 +1,9 @@
 package GameState;
-import Data.Data;
+import Data.*;
 
 public class GameFinishedState extends Game {
-    public GameFinishedState(Data data) {
-        super(data);
+    public GameFinishedState(DataMutator dataMutator) {
+        super(dataMutator);
     }
 
     @Override
@@ -19,9 +19,9 @@ public class GameFinishedState extends Game {
     @Override
     public void displayGame() {
         StringBuilder finishMessageToTheUser = new StringBuilder();
-        finishMessageToTheUser.append(data.getGameFinishedState().toString());
+        finishMessageToTheUser.append(dataMutator.getRoundState().toString());
         finishMessageToTheUser.append(". ");
-        finishMessageToTheUser.append(data.getGameScores());
+        finishMessageToTheUser.append(dataMutator.getGameScores());
         System.out.println(finishMessageToTheUser.toString());
     }
 

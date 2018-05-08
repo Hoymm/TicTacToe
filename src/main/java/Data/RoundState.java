@@ -1,6 +1,6 @@
 package Data;
 
-public enum FinishState {
+public enum RoundState {
     XWon{
         @Override
         public String toString() {
