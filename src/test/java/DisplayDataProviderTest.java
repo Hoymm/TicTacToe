@@ -10,7 +10,7 @@ public class DisplayDataProviderTest {
     @BeforeClass
     public void setUp(){
         data = new Data();
-        data.insertGameStartData("Maciek Wojtek O 10 10");
+        data.insertGameStartData("Maciek Wojtek O 3 10 10");
     }
 
     @Test

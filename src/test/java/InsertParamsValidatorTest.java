@@ -133,4 +133,29 @@ public class InsertParamsValidatorTest {
         // then
         assertFalse(boardFieldOfValueOneShouldBeValidatedAsTrue);
     }
+
+    @Test
+    public void is123APossitiveIntegerAndGreaterEqualTo3_shouldReturnTrue() {
+        assertTrue(inputParamsValidator.isItIntegerAndGraterOrEqualTo("123", 3));
+    }
+
+    @Test
+    public void is2APossitiveIntegerAndGreaterEqualTo3_shouldReturnFalse() {
+        assertFalse(inputParamsValidator.isItIntegerAndGraterOrEqualTo("2", 3));
+    }
+
+    @Test
+    public void isNegative232APossitiveIntegerAndGreaterEqualTo3_shouldReturnFalse() {
+        assertFalse(inputParamsValidator.isItIntegerAndGraterOrEqualTo("-232", 3));
+    }
+
+    @Test
+    public void isNegative4APossitiveIntegerAndGreaterEqualTo4_shouldReturnTrue() {
+        assertTrue(inputParamsValidator.isItIntegerAndGraterOrEqualTo("4", 4));
+    }
+
+    @Test
+    public void isNegative4APossitiveIntegerAndGreaterEqualTo5_shouldReturnFalse() {
+        assertFalse(inputParamsValidator.isItIntegerAndGraterOrEqualTo("4", 5));
+    }
 }

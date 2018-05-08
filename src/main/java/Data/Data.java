@@ -40,20 +40,23 @@ public class Data {
     }
 
     public CurGameDataMutator getDataMutator(){
-        return new CurGameDataMutator() {
-            @Override
-            public void changePlayerToOpposite() {
-                players.changePlayerTurn();
-            }
-        };
+        return () -> players.changePlayerTurn();
     }
 
     public boolean insertGameStartData(String userInput) {
         try {
             String[] userInputArray = userInput.split(InputParams.SEPARATOR);
-            this.players = new Players(new Player(userInputArray[0], Symbol.O), new Player(userInputArray[1], Symbol.X), Symbol.valueOf(userInputArray[2]));
-            BoardData gameBoardData = new BoardData(Integer.valueOf(userInputArray[3]), Integer.valueOf(userInputArray[4]));
-            this.gameBoard = new BoardController( gameBoardData,3);
+
+            Player playerO = new Player(userInputArray[0], Symbol.O);
+            Player playerX = new Player(userInputArray[1], Symbol.X);
+            Symbol startSymbol = Symbol.valueOf(userInputArray[2]);
+            int howManySymbolsInRowToWin = Integer.valueOf(userInputArray[3]);
+            int width = Integer.valueOf(userInputArray[4]);
+            Integer height = Integer.valueOf(userInputArray[5]);
+
+            this.players = new Players(playerO, playerX, startSymbol);
+            BoardData gameBoardData = new BoardData(width, height);
+            this.gameBoard = new BoardController(gameBoardData, howManySymbolsInRowToWin);
             return true;
         }
         catch (Exception e){
