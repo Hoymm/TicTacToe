@@ -43,7 +43,7 @@ public class Player {
     }
 
     // TODO add more points than 1
-    public void addPoints() {
-        ++playerScores;
+    public void addPoints(int points) {
+        playerScores += points;
     }
 }

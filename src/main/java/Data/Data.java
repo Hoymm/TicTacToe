@@ -85,11 +85,6 @@ public class Data implements DataMutator{
     }
 
     @Override
-    public void addPointsToPlayer(Symbol symbol) {
-        players.addPointsToPlayer(symbol);
-    }
-
-    @Override
     public boolean isGameFinished() {
         return roundsPlayed == 3;
     }
@@ -106,15 +101,8 @@ public class Data implements DataMutator{
     }
 
     @Override
-    public void addScoresToWinner() {
-        switch (getRoundState()){
-            case XWon:
-                addPointsToPlayer(Symbol.X);
-                break;
-            case OWon:
-                addPointsToPlayer(Symbol.O);
-                break;
-        }
+    public void addNewPointsToPlayers() {
+        getRoundState().addPointsAccordingRoundFinishedState(players);
     }
 
     @Override

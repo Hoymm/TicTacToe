@@ -12,6 +12,7 @@ public class RunningGameState extends Game {
         dataMutator.changePlayerToOpposite();
         if (dataMutator.getRoundState() != RoundState.Unfinished) {
             dataMutator.incrementRoundsPlayed();
+            dataMutator.addNewPointsToPlayers();
             return new RoundFinishedState(dataMutator);
         }
         return this;

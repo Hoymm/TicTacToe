@@ -14,7 +14,6 @@ public class RoundFinishedState extends Game {
 
     @Override
     public Game getNextState() {
-        dataMutator.addScoresToWinner();
         System.out.println(dataMutator.getRoundState());
         if (dataMutator.isGameFinished()) {
             return new GameFinishedState(dataMutator);
