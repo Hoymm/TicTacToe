@@ -1,22 +1,28 @@
 import Data.*;
 import GameState.UserIO.InputParams;
+import org.mockito.Mockito;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.Locale;
+
 import static org.testng.Assert.*;
 
 public class UserIOTest {
     private Data exampleData;
+    private Messenger messenger;
 
     @BeforeClass
     public void setUp(){
-        exampleData = new Data(String.format("Maciek%sWojtek%<sO%<s3%<s3%<s3", InputParams.SEPARATOR));
+        Messenger messenger = Mockito.mock(Messenger.class);
+        exampleData = new Data(String.format("Maciek%sWojtek%<sO%<s3%<s3%<s3", InputParams.SEPARATOR), messenger);
     }
 
     @Test
     public void twoDifferentDataObjects_withTheSamePlayersAndBoard_willBeConsideredEqual(){
         // given
         // when
-        Data expectedData = new Data(String.format("Maciek%sWojtek%<sO%<s3%<s3%<s3", InputParams.SEPARATOR));
+        Data expectedData = new Data(String.format("Maciek%sWojtek%<sO%<s3%<s3%<s3", InputParams.SEPARATOR), messenger);
         // then
         assertEquals(exampleData, expectedData);
     }
@@ -26,7 +32,7 @@ public class UserIOTest {
         // given
         // when
 
-        Data expectedData = new Data(String.format("Jarek%sJakub%<sO%<s3%<s3%<s3", InputParams.SEPARATOR));
+        Data expectedData = new Data(String.format("Jarek%sJakub%<sO%<s3%<s3%<s3", InputParams.SEPARATOR), messenger);
         // then
         assertNotEquals(exampleData, expectedData);
     }

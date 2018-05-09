@@ -6,11 +6,13 @@ public class Players {
     private Player playerO;
     private Player playerX;
     private Symbol curSymbolPlays;
+    private Messenger messenger;
 
-    public Players(Player playerO, Player playerX, Symbol startSymbol) {
+    public Players(Player playerO, Player playerX, Symbol startSymbol, Messenger messenger) {
         this.playerO = playerO;
         this.playerX = playerX;
         this.curSymbolPlays = startSymbol;
+        this.messenger = messenger;
     }
 
     @Override
@@ -56,12 +58,11 @@ public class Players {
     }
 
     public String gameFinishedMessage() {
-        // TODO translate
         if (playerO.getPlayerScores() == playerX.getPlayerScores())
-            return "Gra zakończona remisem !";
+            return messenger.translateKey(MessageKeys.gameFinishedItsADraw);
         else {
             Player winner = playerO.getPlayerScores() > playerX.getPlayerScores() ? playerO : playerX;
-            return String.format("Wygrywa %s. %s: %d %s: %d"
+            return String.format(messenger.translateKey(MessageKeys.winsWhoAndScores)
                     , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores(), playerX.getSymbol(), playerX.getPlayerScores());
         }
     }

@@ -1,7 +1,4 @@
-import Data.Colors;
-import Data.Player;
-import Data.Players;
-import Data.Symbol;
+import Data.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
@@ -10,19 +7,20 @@ public class PlayersTest {
     private Player adrianO;
     private Players examplePlayers;
     private Player kasiaX;
+    private Messenger messenger;
 
     @BeforeMethod
     public void setUp(){
         adrianO = new Player("Adrian", Symbol.O);
         kasiaX = new Player("Kasia", Symbol.X);
-        examplePlayers = new Players(adrianO, kasiaX, Symbol.X);
+        examplePlayers = new Players(adrianO, kasiaX, Symbol.X, messenger);
     }
 
 
     @Test
     public void twoPlayersWithTheSameNames_shouldBeConsiderEqual(){
         // given
-        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X);
+        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X, messenger);
         // when
         // then
         assertEquals(examplePlayers, players);
@@ -31,7 +29,7 @@ public class PlayersTest {
     @Test
     public void twoPlayersWithTheFirstDifferentName_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Wiktor", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X);
+        Players players = new Players(new Player("Wiktor", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X, messenger);
         // when
         // then
         assertNotEquals(examplePlayers, players);
@@ -40,7 +38,7 @@ public class PlayersTest {
     @Test
     public void twoPlayersWithTheSecondDifferentName_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Filip", Symbol.X), Symbol.X);
+        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Filip", Symbol.X), Symbol.X, messenger);
         // when
         // then
         assertNotEquals(examplePlayers, players);
@@ -49,7 +47,7 @@ public class PlayersTest {
     @Test
     public void twoPlayersWitDifferentNames_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Grzegorz", Symbol.O), new Player("Filip", Symbol.X), Symbol.X);
+        Players players = new Players(new Player("Grzegorz", Symbol.O), new Player("Filip", Symbol.X), Symbol.X, messenger);
         // when
         // then
         assertNotEquals(examplePlayers, players);

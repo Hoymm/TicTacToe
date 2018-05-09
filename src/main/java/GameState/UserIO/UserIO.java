@@ -1,18 +1,18 @@
 package GameState.UserIO;
 
-import Data.Messeger;
+import Data.Messenger;
 
 import java.util.Scanner;
 
 public abstract class UserIO {
     protected String lastInput = "";
     protected InputParams inputParams;
-    protected Messeger messeger;
+    protected Messenger messenger;
 
-    protected UserIO(Messeger messeger){
-        this.messeger = messeger;
+    protected UserIO(Messenger messenger){
+        this.messenger = messenger;
         Scanner scanner = new Scanner(System.in);
-        inputParams = new InputParams(scanner, messeger);
+        inputParams = new InputParams(scanner, messenger);
 
     }
 }

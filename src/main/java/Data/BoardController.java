@@ -2,11 +2,11 @@ package Data;
 
 public class BoardController {
     private BoardData gameBoardData;
-    private GameRoundState gameRoundState;
+    private GameRoundStateChecker gameRoundStateChecker;
 
     public BoardController(BoardData gameBoardData, int howManyInRowToWin) {
         this.gameBoardData = gameBoardData;
-        gameRoundState = new GameRoundState(howManyInRowToWin);
+        gameRoundStateChecker = new GameRoundStateChecker(howManyInRowToWin);
     }
 
     @Override
@@ -34,13 +34,13 @@ public class BoardController {
             return false;
         else{
             gameBoardData.putSymbolToField(symbol, fieldNumber);
-            gameRoundState.updateState(gameBoardData, fieldNumber);
+            gameRoundStateChecker.updateState(gameBoardData, fieldNumber);
             return true;
         }
     }
 
-    public RoundState getFinishedState() {
-        return gameRoundState.getFinishedState();
+    public RoundState getRoundState() {
+        return gameRoundStateChecker.getRoundState();
     }
 
     public void resetBoard() {
@@ -48,6 +48,6 @@ public class BoardController {
     }
 
     public void setRoundStateToUnfinished() {
-        gameRoundState.setStateUnfinished();
+        gameRoundStateChecker.setStateUnfinished();
     }
 }

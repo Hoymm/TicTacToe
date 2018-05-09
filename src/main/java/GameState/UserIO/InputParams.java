@@ -1,6 +1,6 @@
 package GameState.UserIO;
 import Data.MessageKeys;
-import Data.Messeger;
+import Data.Messenger;
 import Data.Symbol;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -10,29 +10,29 @@ public class InputParams {
     private InputParamsValidator inputParamsValidator;
     public final static String SEPARATOR = " ";
     private Scanner scanner;
-    private Messeger messeger;
+    private Messenger messenger;
 
-    InputParams(Scanner scanner, Messeger messeger) {
+    InputParams(Scanner scanner, Messenger messenger) {
         this.scanner = scanner;
-        this.messeger = messeger;
+        this.messenger = messenger;
         inputParamsValidator = new InputParamsValidator();
     }
 
     public String getPlayerNamesAndBoardDataFromUser() {
-        messeger.print(MessageKeys.chooseCustomOrDefaultGameSettings);
+        messenger.print(MessageKeys.chooseCustomOrDefaultGameSettings);
         if (scanner.nextLine().equalsIgnoreCase("c")){
-            messeger.print(MessageKeys.customGameChoosen);
+            messenger.print(MessageKeys.customGameChoosen);
             StringBuilder builderUserInput = new StringBuilder();
             builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR)
                     .append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR)
                     .append(whoStartsFirst()).append(SEPARATOR)
                     .append(howManyPointsToWinGame()).append(SEPARATOR)
-                    .append(insertAndValidateTableParam(messeger.translateKey(MessageKeys.width))).append(SEPARATOR)
-                    .append(insertAndValidateTableParam(messeger.translateKey(MessageKeys.height)));
+                    .append(insertAndValidateTableParam(messenger.translateKey(MessageKeys.width))).append(SEPARATOR)
+                    .append(insertAndValidateTableParam(messenger.translateKey(MessageKeys.height)));
             return builderUserInput.toString();
         }
         else{
-            messeger.print(MessageKeys.defaultGameChoosen);
+            messenger.print(MessageKeys.defaultGameChoosen);
             return "Damian Andrzej O 3 3 3";
         }
     }
@@ -41,7 +41,7 @@ public class InputParams {
         String playerName = "";
         boolean validationPassed = false;
         while (!validationPassed){
-            messeger.print(MessageKeys.insertPlayerName, player);
+            messenger.print(MessageKeys.insertPlayerName, player);
             try {
                 playerName = scanner.nextLine();
                 validationPassed = inputParamsValidator.validateInsertedName(playerName);
@@ -49,7 +49,7 @@ public class InputParams {
                 LOGGER.warning("User tried to insert empty name");
             }
             if (!validationPassed)
-                messeger.print(MessageKeys.nameShouldContainOnlyLetters, playerName);
+                messenger.print(MessageKeys.nameShouldContainOnlyLetters, playerName);
         }
         return playerName;
     }
@@ -57,10 +57,10 @@ public class InputParams {
     private int insertAndValidateTableParam(String widthOrHeight) {
         String tableParameter = "";
         while(!inputParamsValidator.isTableParamVaild(tableParameter)){
-            messeger.print(MessageKeys.insertBoard, widthOrHeight);
+            messenger.print(MessageKeys.insertBoard, widthOrHeight);
             tableParameter = scanner.nextLine();
             if (!inputParamsValidator.isTableParamVaild(tableParameter)) {
-                messeger.print(MessageKeys.wrongBoardParameterInserted, tableParameter, widthOrHeight);
+                messenger.print(MessageKeys.wrongBoardParameterInserted, tableParameter, widthOrHeight);
             }
         }
         return Integer.valueOf(tableParameter);
@@ -69,10 +69,10 @@ public class InputParams {
     private String whoStartsFirst() {
         String symbolToPlayFirst = "";
         while(!inputParamsValidator.isValidSymbol(symbolToPlayFirst)){
-            messeger.print(MessageKeys.askWhichPlayerShouldStartFirst, Symbol.O, Symbol.X);
+            messenger.print(MessageKeys.askWhichPlayerShouldStartFirst, Symbol.O, Symbol.X);
             symbolToPlayFirst = scanner.nextLine();
             if (!inputParamsValidator.isValidSymbol(symbolToPlayFirst)) {
-                messeger.print(MessageKeys.wrongSymbolToStartFirstInserted, Symbol.O, Symbol.X);
+                messenger.print(MessageKeys.wrongSymbolToStartFirstInserted, Symbol.O, Symbol.X);
             }
         }
         return symbolToPlayFirst;
@@ -82,10 +82,10 @@ public class InputParams {
         int minimumAmountOfPointsInRowToWin = 3;
         String pointsToWinGame = "";
         while(howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)){
-            messeger.print(MessageKeys.askHowManySymbolsInUnbrokenLineToWinGame);
+            messenger.print(MessageKeys.askHowManySymbolsInUnbrokenLineToWinGame);
             pointsToWinGame = scanner.nextLine();
             if (howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)) {
-                messeger.print(MessageKeys.howManySymbolsInUnbrokenLineToWinGameWrongInput, pointsToWinGame);
+                messenger.print(MessageKeys.howManySymbolsInUnbrokenLineToWinGameWrongInput, pointsToWinGame);
             }
         }
         return pointsToWinGame;
@@ -99,10 +99,10 @@ public class InputParams {
     public String getCoordsToPutOnBoard() {
         String fieldToMark = "";
         while(!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)){
-            messeger.print(MessageKeys.giveMeNumberOfField);
+            messenger.print(MessageKeys.giveMeNumberOfField);
             fieldToMark = scanner.nextLine();
             if (!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)) {
-                messeger.print(MessageKeys.boardFieldMustBePossitiveNumber, fieldToMark);
+                messenger.print(MessageKeys.boardFieldMustBePossitiveNumber, fieldToMark);
             }
         }
         return fieldToMark;
@@ -113,6 +113,6 @@ public class InputParams {
     }
 
     public String getQuitCommand(){
-        return messeger.translateKey(MessageKeys.quit);
+        return messenger.translateKey(MessageKeys.quit);
     }
 }

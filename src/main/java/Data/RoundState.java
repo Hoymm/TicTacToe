@@ -4,8 +4,13 @@ public enum RoundState {
     // TODO translate it
     XWon{
         @Override
-        public String toString() {
-            return String.format("Rundę wygrywa %s.", Symbol.X);
+        public MessageKeys getMessageKey() {
+            return MessageKeys.theRoundWins;
+        }
+
+        @Override
+        public Object [] getMessageKeyArguments() {
+            return new Object[]{Symbol.X};
         }
 
         @Override
@@ -15,8 +20,13 @@ public enum RoundState {
     },
     OWon{
         @Override
-        public String toString() {
-            return String.format("Rundę wygrywa %s.", Symbol.O);
+        public MessageKeys getMessageKey() {
+            return MessageKeys.theRoundWins;
+        }
+
+        @Override
+        public Object [] getMessageKeyArguments() {
+            return new Object[]{Symbol.O};
         }
 
         @Override
@@ -26,8 +36,13 @@ public enum RoundState {
     },
     Draw{
         @Override
-        public String toString() {
-            return "Runda zakończona remisem !";
+        public MessageKeys getMessageKey() {
+            return MessageKeys.roundIsFinishedWithDraw;
+        }
+
+        @Override
+        public Object [] getMessageKeyArguments() {
+            return new Object[]{};
         }
 
         @Override
@@ -39,7 +54,17 @@ public enum RoundState {
     Unfinished {
         @Override
         public String toString() {
-            return "Gra niezakończona.";
+            return "";
+        }
+
+        @Override
+        public MessageKeys getMessageKey() {
+            return MessageKeys.gameUnfinished;
+        }
+
+        @Override
+        public Object [] getMessageKeyArguments() {
+            return new Object[]{};
         }
 
         @Override
@@ -49,4 +74,7 @@ public enum RoundState {
     };
 
     abstract void addPointsAccordingRoundFinishedState(Players players);
+
+    abstract public MessageKeys getMessageKey();
+    abstract public Object [] getMessageKeyArguments();
 }

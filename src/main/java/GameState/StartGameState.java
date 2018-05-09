@@ -3,13 +3,13 @@ import Data.*;
 
 public class StartGameState extends Game {
 
-    public StartGameState(Messeger messeger) {
-        super(new Data(), messeger);
+    public StartGameState(Messenger messenger) {
+        super(new Data(messenger), messenger);
     }
 
     @Override
     public Game getNextState() {
-        return new RunningGameState(data, messeger);
+        return new RunningGameState(data, messenger);
     }
 
     @Override

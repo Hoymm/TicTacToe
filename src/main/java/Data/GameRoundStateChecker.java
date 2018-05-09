@@ -1,16 +1,16 @@
 package Data;
 
-public class GameRoundState {
+public class GameRoundStateChecker {
     private int howManyInRowToWin;
     private RoundState roundState;
 
-    public GameRoundState(int howManyInRowToWin) {
+    public GameRoundStateChecker(int howManyInRowToWin) {
         this.howManyInRowToWin = howManyInRowToWin;
         this.roundState = RoundState.Unfinished;
     }
 
 
-    public RoundState getFinishedState(){
+    public RoundState getRoundState(){
         return roundState;
     }
 

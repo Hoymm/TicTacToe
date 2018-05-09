@@ -3,11 +3,11 @@ package Data;
 import java.util.Locale;
 import java.util.function.Consumer;
 
-public class Messeger {
+public class Messenger {
     private Consumer<String> output;
     private Translator translator;
 
-    public Messeger(Locale language, Consumer<String> output) {
+    public Messenger(Locale language, Consumer<String> output) {
         translator = new Translator(language);
         this.output = output;
     }

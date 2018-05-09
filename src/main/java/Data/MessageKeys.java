@@ -7,5 +7,5 @@ public enum MessageKeys {
     chooseCustomOrDefaultGameSettings,
     customGameChoosen,
     defaultGameChoosen,
-    height, insertPlayerName, nameShouldContainOnlyLetters, insertBoard, width,wrongBoardParameterInserted, askWhichPlayerShouldStartFirst, wrongSymbolToStartFirstInserted, askHowManySymbolsInUnbrokenLineToWinGame, howManySymbolsInUnbrokenLineToWinGameWrongInput, giveMeNumberOfField, boardFieldMustBePossitiveNumber, quit;
+    height, insertPlayerName, nameShouldContainOnlyLetters, insertBoard, width,wrongBoardParameterInserted, askWhichPlayerShouldStartFirst, wrongSymbolToStartFirstInserted, askHowManySymbolsInUnbrokenLineToWinGame, howManySymbolsInUnbrokenLineToWinGameWrongInput, giveMeNumberOfField, boardFieldMustBePossitiveNumber, quit, youCannotMarkAGameField, gameInProgress, gameFinishedItsADraw, winsWhoAndScores, theRoundWins, roundIsFinishedWithDraw, gameUnfinished;
 }

@@ -7,7 +7,6 @@ public class Translator {
     private Locale language;
 
     public Translator(Locale language) {
-
         this.language = language;
     }
 

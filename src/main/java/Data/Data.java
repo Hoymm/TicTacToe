@@ -9,15 +9,20 @@ public class Data {
     private Players players;
     private BoardController gameBoardController;
     private int roundsPlayed;
+    private Messenger messenger;
 
     public Data(){
         roundsPlayed = 0;
     }
 
-    public Data(String userInput) {
+    public Data(String userInput, Messenger messenger) {
+        this.messenger = messenger;
         insertGameStartData(userInput);
     }
 
+    public Data(Messenger messenger) {
+        this.messenger = messenger;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -58,7 +63,7 @@ public class Data {
             int width = Integer.valueOf(userInputArray[4]);
             Integer height = Integer.valueOf(userInputArray[5]);
 
-            players = new Players(playerO, playerX, startSymbol);
+            players = new Players(playerO, playerX, startSymbol, messenger);
             BoardData gameBoardData = new BoardData(width, height);
             gameBoardController = new BoardController(gameBoardData, howManySymbolsInRowToWin);
             return true;
@@ -71,14 +76,13 @@ public class Data {
 
 
     public RoundState getRoundState() {
-        return gameBoardController.getFinishedState();
+        return gameBoardController.getRoundState();
     }
 
 
     public boolean insertNewCoordinates(int userInput){
         if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
-            // TODO translate it
-            System.out.println(String.format("You cannot mark \"%d\", please mark free game field.", userInput));
+            messenger.print(MessageKeys.youCannotMarkAGameField, userInput);
             return false;
         }
         return true;
@@ -109,7 +113,12 @@ public class Data {
     public String gameFinishResult() {
         if (isGameFinished())
             return players.gameFinishedMessage();
-        else    // TODO translate
-            return "Gra w trakcie";
+        else
+            return messenger.translateKey(MessageKeys.gameInProgress);
+    }
+
+    public void printRoundState() {
+        RoundState roundState = gameBoardController.getRoundState();
+        messenger.print(roundState.getMessageKey(), roundState.getMessageKeyArguments());
     }
 }
