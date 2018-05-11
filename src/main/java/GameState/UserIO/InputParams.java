@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class InputParams {
     private static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
     private InputParamsValidator inputParamsValidator;
-    public final static String SEPARATOR = " ";
+    public final static String SEPARATOR = "*&*^";
     private Scanner scanner;
     private Messenger messenger;
 
@@ -36,20 +36,8 @@ public class InputParams {
     }
 
     private String insertAndValidatePlayerName(String player) {
-        String playerName = "";
-        boolean validationPassed = false;
-        while (!validationPassed){
-            messenger.print(MessageKeys.insertPlayerName, player);
-            try {
-                playerName = scanner.nextLine();
-                validationPassed = inputParamsValidator.validateInsertedName(playerName);
-            } catch (InputCannotBeEmptyException e) {
-                LOGGER.warning("User tried to insert empty name");
-            }
-            if (!validationPassed)
-                messenger.print(MessageKeys.nameShouldContainOnlyLetters, playerName);
-        }
-        return playerName;
+        messenger.print(MessageKeys.insertPlayerName, player);
+        return scanner.nextLine();
     }
 
     private int insertAndValidateTableParam(String widthOrHeight) {

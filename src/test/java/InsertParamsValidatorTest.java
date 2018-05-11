@@ -12,31 +12,6 @@ public class InsertParamsValidatorTest {
         inputParamsValidator = new InputParamsValidator();
     }
 
-    @Test (expectedExceptions = InputCannotBeEmptyException.class)
-    public void validateNameInserted_whenIsEmpty_shouldThrowInputCannotBeEmptyException() throws InputCannotBeEmptyException {
-        inputParamsValidator.validateInsertedName("");
-    }
-
-    @Test
-    public void validateNameInserted_nameAnna_shouldReturnTrue() throws InputCannotBeEmptyException {
-        // given
-        // when
-        boolean isNameCorrect = inputParamsValidator.validateInsertedName("Anna");
-        // then
-        assertTrue(isNameCorrect);
-
-    }
-
-    @Test
-    public void validateNameInserted_nameContainingAnyOtherSignsThanLetters_shouldReturnFalse() throws InputCannotBeEmptyException {
-        // given
-        // when
-
-        boolean validateNameWithSpecialSign = inputParamsValidator.validateInsertedName(String.format("%s%s%s", "Anna", InputParams.SEPARATOR, "Beata"));
-        // then
-        assertFalse(validateNameWithSpecialSign);
-    }
-
     @Test
     public void validateTableParamInserted_insertValueHigherThan50_shouldResultInFalse() {
         // given
