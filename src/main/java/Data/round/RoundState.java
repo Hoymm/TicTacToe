@@ -1,4 +1,7 @@
-package Data;
+package Data.round;
+import Data.Messenger.MessageKeys;
+import Data.Players.Players;
+import Data.Symbol;
 
 public enum RoundState {
     // TODO translate it
@@ -14,7 +17,7 @@ public enum RoundState {
         }
 
         @Override
-        void addPointsAccordingRoundFinishedState(Players players) {
+        public void addPointsAccordingRoundFinishedState(Players players) {
             players.addPointsToX(3);
         }
     },
@@ -30,7 +33,7 @@ public enum RoundState {
         }
 
         @Override
-        void addPointsAccordingRoundFinishedState(Players players) {
+        public void addPointsAccordingRoundFinishedState(Players players) {
             players.addPointsToO(3);
         }
     },
@@ -46,7 +49,7 @@ public enum RoundState {
         }
 
         @Override
-        void addPointsAccordingRoundFinishedState(Players players) {
+        public void addPointsAccordingRoundFinishedState(Players players) {
             players.addPointsToX(1);
             players.addPointsToO(1);
         }
@@ -68,12 +71,11 @@ public enum RoundState {
         }
 
         @Override
-        void addPointsAccordingRoundFinishedState(Players players) {
-            return;
+        public void addPointsAccordingRoundFinishedState(Players players) {
         }
     };
 
-    abstract void addPointsAccordingRoundFinishedState(Players players);
+    abstract public void addPointsAccordingRoundFinishedState(Players players);
 
     abstract public MessageKeys getMessageKey();
     abstract public Object [] getMessageKeyArguments();

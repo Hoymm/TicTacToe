@@ -1,4 +1,6 @@
-package Data;
+package Data.round;
+
+import Data.Data;
 
 public enum MoveTo {
     left{

@@ -1,4 +1,4 @@
-import Data.BoardData;
+import Data.Board.BoardData;
 import Data.Symbol;
 import org.testng.annotations.*;
 

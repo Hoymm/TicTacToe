@@ -1,5 +1,5 @@
 import Data.Colors;
-import Data.Player;
+import Data.Players.Player;
 import Data.Symbol;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

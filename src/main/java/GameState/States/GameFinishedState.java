@@ -1,8 +1,10 @@
-package GameState;
+package GameState.States;
 import Data.*;
+import Data.Messenger.Messenger;
+import GameState.Game;
 
 public class GameFinishedState extends Game {
-    public GameFinishedState(Data data, Messenger messenger) {
+    GameFinishedState(Data data, Messenger messenger) {
         super(data, messenger);
     }
 

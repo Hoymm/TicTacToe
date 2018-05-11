@@ -1,6 +1,9 @@
-package GameState;
+package GameState.States;
 
 import Data.*;
+import Data.Messenger.Messenger;
+import Data.round.RoundState;
+import GameState.Game;
 
 public class RunningGameState extends Game {
     RunningGameState(Data data, Messenger messenger) {

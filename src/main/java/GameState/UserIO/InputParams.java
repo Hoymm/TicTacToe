@@ -1,12 +1,12 @@
 package GameState.UserIO;
-import Data.MessageKeys;
-import Data.Messenger;
+import Data.Messenger.MessageKeys;
+import Data.Messenger.Messenger;
 import Data.Symbol;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class InputParams {
-    static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(InputParams.class.getName());
     private InputParamsValidator inputParamsValidator;
     public final static String SEPARATOR = " ";
     private Scanner scanner;
@@ -22,14 +22,12 @@ public class InputParams {
         messenger.print(MessageKeys.chooseCustomOrDefaultGameSettings);
         if (scanner.nextLine().equalsIgnoreCase("c")){
             messenger.print(MessageKeys.customGameChoosen);
-            StringBuilder builderUserInput = new StringBuilder();
-            builderUserInput.append(insertAndValidatePlayerName(Symbol.O.toString())).append(SEPARATOR)
-                    .append(insertAndValidatePlayerName(Symbol.X.toString())).append(SEPARATOR)
-                    .append(whoStartsFirst()).append(SEPARATOR)
-                    .append(howManyPointsToWinGame()).append(SEPARATOR)
-                    .append(insertAndValidateTableParam(messenger.translateKey(MessageKeys.width))).append(SEPARATOR)
-                    .append(insertAndValidateTableParam(messenger.translateKey(MessageKeys.height)));
-            return builderUserInput.toString();
+            return insertAndValidatePlayerName(Symbol.O.toString()) + SEPARATOR +
+                    insertAndValidatePlayerName(Symbol.X.toString()) + SEPARATOR +
+                    whoStartsFirst() + SEPARATOR +
+                    howManyPointsToWinGame() + SEPARATOR +
+                    insertAndValidateTableParam(messenger.translateKey(MessageKeys.width)) + SEPARATOR +
+                    insertAndValidateTableParam(messenger.translateKey(MessageKeys.height));
         }
         else{
             messenger.print(MessageKeys.defaultGameChoosen);
@@ -93,23 +91,23 @@ public class InputParams {
     }
 
     private boolean howManyPointsToWinGameConditionChecker(int minimumAmountOfPointsInRowToWin, String pointsToWinGame) {
-        return !inputParamsValidator.isItIntegerAndGraterOrEqualTo(pointsToWinGame, minimumAmountOfPointsInRowToWin) && !isItQuitCommand(pointsToWinGame);
+        return !inputParamsValidator.isItIntegerAndGraterOrEqualTo(pointsToWinGame, minimumAmountOfPointsInRowToWin) && notAQuitCommand(pointsToWinGame);
     }
 
     public String getCoordsToPutOnBoard() {
         String fieldToMark = "";
-        while(!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)){
+        while(!inputParamsValidator.isVaildBoardField(fieldToMark) && notAQuitCommand(fieldToMark)){
             messenger.print(MessageKeys.giveMeNumberOfField);
             fieldToMark = scanner.nextLine();
-            if (!inputParamsValidator.isVaildBoardField(fieldToMark) && !isItQuitCommand(fieldToMark)) {
+            if (!inputParamsValidator.isVaildBoardField(fieldToMark) && notAQuitCommand(fieldToMark)) {
                 messenger.print(MessageKeys.boardFieldMustBePossitiveNumber, fieldToMark);
             }
         }
         return fieldToMark;
     }
 
-    boolean isItQuitCommand(String command) {
-        return command.equalsIgnoreCase(getQuitCommand());
+    private boolean notAQuitCommand(String command) {
+        return !command.equalsIgnoreCase(getQuitCommand());
     }
 
     public String getQuitCommand(){

@@ -1,4 +1,8 @@
-package Data;
+package Data.Board;
+
+import Data.round.GameRoundStateChecker;
+import Data.round.RoundState;
+import Data.Symbol;
 
 public class BoardController {
     private BoardData gameBoardData;

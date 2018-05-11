@@ -1,4 +1,7 @@
-package Data;
+package Data.round;
+import Data.Board.BoardData;
+import Data.Board.BoardNeighborsWinChecker;
+import Data.Symbol;
 
 public class GameRoundStateChecker {
     private int howManyInRowToWin;
@@ -55,7 +58,7 @@ public class GameRoundStateChecker {
     }
 
 
-    public int getHowManyInRow(BoardData gameBoardData, BoardNeighborsWinChecker boardNeighborsChecker) {
+    private int getHowManyInRow(BoardData gameBoardData, BoardNeighborsWinChecker boardNeighborsChecker) {
         int howManyInRow = 0;
         Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField());
 

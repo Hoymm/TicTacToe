@@ -1,5 +1,7 @@
 package Data;
 
+import Data.Players.Player;
+
 public enum Symbol {
     X{
         @Override

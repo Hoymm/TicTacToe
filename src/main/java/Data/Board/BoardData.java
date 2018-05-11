@@ -1,4 +1,5 @@
-package Data;
+package Data.Board;
+import Data.Symbol;
 
 import java.util.LinkedHashMap;
 
@@ -21,7 +22,7 @@ public class BoardData {
         return myBoard.get(fieldNumber);
     }
 
-    public boolean isFieldOccupied(int fieldNumber) {
+    boolean isFieldOccupied(int fieldNumber) {
         return myBoard.containsKey(fieldNumber);
     }
 
@@ -29,7 +30,7 @@ public class BoardData {
         return myBoard.size() == width*height;
     }
 
-    public void clearSymbolsFromBoard() {
+    void clearSymbolsFromBoard() {
         myBoard = new LinkedHashMap<>();
     }
 }

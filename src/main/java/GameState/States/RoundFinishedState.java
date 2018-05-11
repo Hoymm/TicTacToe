@@ -1,9 +1,10 @@
-package GameState;
+package GameState.States;
 import Data.Data;
-import Data.Messenger;
+import Data.Messenger.Messenger;
+import GameState.Game;
 
 public class RoundFinishedState extends Game {
-    public RoundFinishedState(Data data, Messenger messenger) {
+    RoundFinishedState(Data data, Messenger messenger) {
         super(data, messenger);
     }
 

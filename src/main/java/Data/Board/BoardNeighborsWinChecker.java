@@ -1,4 +1,6 @@
-package Data;
+package Data.Board;
+
+import Data.round.MoveTo;
 
 public class BoardNeighborsWinChecker {
     private int curField;

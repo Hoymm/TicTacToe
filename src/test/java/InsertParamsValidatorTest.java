@@ -24,6 +24,7 @@ public class InsertParamsValidatorTest {
         boolean isNameCorrect = inputParamsValidator.validateInsertedName("Anna");
         // then
         assertTrue(isNameCorrect);
+
     }
 
     @Test

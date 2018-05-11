@@ -1,4 +1,4 @@
-import Data.Player;
+import Data.Players.Player;
 import Data.Symbol;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

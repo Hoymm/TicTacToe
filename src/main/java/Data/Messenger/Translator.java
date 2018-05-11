@@ -1,4 +1,4 @@
-package Data;
+package Data.Messenger;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

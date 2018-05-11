@@ -1,5 +1,5 @@
-import Data.BoardController;
-import Data.BoardData;
+import Data.Board.BoardController;
+import Data.Board.BoardData;
 import Data.Symbol;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

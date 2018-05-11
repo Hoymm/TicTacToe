@@ -1,4 +1,6 @@
-package Data;
+package Data.Players;
+
+import Data.Symbol;
 
 import java.util.Objects;
 
@@ -38,11 +40,11 @@ public class Player {
         return symbol;
     }
 
-    public int getPlayerScores() {
+    int getPlayerScores() {
         return playerScores;
     }
 
-    public void addPoints(int points) {
+    void addPoints(int points) {
         playerScores += points;
     }
 }

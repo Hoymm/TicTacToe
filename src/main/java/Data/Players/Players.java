@@ -1,5 +1,7 @@
-package Data;
-
+package Data.Players;
+import Data.Messenger.MessageKeys;
+import Data.Messenger.Messenger;
+import Data.Symbol;
 import java.util.Objects;
 
 public class Players {

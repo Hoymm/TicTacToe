@@ -1,8 +1,8 @@
 import Data.Colors;
-import Data.MessageKeys;
-import Data.Messenger;
+import Data.Messenger.MessageKeys;
+import Data.Messenger.Messenger;
 import GameState.GameController;
-import GameState.StartGameState;
+import GameState.States.StartGameState;
 import java.util.Locale;
 
 class XOGame {

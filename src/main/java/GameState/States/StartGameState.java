@@ -1,5 +1,7 @@
-package GameState;
+package GameState.States;
 import Data.*;
+import Data.Messenger.Messenger;
+import GameState.Game;
 
 public class StartGameState extends Game {
 

@@ -1,6 +1,6 @@
 package GameState.UserIO;
 
-import Data.Messenger;
+import Data.Messenger.Messenger;
 
 import java.util.Scanner;
 
