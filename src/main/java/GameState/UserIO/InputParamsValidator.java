@@ -1,5 +1,7 @@
 package GameState.UserIO;
 
+import Data.Symbol;
+
 public class InputParamsValidator {
     public boolean validateInsertedName(String name) throws InputCannotBeEmptyException, NumberFormatException {
         if (name.equals(""))
@@ -28,7 +30,7 @@ public class InputParamsValidator {
     }
 
     public boolean isValidSymbol(String symbol) {
-        return symbol.equals("O") || symbol.equals("X");
+        return symbol.trim().equals(Symbol.X.name()) || symbol.trim().equals(Symbol.O.name());
     }
 
     public boolean isVaildBoardField(String negativeNumber) {

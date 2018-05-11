@@ -87,10 +87,28 @@ public class InsertParamsValidatorTest {
     }
 
     @Test
+    public void validateSymbolInsertedViaPlayer_insertOSymbolWithWhiteChars_shouldReturnTrue(){
+        // given
+        // when
+        boolean symbolOShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("         O   \t \n ");
+        // then
+        assertTrue(symbolOShouldByValidatedAsTrue);
+    }
+
+    @Test
     public void validateSymbolInsertedViaPlayer_insertXSymbol_shouldReturnTrue(){
         // given
         // when
         boolean symbolXShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("X");
+        // then
+        assertTrue(symbolXShouldByValidatedAsTrue);
+    }
+
+    @Test
+    public void validateSymbolInsertedViaPlayerWithWhiteChars_insertXSymbol_shouldReturnTrue(){
+        // given
+        // when
+        boolean symbolXShouldByValidatedAsTrue = inputParamsValidator.isValidSymbol("              X         ");
         // then
         assertTrue(symbolXShouldByValidatedAsTrue);
     }
