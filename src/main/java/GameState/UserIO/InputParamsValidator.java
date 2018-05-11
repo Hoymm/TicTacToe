@@ -18,7 +18,13 @@ public class InputParamsValidator {
     }
 
     public boolean isInteger(String tableParameter) {
-        return tableParameter.matches("-?\\d+");
+        try{
+            Integer.valueOf(tableParameter);
+        }
+        catch (NumberFormatException e){
+            return false;
+        }
+        return true;
     }
 
     public boolean isValidSymbol(String symbol) {
