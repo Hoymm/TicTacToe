@@ -3,12 +3,15 @@ import Data.Data;
 import Data.Messenger.Messenger;
 import GameState.UserIO.UserIO;
 
-public abstract class Game extends UserIO implements GameController {
+public abstract class Game implements GameController {
     protected Data data;
+    protected UserIO userIO;
+    protected Messenger messenger;
 
     public Game(Data data, Messenger messenger) {
-        super(messenger);
+        userIO = new UserIO(messenger);
         this.data = data;
+        this.messenger = messenger;
     }
 
     @Override
@@ -19,6 +22,6 @@ public abstract class Game extends UserIO implements GameController {
 
     @Override
     public boolean userWantsToStayInGame() {
-        return !lastInput.equalsIgnoreCase(inputParams.getQuitCommand());
+        return !userIO.wasALastInputAQuitCommand();
     }
 }

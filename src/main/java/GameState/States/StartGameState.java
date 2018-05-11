@@ -16,7 +16,7 @@ public class StartGameState extends Game {
 
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
-        lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
-        return data.insertGameStartData(lastInput);
+        userIO.loadGameSettingsFromUser();
+        return data.insertGameStartData(userIO.getLastInput());
     }
 }

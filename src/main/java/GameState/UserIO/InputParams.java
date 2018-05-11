@@ -18,7 +18,7 @@ public class InputParams {
         inputParamsValidator = new InputParamsValidator();
     }
 
-    public String getPlayerNamesAndBoardDataFromUser() {
+    String getPlayerNamesAndBoardDataFromUser() {
         messenger.print(MessageKeys.chooseCustomOrDefaultGameSettings);
         if (scanner.nextLine().equalsIgnoreCase("c")){
             messenger.print(MessageKeys.customGameChoosen);
@@ -94,7 +94,7 @@ public class InputParams {
         return !inputParamsValidator.isItIntegerAndGraterOrEqualTo(pointsToWinGame, minimumAmountOfPointsInRowToWin) && notAQuitCommand(pointsToWinGame);
     }
 
-    public String getCoordsToPutOnBoard() {
+    String getCoordsToPutOnBoard() {
         String fieldToMark = "";
         while(!inputParamsValidator.isVaildBoardField(fieldToMark) && notAQuitCommand(fieldToMark)){
             messenger.print(MessageKeys.giveMeNumberOfField);
@@ -110,7 +110,7 @@ public class InputParams {
         return !command.equalsIgnoreCase(getQuitCommand());
     }
 
-    public String getQuitCommand(){
+    String getQuitCommand(){
         return messenger.translateKey(MessageKeys.quit);
     }
 }

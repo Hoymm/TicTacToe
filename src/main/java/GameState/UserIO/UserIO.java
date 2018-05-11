@@ -4,15 +4,28 @@ import Data.Messenger.Messenger;
 
 import java.util.Scanner;
 
-public abstract class UserIO {
-    protected String lastInput = "";
-    protected InputParams inputParams;
-    protected Messenger messenger;
+public class UserIO {
+    private String lastInput = "";
+    private InputParams inputParams;
 
-    protected UserIO(Messenger messenger){
-        this.messenger = messenger;
+    public UserIO(Messenger messenger){
         Scanner scanner = new Scanner(System.in);
         inputParams = new InputParams(scanner, messenger);
+    }
 
+    public boolean wasALastInputAQuitCommand() {
+        return lastInput.equalsIgnoreCase(inputParams.getQuitCommand());
+    }
+
+    public void loadGameSettingsFromUser() {
+        lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
+    }
+
+    public void loadFromUserFieldNumberOnBoardToPutSymbol() {
+        lastInput = inputParams.getCoordsToPutOnBoard();
+    }
+
+    public String getLastInput() {
+        return lastInput;
     }
 }
