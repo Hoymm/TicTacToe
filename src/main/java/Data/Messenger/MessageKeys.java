@@ -1,7 +1,4 @@
 package Data.Messenger;
-
-import Data.Data;
-
 public enum MessageKeys {
     hello,
     startInfoAboutGame,

@@ -8,7 +8,7 @@ public class InputParamsValidator {
     }
 
     public boolean isTableParamVaild(String tableParameter) {
-        return isInteger(tableParameter) && Integer.valueOf(tableParameter) >= 3;
+        return isInteger(tableParameter) && Integer.valueOf(tableParameter) >= 3 && Integer.valueOf(tableParameter) <= 50;
     }
 
     public boolean isItIntegerAndGraterOrEqualTo(String tableParameter, int compareTo) {

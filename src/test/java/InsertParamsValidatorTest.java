@@ -38,13 +38,23 @@ public class InsertParamsValidatorTest {
     }
 
     @Test
-    public void validateTableParamInserted_insertValue5_shouldResultInTrue() {
+    public void validateTableParamInserted_insertValueHigherThan50_shouldResultInFalse() {
         // given
         // when
 
-        boolean validateTableParamLesserThan2 = inputParamsValidator.isTableParamVaild("5");
+        boolean validateTableParamHigherThan50 = inputParamsValidator.isTableParamVaild("51");
         // then
-        assertTrue(validateTableParamLesserThan2);
+        assertFalse(validateTableParamHigherThan50);
+    }
+
+    @Test
+    public void validateTableParamInserted_insertValueSmallerThan51_shouldResultInTrue() {
+        // given
+        // when
+
+        boolean validateTableParamLesserThan50 = inputParamsValidator.isTableParamVaild("50");
+        // then
+        assertTrue(validateTableParamLesserThan50);
     }
 
     @Test
