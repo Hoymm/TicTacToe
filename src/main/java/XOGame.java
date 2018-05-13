@@ -1,8 +1,8 @@
-import Data.Colors;
-import Data.Messenger.MessageKeys;
-import Data.Messenger.Messenger;
-import GameState.GameController;
-import GameState.States.StartGameState;
+import data.Colors;
+import data.messenger.MessageKeys;
+import data.messenger.Messenger;
+import gameState.GameController;
+import gameState.states.StartGameState;
 
 import java.util.Locale;
 

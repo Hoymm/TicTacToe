@@ -1,5 +1,5 @@
-import Data.Players.Player;
-import Data.Symbol;
+import data.players.Player;
+import data.Symbol;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;

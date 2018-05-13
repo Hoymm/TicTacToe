@@ -1,6 +1,6 @@
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import Data.*;
+import data.*;
 
 import static org.testng.Assert.assertEquals;
 

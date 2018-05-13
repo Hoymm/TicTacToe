@@ -1,6 +1,6 @@
-import Data.Board.BoardData;
-import Data.Board.BoardNeighborsWinChecker;
-import Data.round.MoveTo;
+import data.board.BoardData;
+import data.board.BoardNeighborsWinChecker;
+import data.round.MoveTo;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;

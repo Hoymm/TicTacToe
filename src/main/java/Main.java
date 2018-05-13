@@ -1,4 +1,4 @@
-import GameState.LocaleLanguages;
+import gameState.LocaleLanguages;
 
 import java.util.Locale;
 

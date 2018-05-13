@@ -1,6 +1,6 @@
-import Data.Board.BoardController;
-import Data.Board.BoardData;
-import Data.Symbol;
+import data.board.BoardController;
+import data.board.BoardData;
+import data.Symbol;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;

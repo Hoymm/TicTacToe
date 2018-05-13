@@ -1,6 +1,4 @@
-import GameState.UserIO.InputCannotBeEmptyException;
-import GameState.UserIO.InputParams;
-import GameState.UserIO.InputParamsValidator;
+import gameState.userIO.InputParamsValidator;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;

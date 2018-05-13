@@ -1,5 +1,5 @@
-import Data.Board.BoardData;
-import Data.Symbol;
+import data.board.BoardData;
+import data.Symbol;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.assertFalse;

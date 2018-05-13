@@ -1,7 +1,7 @@
-import Data.*;
-import Data.Board.BoardController;
-import Data.Board.BoardData;
-import Data.round.GameRoundStateChecker;
+import data.*;
+import data.board.BoardController;
+import data.board.BoardData;
+import data.round.GameRoundStateChecker;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 

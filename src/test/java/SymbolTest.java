@@ -1,6 +1,6 @@
-import Data.Colors;
-import Data.Players.Player;
-import Data.Symbol;
+import data.Colors;
+import data.players.Player;
+import data.Symbol;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;

@@ -1,7 +1,7 @@
-import Data.*;
-import Data.Messenger.Messenger;
-import Data.Players.Player;
-import Data.Players.Players;
+import data.*;
+import data.messenger.Messenger;
+import data.players.Player;
+import data.players.Players;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;

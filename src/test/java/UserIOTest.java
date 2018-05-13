@@ -1,6 +1,6 @@
-import Data.*;
-import Data.Messenger.Messenger;
-import GameState.UserIO.InputParams;
+import data.*;
+import data.messenger.Messenger;
+import gameState.userIO.InputParams;
 import org.mockito.Mockito;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
