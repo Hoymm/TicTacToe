@@ -21,7 +21,7 @@ public class MoveAroundNeighborsTest {
         // given
         BoardNeighborsWinChecker finishedCheckerMoveDirection = new BoardNeighborsWinChecker(5, MoveTo.right);
         // when
-        boolean moveRightShouldReturnTrue = finishedCheckerMoveDirection.moveItIfPossible(boardData);
+        finishedCheckerMoveDirection.moveItIfPossible(boardData);
         // then
         assertEquals(finishedCheckerMoveDirection.getCurrentField(), 6);
     }

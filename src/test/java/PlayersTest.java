@@ -2,6 +2,7 @@ import data.*;
 import data.messenger.Messenger;
 import data.players.Player;
 import data.players.Players;
+import org.mockito.Mockito;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
@@ -14,6 +15,7 @@ public class PlayersTest {
 
     @BeforeMethod
     public void setUp(){
+        messenger = Mockito.mock(Messenger.class);
         adrianO = new Player("Adrian", Symbol.O);
         kasiaX = new Player("Kasia", Symbol.X);
         examplePlayers = new Players(adrianO, kasiaX, Symbol.X, messenger);

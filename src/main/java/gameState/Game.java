@@ -4,11 +4,11 @@ import data.messenger.Messenger;
 import gameState.userIO.UserIO;
 
 public abstract class Game implements GameController {
-    protected Data data;
-    protected UserIO userIO;
-    protected Messenger messenger;
+    final protected Data data;
+    final protected UserIO userIO;
+    final protected Messenger messenger;
 
-    public Game(Data data, Messenger messenger) {
+    protected Game(Data data, Messenger messenger) {
         userIO = new UserIO(messenger);
         this.data = data;
         this.messenger = messenger;

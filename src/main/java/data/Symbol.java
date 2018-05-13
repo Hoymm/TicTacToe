@@ -47,6 +47,7 @@ public enum Symbol {
             return Colors.INACTIVE;
     }
 
+    @SuppressWarnings("SameReturnValue")
     public Colors getDefaultColor() {
         return Colors.DEFAULT;
     }

@@ -8,7 +8,6 @@ public enum MessageKeys {
     defaultGameChoosen,
     height,
     insertPlayerName,
-    nameShouldContainOnlyLetters,
     insertBoard,
     width,
     wrongBoardParameterInserted,

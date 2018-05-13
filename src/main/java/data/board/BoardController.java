@@ -5,8 +5,8 @@ import data.round.RoundState;
 import data.Symbol;
 
 public class BoardController {
-    private BoardData gameBoardData;
-    private GameRoundStateChecker gameRoundStateChecker;
+    final private BoardData gameBoardData;
+    final private GameRoundStateChecker gameRoundStateChecker;
 
     public BoardController(BoardData gameBoardData, int howManyInRowToWin) {
         this.gameBoardData = gameBoardData;

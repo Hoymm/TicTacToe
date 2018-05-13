@@ -6,8 +6,7 @@ import data.messenger.Messenger;
 import data.players.Player;
 import data.players.Players;
 import data.round.RoundState;
-import gameState.userIO.InputParams;
-
+import gameState.userIO.startSettingsInput.StartSettings;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -16,15 +15,11 @@ public class Data {
     private Players players;
     private BoardController gameBoardController;
     private int roundsPlayed;
-    private Messenger messenger;
+    private final Messenger messenger;
 
-    public Data(){
-        roundsPlayed = 0;
-    }
-
-    public Data(String userInput, Messenger messenger) {
+    public Data(StartSettings startSettings, Messenger messenger) {
         this.messenger = messenger;
-        insertGameStartData(userInput);
+        insertGameStartData(startSettings);
     }
 
     public Data(Messenger messenger) {
@@ -59,20 +54,18 @@ public class Data {
         return gameBoardController.toString();
     }
 
-    public boolean insertGameStartData(String userInput) {
-        System.out.println("|||||||" + userInput + "|||||||||||||");
+    public boolean insertGameStartData(StartSettings startSettings) {
         try {
-            String[] userInputArray = userInput.split(InputParams.SEPARATOR);
-
-            Player playerO = new Player(userInputArray[0], Symbol.O);
-            Player playerX = new Player(userInputArray[1], Symbol.X);
-            Symbol startSymbol = Symbol.valueOf(userInputArray[2]);
-            int howManySymbolsInRowToWin = Integer.valueOf(userInputArray[3]);
-            int width = Integer.valueOf(userInputArray[4]);
-            Integer height = Integer.valueOf(userInputArray[5]);
-
+            Player playerO = new Player(startSettings.namePlayerO, Symbol.O);
+            Player playerX = new Player(startSettings.namePlayerX, Symbol.X);
+            Symbol startSymbol = startSettings.whoStartsFirst;
             players = new Players(playerO, playerX, startSymbol, messenger);
+
+            int width = startSettings.boardWidth;
+            int height = startSettings.boardHeight;
             BoardData gameBoardData = new BoardData(width, height);
+
+            int howManySymbolsInRowToWin = startSettings.howManySymbolsInARowToWinRound;
             gameBoardController = new BoardController(gameBoardData, howManySymbolsInRowToWin);
             return true;
         }

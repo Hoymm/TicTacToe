@@ -4,7 +4,7 @@ import data.round.MoveTo;
 
 public class BoardNeighborsWinChecker {
     private int curField;
-    private MoveTo directionMove;
+    final private MoveTo directionMove;
 
     public BoardNeighborsWinChecker(int centerField, MoveTo directionMove) {
         this.curField = centerField;

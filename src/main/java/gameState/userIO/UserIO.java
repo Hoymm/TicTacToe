@@ -1,28 +1,27 @@
 package gameState.userIO;
-
 import data.messenger.Messenger;
+import gameState.userIO.startSettingsInput.StartSettings;
 
 import java.util.Scanner;
 
 public class UserIO {
     private String lastInput = "";
-    private InputParams inputParams;
+    private final UserInputHandler userInputHandler;
 
     public UserIO(Messenger messenger){
-        Scanner scanner = new Scanner(System.in);
-        inputParams = new InputParams(scanner, messenger);
+        userInputHandler = new UserInputHandler(new Scanner(System.in)::nextLine, messenger);
     }
 
     public boolean wasALastInputAQuitCommand() {
-        return lastInput.equalsIgnoreCase(inputParams.getQuitCommand());
+        return lastInput.equalsIgnoreCase(userInputHandler.getQuitCommand());
     }
 
-    public void loadGameSettingsFromUser() {
-        lastInput = inputParams.getPlayerNamesAndBoardDataFromUser();
+    public StartSettings loadAndReturnStartSettingsFromUser() {
+        return userInputHandler.getStartSettings();
     }
 
     public void loadFromUserFieldNumberOnBoardToPutSymbol() {
-        lastInput = inputParams.getCoordsToPutOnBoard();
+        lastInput = userInputHandler.getCoordsToPutOnBoard();
     }
 
     public String getLastInput() {

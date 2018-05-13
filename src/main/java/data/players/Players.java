@@ -5,10 +5,10 @@ import data.Symbol;
 import java.util.Objects;
 
 public class Players {
-    private Player playerO;
-    private Player playerX;
+    final private Player playerO;
+    private final Player playerX;
     private Symbol curSymbolPlays;
-    private Messenger messenger;
+    private final Messenger messenger;
 
     public Players(Player playerO, Player playerX, Symbol startSymbol, Messenger messenger) {
         this.playerO = playerO;

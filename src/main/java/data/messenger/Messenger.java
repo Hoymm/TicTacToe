@@ -4,8 +4,8 @@ import java.util.Locale;
 import java.util.function.Consumer;
 
 public class Messenger {
-    private Consumer<String> output;
-    private Translator translator;
+    final private Consumer<String> output;
+    final private Translator translator;
 
     public Messenger(Locale language, Consumer<String> output) {
         translator = new Translator(language);

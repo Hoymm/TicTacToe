@@ -1,3 +1,7 @@
+import data.messenger.Messenger;
+import gameState.userIO.startSettingsInput.StartSettingsLoader;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import data.*;
@@ -6,11 +10,13 @@ import static org.testng.Assert.assertEquals;
 
 public class DisplayDataProviderTest {
     private Data data;
+    @Mock
+    private Messenger messenger;
 
     @BeforeClass
     public void setUp(){
-        data = new Data();
-        data.insertGameStartData("Maciek Wojtek O 3 10 10");
+        messenger = Mockito.mock(Messenger.class);
+        data = new Data(StartSettingsLoader.loadExampleData(), messenger);
     }
 
     @Test
@@ -20,6 +26,6 @@ public class DisplayDataProviderTest {
         String playersInfo = data.gameHeaderDisplayInfo();
         //then
         assertEquals(playersInfo, String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
-                Colors.ACTIVE, "Maciek", Symbol.O, 0, Colors.INACTIVE , "Wojtek", Symbol.X, 0, Colors.DEFAULT));
+                Colors.ACTIVE, "Damian", Symbol.O, 0, Colors.INACTIVE , "Andrzej", Symbol.X, 0, Colors.DEFAULT));
     }
 }

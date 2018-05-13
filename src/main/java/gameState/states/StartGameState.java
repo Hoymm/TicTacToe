@@ -2,6 +2,7 @@ package gameState.states;
 import data.*;
 import data.messenger.Messenger;
 import gameState.Game;
+import gameState.userIO.startSettingsInput.StartSettings;
 
 public class StartGameState extends Game {
 
@@ -16,7 +17,7 @@ public class StartGameState extends Game {
 
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
-        userIO.loadGameSettingsFromUser();
-        return data.insertGameStartData(userIO.getLastInput());
+        StartSettings startSettings = userIO.loadAndReturnStartSettingsFromUser();
+        return data.insertGameStartData(startSettings);
     }
 }

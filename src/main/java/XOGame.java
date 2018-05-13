@@ -8,7 +8,7 @@ import java.util.Locale;
 
 class XOGame {
     private GameController gameController;
-    private Messenger messenger;
+    private final Messenger messenger;
 
     XOGame(Locale language) {
         messenger = new Messenger(language, System.out::println);

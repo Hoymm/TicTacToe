@@ -5,9 +5,9 @@ import data.Symbol;
 import java.util.Objects;
 
 public class Player {
-    private String playerName;
+    final private String playerName;
     private int playerScores;
-    private Symbol symbol;
+    final private Symbol symbol;
 
     public Player(String playerName, Symbol symbol) {
         this.playerName = playerName;

@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Translator {
-    private Locale language;
+    private final Locale language;
 
     public Translator(Locale language) {
         this.language = language;

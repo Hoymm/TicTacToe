@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 
 public class BoardData {
     private LinkedHashMap<Integer, Symbol> myBoard;
-    int width;
-    int height;
+    final int width;
+    final int height;
 
     public BoardData(int width, int height) {
         this.width = width;

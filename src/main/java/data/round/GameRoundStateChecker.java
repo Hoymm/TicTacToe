@@ -4,7 +4,7 @@ import data.board.BoardNeighborsWinChecker;
 import data.Symbol;
 
 public class GameRoundStateChecker {
-    private int howManyInRowToWin;
+    final private int howManyInRowToWin;
     private RoundState roundState;
 
     public GameRoundStateChecker(int howManyInRowToWin) {
