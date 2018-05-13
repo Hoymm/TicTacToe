@@ -17,7 +17,7 @@ class UserInputHandler {
         inputParamsValidator = new InputParamsValidator();
     }
 
-    public StartSettings getStartSettings() {
+    StartSettings getStartSettings() {
         StartSettingsLoader startSettingsLoader = new StartSettingsLoader(userInputData, messenger);
         messenger.printf(MessageKeys.chooseCustomOrDefaultGameSettings);
 
@@ -31,7 +31,7 @@ class UserInputHandler {
         }
     }
 
-    public String getCoordsToPutOnBoard() {
+    String getCoordsToPutOnBoard() {
         String userInput = "";
         while(!inputParamsValidator.isFieldPossitiveInteger(userInput)
                 && inputParamsValidator.isNotAQuitCommand(userInput, messenger)){
@@ -45,7 +45,7 @@ class UserInputHandler {
         return userInput;
     }
 
-    public String getQuitCommand() {
+    String getQuitCommand() {
         return inputParamsValidator.getQuitCommand(messenger);
     }
 }

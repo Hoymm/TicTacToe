@@ -27,6 +27,7 @@ class XOGame {
                 gameController.displayGame();
             }
         }
+
         messenger.printf(MessageKeys.farewell);
     }
 }
