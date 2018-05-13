@@ -16,8 +16,8 @@ public abstract class Game implements GameController {
 
     @Override
     public void displayGame() {
-        messenger.print(data.gameHeaderDisplayInfo());
-        messenger.print(data.gameBoardDisplayInfo());
+        messenger.printf(data.gameHeaderDisplayInfo());
+        messenger.printf(data.gameBoardDisplayInfo());
     }
 
     @Override

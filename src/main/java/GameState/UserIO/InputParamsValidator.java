@@ -3,9 +3,11 @@ package GameState.UserIO;
 import Data.Symbol;
 
 public class InputParamsValidator {
+    static final int MIN_BOARD_SIZE = 3, MAX_BOARD_SIZE = 50;
 
     public boolean isTableParamVaild(String tableParameter) {
-        return isInteger(tableParameter) && Integer.valueOf(tableParameter) >= 3 && Integer.valueOf(tableParameter) <= 50;
+        return isInteger(tableParameter) && Integer.valueOf(tableParameter) >= MIN_BOARD_SIZE
+                && Integer.valueOf(tableParameter) <= MAX_BOARD_SIZE;
     }
 
     public boolean isItIntegerAndGraterOrEqualTo(String tableParameter, int compareTo) {

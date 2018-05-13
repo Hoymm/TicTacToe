@@ -12,15 +12,15 @@ public class Messenger {
         this.output = output;
     }
 
-    public void print(String message){
+    public void printf(String message){
         output.accept(message);
     }
 
-    public void print(MessageKeys keyForMessageKeys){
-        print(keyForMessageKeys, new Object[0]);
+    public void printf(MessageKeys keyForMessageKeys){
+        printf(keyForMessageKeys, new Object[0]);
     }
 
-    public void print(MessageKeys keyForMessageKeys, Object... args) {
+    public void printf(MessageKeys keyForMessageKeys, Object... args) {
         String message = translator.getMessage(keyForMessageKeys);
         String formatterMessage = String.format(message, args);
         output.accept(formatterMessage);

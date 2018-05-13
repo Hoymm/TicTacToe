@@ -3,7 +3,6 @@ import Data.Messenger.MessageKeys;
 import Data.Messenger.Messenger;
 import GameState.GameController;
 import GameState.States.StartGameState;
-import GameState.UserIO.UserIO;
 
 import java.util.Locale;
 
@@ -18,7 +17,7 @@ class XOGame {
     }
 
     private void showInfoAboutGameToTheUser() {
-        messenger.print(MessageKeys.startInfoAboutGame, Colors.ACTIVE, Colors.DEFAULT, messenger.translateKey(MessageKeys.quit));
+        messenger.printf(MessageKeys.startInfoAboutGame, Colors.ACTIVE, Colors.DEFAULT, messenger.translateKey(MessageKeys.quit));
     }
 
     void runGame() {
@@ -28,6 +27,6 @@ class XOGame {
                 gameController.displayGame();
             }
         }
-        messenger.print(MessageKeys.farewell);
+        messenger.printf(MessageKeys.farewell);
     }
 }

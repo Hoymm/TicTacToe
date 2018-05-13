@@ -19,9 +19,9 @@ public class InputParams {
     }
 
     String getPlayerNamesAndBoardDataFromUser() {
-        messenger.print(MessageKeys.chooseCustomOrDefaultGameSettings);
+        messenger.printf(MessageKeys.chooseCustomOrDefaultGameSettings);
         if (scanner.nextLine().equalsIgnoreCase("c")){
-            messenger.print(MessageKeys.customGameChoosen);
+            messenger.printf(MessageKeys.customGameChoosen);
             return insertAndValidatePlayerName(Symbol.O.toString()) + SEPARATOR +
                     insertAndValidatePlayerName(Symbol.X.toString()) + SEPARATOR +
                     whoStartsFirst() + SEPARATOR +
@@ -30,23 +30,25 @@ public class InputParams {
                     insertAndValidateTableParam(messenger.translateKey(MessageKeys.height));
         }
         else{
-            messenger.print(MessageKeys.defaultGameChoosen);
+            messenger.printf(MessageKeys.defaultGameChoosen);
             return "Damian Andrzej O 3 3 3";
         }
     }
 
     private String insertAndValidatePlayerName(String player) {
-        messenger.print(MessageKeys.insertPlayerName, player);
+        messenger.printf(MessageKeys.insertPlayerName, player);
         return scanner.nextLine();
     }
 
     private int insertAndValidateTableParam(String widthOrHeight) {
         String tableParameter = "";
         while(!inputParamsValidator.isTableParamVaild(tableParameter)){
-            messenger.print(MessageKeys.insertBoard, widthOrHeight);
+            messenger.printf(MessageKeys.insertBoard, widthOrHeight);
             tableParameter = scanner.nextLine();
             if (!inputParamsValidator.isTableParamVaild(tableParameter)) {
-                messenger.print(MessageKeys.wrongBoardParameterInserted, tableParameter, widthOrHeight);
+                messenger.printf(MessageKeys.wrongBoardParameterInserted
+                        ,InputParamsValidator.MIN_BOARD_SIZE, InputParamsValidator.MAX_BOARD_SIZE
+                        , tableParameter, widthOrHeight);
             }
         }
         return Integer.valueOf(tableParameter);
@@ -55,10 +57,10 @@ public class InputParams {
     private String whoStartsFirst() {
         String symbolToPlayFirst = "";
         while(!inputParamsValidator.isValidSymbol(symbolToPlayFirst)){
-            messenger.print(MessageKeys.askWhichPlayerShouldStartFirst, Symbol.O, Symbol.X);
+            messenger.printf(MessageKeys.askWhichPlayerShouldStartFirst, Symbol.O, Symbol.X);
             symbolToPlayFirst = scanner.nextLine();
             if (!inputParamsValidator.isValidSymbol(symbolToPlayFirst)) {
-                messenger.print(MessageKeys.wrongSymbolToStartFirstInserted, Symbol.O, Symbol.X);
+                messenger.printf(MessageKeys.wrongSymbolToStartFirstInserted, Symbol.O, Symbol.X);
             }
         }
         return symbolToPlayFirst;
@@ -68,10 +70,10 @@ public class InputParams {
         int minimumAmountOfPointsInRowToWin = 3;
         String pointsToWinGame = "";
         while(howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)){
-            messenger.print(MessageKeys.askHowManySymbolsInUnbrokenLineToWinGame);
+            messenger.printf(MessageKeys.askHowManySymbolsInUnbrokenLineToWinGame);
             pointsToWinGame = scanner.nextLine();
             if (howManyPointsToWinGameConditionChecker(minimumAmountOfPointsInRowToWin, pointsToWinGame)) {
-                messenger.print(MessageKeys.howManySymbolsInUnbrokenLineToWinGameWrongInput, pointsToWinGame);
+                messenger.printf(MessageKeys.howManySymbolsInUnbrokenLineToWinGameWrongInput, pointsToWinGame);
             }
         }
         return pointsToWinGame;
@@ -85,10 +87,10 @@ public class InputParams {
     String getCoordsToPutOnBoard() {
         String fieldToMark = "";
         while(!inputParamsValidator.isVaildBoardField(fieldToMark) && notAQuitCommand(fieldToMark)){
-            messenger.print(MessageKeys.giveMeNumberOfField);
+            messenger.printf(MessageKeys.giveMeNumberOfField);
             fieldToMark = scanner.nextLine();
             if (!inputParamsValidator.isVaildBoardField(fieldToMark) && notAQuitCommand(fieldToMark)) {
-                messenger.print(MessageKeys.boardFieldMustBePossitiveNumber, fieldToMark);
+                messenger.printf(MessageKeys.boardFieldMustBePossitiveNumber, fieldToMark);
             }
         }
         return fieldToMark;

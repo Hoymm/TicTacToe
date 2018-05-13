@@ -91,7 +91,7 @@ public class Data {
 
     public boolean insertNewCoordinates(int userInput){
         if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
-            messenger.print(MessageKeys.youCannotMarkAGameField, userInput);
+            messenger.printf(MessageKeys.youCannotMarkAGameField, userInput);
             return false;
         }
         return true;
@@ -128,6 +128,6 @@ public class Data {
 
     public void printRoundState() {
         RoundState roundState = gameBoardController.getRoundState();
-        messenger.print(roundState.getMessageKey(), roundState.getMessageKeyArguments());
+        messenger.printf(roundState.getMessageKey(), roundState.getMessageKeyArguments());
     }
 }
