@@ -17,14 +17,14 @@ public class UserIOTest {
     @BeforeClass
     public void setUp(){
         Messenger messenger = Mockito.mock(Messenger.class);
-        exampleData = new Data(StartSettingsLoader.loadExampleData(), messenger);
+        exampleData = new Data(StartSettingsLoader.loadExampleData());
     }
 
     @Test
     public void twoDifferentDataObjects_withTheSamePlayersAndBoard_willBeConsideredEqual(){
         // given
         // when
-        Data expectedData = new Data(StartSettingsLoader.loadExampleData(), messenger);
+        Data expectedData = new Data(StartSettingsLoader.loadExampleData());
         // then
         assertEquals(exampleData, expectedData);
     }

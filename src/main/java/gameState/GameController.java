@@ -1,7 +1,9 @@
 package gameState;
 
+import data.messenger.Messenger;
+
 public interface GameController {
-    void displayGame();
+    void displayGame(Messenger messenger);
     boolean userWantsToStayInGame();
     boolean tryFetchAndProcessValidInputFromUser();
     Game getNextState();

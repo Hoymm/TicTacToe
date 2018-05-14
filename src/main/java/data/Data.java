@@ -15,15 +15,12 @@ public class Data {
     private Players players;
     private BoardController gameBoardController;
     private int roundsPlayed;
-    private final Messenger messenger;
 
-    public Data(StartSettings startSettings, Messenger messenger) {
-        this.messenger = messenger;
+    public Data(StartSettings startSettings) {
         insertGameStartData(startSettings);
     }
 
-    public Data(Messenger messenger) {
-        this.messenger = messenger;
+    public Data(){
     }
 
     @Override
@@ -59,7 +56,7 @@ public class Data {
             Player playerO = new Player(startSettings.namePlayerO, Symbol.O);
             Player playerX = new Player(startSettings.namePlayerX, Symbol.X);
             Symbol startSymbol = startSettings.whoStartsFirst;
-            players = new Players(playerO, playerX, startSymbol, messenger);
+            players = new Players(playerO, playerX, startSymbol);
 
             int width = startSettings.boardWidth;
             int height = startSettings.boardHeight;
@@ -81,7 +78,7 @@ public class Data {
     }
 
 
-    public boolean insertNewCoordinates(int userInput){
+    public boolean tryToInsertNewCoordinates(int userInput, Messenger messenger){
         if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
             messenger.printf(MessageKeys.youCannotMarkAGameField, userInput);
             return false;
@@ -111,14 +108,14 @@ public class Data {
     }
 
 
-    public String gameFinishResult() {
+    public String gameFinishResult(Messenger messenger) {
         if (isGameFinished())
-            return players.gameFinishedMessage();
+            return players.gameFinishedMessage(messenger);
         else
             return messenger.translateKey(MessageKeys.gameInProgress);
     }
 
-    public void printRoundState() {
+    public void printRoundState(Messenger messenger) {
         RoundState roundState = gameBoardController.getRoundState();
         messenger.printf(roundState.getMessageKey(), roundState.getMessageKeyArguments());
     }

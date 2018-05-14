@@ -16,7 +16,7 @@ public class DisplayDataProviderTest {
     @BeforeClass
     public void setUp(){
         messenger = Mockito.mock(Messenger.class);
-        data = new Data(StartSettingsLoader.loadExampleData(), messenger);
+        data = new Data(StartSettingsLoader.loadExampleData());
     }
 
     @Test

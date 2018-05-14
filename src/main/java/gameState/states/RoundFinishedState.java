@@ -15,7 +15,7 @@ public class RoundFinishedState extends Game {
 
     @Override
     public Game getNextState() {
-        data.printRoundState();
+        data.printRoundState(messenger);
         if (data.isGameFinished()) {
             return new GameFinishedState(data, messenger);
         }

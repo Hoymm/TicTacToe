@@ -24,6 +24,6 @@ public class RunningGameState extends Game {
     @Override
     public boolean tryFetchAndProcessValidInputFromUser() {
         userIO.loadFromUserFieldNumberOnBoardToPutSymbol();
-        return userWantsToStayInGame() && data.insertNewCoordinates(Integer.valueOf(userIO.getLastInput()));
+        return userWantsToStayInGame() && data.tryToInsertNewCoordinates(Integer.valueOf(userIO.getLastInput()), messenger);
     }
 }

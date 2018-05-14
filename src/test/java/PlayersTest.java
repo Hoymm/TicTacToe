@@ -19,14 +19,14 @@ public class PlayersTest {
         messenger = Mockito.mock(Messenger.class);
         adrianO = new Player("Adrian", Symbol.O);
         kasiaX = new Player("Kasia", Symbol.X);
-        examplePlayers = new Players(adrianO, kasiaX, Symbol.X, messenger);
+        examplePlayers = new Players(adrianO, kasiaX, Symbol.X);
     }
 
 
     @Test
     public void twoPlayersWithTheSameNames_shouldBeConsiderEqual(){
         // given
-        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X, messenger);
+        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X);
         // when
         // then
         assertEquals(examplePlayers, players);
@@ -35,7 +35,7 @@ public class PlayersTest {
     @Test
     public void twoPlayersWithTheFirstDifferentName_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Wiktor", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X, messenger);
+        Players players = new Players(new Player("Wiktor", Symbol.O), new Player("Kasia", Symbol.X), Symbol.X);
         // when
         // then
         assertNotEquals(examplePlayers, players);
@@ -44,7 +44,7 @@ public class PlayersTest {
     @Test
     public void twoPlayersWithTheSecondDifferentName_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Filip", Symbol.X), Symbol.X, messenger);
+        Players players = new Players(new Player("Adrian", Symbol.O), new Player("Filip", Symbol.X), Symbol.X);
         // when
         // then
         assertNotEquals(examplePlayers, players);
@@ -53,7 +53,7 @@ public class PlayersTest {
     @Test
     public void twoPlayersWitDifferentNames_shouldBeConsiderDifferent(){
         // given
-        Players players = new Players(new Player("Grzegorz", Symbol.O), new Player("Filip", Symbol.X), Symbol.X, messenger);
+        Players players = new Players(new Player("Grzegorz", Symbol.O), new Player("Filip", Symbol.X), Symbol.X);
         // when
         // then
         assertNotEquals(examplePlayers, players);

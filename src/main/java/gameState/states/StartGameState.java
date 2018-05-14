@@ -7,7 +7,7 @@ import gameState.userIO.startSettingsInput.StartSettings;
 public class StartGameState extends Game {
 
     public StartGameState(Messenger messenger) {
-        super(new Data(messenger), messenger);
+        super(new Data(), messenger);
     }
 
     @Override

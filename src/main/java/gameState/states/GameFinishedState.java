@@ -19,8 +19,8 @@ public class GameFinishedState extends Game {
     }
 
     @Override
-    public void displayGame() {
-        System.out.println(data.gameFinishResult());
+    public void displayGame(Messenger messenger) {
+        System.out.println(data.gameFinishResult(messenger));
     }
 
     @Override

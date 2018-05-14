@@ -8,13 +8,11 @@ public class Players {
     final private Player playerO;
     private final Player playerX;
     private Symbol curSymbolPlays;
-    private final Messenger messenger;
 
-    public Players(Player playerO, Player playerX, Symbol startSymbol, Messenger messenger) {
+    public Players(Player playerO, Player playerX, Symbol startSymbol) {
         this.playerO = playerO;
         this.playerX = playerX;
         this.curSymbolPlays = startSymbol;
-        this.messenger = messenger;
     }
 
     @Override
@@ -59,7 +57,7 @@ public class Players {
         playerO.addPoints(points);
     }
 
-    public String gameFinishedMessage() {
+    public String gameFinishedMessage(Messenger messenger) {
         if (playerO.getPlayerScores() == playerX.getPlayerScores())
             return messenger.translateKey(MessageKeys.gameFinishedItsADraw);
         else {

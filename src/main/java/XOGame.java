@@ -24,7 +24,7 @@ class XOGame {
         while (gameController.userWantsToStayInGame()) {
             if (gameController.tryFetchAndProcessValidInputFromUser()) {
                 gameController = gameController.getNextState();
-                gameController.displayGame();
+                gameController.displayGame(messenger);
             }
         }
 
