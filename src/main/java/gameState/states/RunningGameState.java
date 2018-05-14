@@ -2,7 +2,7 @@ package gameState.states;
 
 import data.*;
 import data.messenger.Messenger;
-import data.round.RoundState;
+import data.round.roundState.RoundStateUnfinished;
 import gameState.Game;
 
 public class RunningGameState extends Game {
@@ -13,7 +13,7 @@ public class RunningGameState extends Game {
     @Override
     public Game getNextState() {
         data.changePlayerToOpposite();
-        if (data.getRoundState() != RoundState.Unfinished) {
+        if (data.getRoundState().equals(new RoundStateUnfinished())) {
             data.incrementRoundsPlayed();
             data.addPointsToPlayers();
             return new RoundFinishedState(data, messenger);

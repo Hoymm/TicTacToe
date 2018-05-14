@@ -32,17 +32,17 @@ class UserInputHandler {
     }
 
     String getCoordsToPutOnBoard() {
-        String userInput = "";
-        while(!inputParamsValidator.isFieldPossitiveInteger(userInput)
-                && inputParamsValidator.isNotAQuitCommand(userInput, messenger)){
+        String userEntry = "";
+        while(!inputParamsValidator.isFieldPossitiveInteger(userEntry)
+                && inputParamsValidator.isNotAQuitCommand(userEntry, messenger)){
             messenger.printf(MessageKeys.giveMeNumberOfField);
-            userInput = userInputData.get();
-            if (!inputParamsValidator.isFieldPossitiveInteger(userInput)
-                    && inputParamsValidator.isNotAQuitCommand(userInput, messenger)) {
-                messenger.printf(MessageKeys.boardFieldMustBePossitiveNumber, userInput);
+            userEntry = userInputData.get();
+            if (!inputParamsValidator.isFieldPossitiveInteger(userEntry)
+                    && inputParamsValidator.isNotAQuitCommand(userEntry, messenger)) {
+                messenger.printf(MessageKeys.boardFieldMustBePossitiveNumber, userEntry);
             }
         }
-        return userInput;
+        return userEntry;
     }
 
     String getQuitCommand() {

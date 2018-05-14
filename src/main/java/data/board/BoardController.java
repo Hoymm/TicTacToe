@@ -1,8 +1,8 @@
 package data.board;
 
 import data.round.GameRoundStateChecker;
-import data.round.RoundState;
 import data.Symbol;
+import data.round.roundState.RoundState;
 
 public class BoardController {
     final private BoardData gameBoardData;

@@ -2,6 +2,7 @@ package data.round;
 import data.board.BoardData;
 import data.board.BoardNeighborsWinChecker;
 import data.Symbol;
+import data.round.roundState.*;
 
 public class GameRoundStateChecker {
     final private int howManyInRowToWin;
@@ -9,7 +10,7 @@ public class GameRoundStateChecker {
 
     public GameRoundStateChecker(int howManyInRowToWin) {
         this.howManyInRowToWin = howManyInRowToWin;
-        this.roundState = RoundState.Unfinished;
+        this.roundState = new RoundStateUnfinished();
     }
 
 
@@ -19,9 +20,9 @@ public class GameRoundStateChecker {
 
     public void updateState(BoardData gameBoardData, int fieldNumber) {
         if (isWin(gameBoardData, fieldNumber)) {
-            roundState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? RoundState.XWon : RoundState.OWon;
+            roundState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? new RoundStateXWon() : new RoundStateOWon();
         } else if (isDraw(gameBoardData)){
-            roundState = RoundState.Draw;
+            roundState = new RoundStateDraw();
         }
     }
 
@@ -70,6 +71,6 @@ public class GameRoundStateChecker {
     }
 
     public void setStateUnfinished() {
-        roundState = RoundState.Unfinished;
+        roundState = new RoundStateUnfinished();
     }
 }

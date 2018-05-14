@@ -84,17 +84,17 @@ public class StartSettingsLoader {
     }
 
     private int loadAndValidateTableParam(String widthOrHeight) {
-        String tableParameter = "";
-        while(!startSettingsValidator.isTableParamVaild(tableParameter)){
+        String tableParameterString = "";
+        while(!startSettingsValidator.isTableParamVaild(tableParameterString)){
             messenger.printf(MessageKeys.insertBoard, widthOrHeight);
-            tableParameter = userInputProvider.get().trim();
-            if (!startSettingsValidator.isTableParamVaild(tableParameter)) {
+            tableParameterString = userInputProvider.get().trim();
+            if (!startSettingsValidator.isTableParamVaild(tableParameterString)) {
                 messenger.printf(MessageKeys.wrongBoardParameterInserted
                         , StartSettingsValidator.MIN_BOARD_SIZE, StartSettingsValidator.MAX_BOARD_SIZE
-                        , tableParameter, widthOrHeight);
+                        , tableParameterString, widthOrHeight);
             }
         }
-        return Integer.valueOf(tableParameter);
+        return Integer.valueOf(tableParameterString);
     }
 
     private StartSettings loadHowManySymbolsInLineToWinRound(StartSettings startSettings) {
