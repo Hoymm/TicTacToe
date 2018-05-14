@@ -63,10 +63,10 @@ public class StartSettingsLoader {
     private StartSettings loadWhoStartFirst(StartSettings startSettings) {
         String symbolToPlayFirst = "";
         while(!startSettingsValidator.isValidSymbol(symbolToPlayFirst)){
-            messenger.printf(MessageKeys.askWhichPlayerShouldStartFirst, Symbol.O, Symbol.X);
+            messenger.printf(MessageKeys.questionAboutStartingPlayer, Symbol.O, Symbol.X);
             symbolToPlayFirst = userInputProvider.get().trim();
             if (!startSettingsValidator.isValidSymbol(symbolToPlayFirst)){
-                messenger.printf(MessageKeys.wrongSymbolToStartFirstInserted, Symbol.O, Symbol.X);
+                messenger.printf(MessageKeys.wrongSymbolToStart, Symbol.O, Symbol.X);
             }
         }
         startSettings.whoStartsFirst = Symbol.valueOf(symbolToPlayFirst.trim());
