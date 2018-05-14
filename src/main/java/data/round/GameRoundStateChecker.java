@@ -5,11 +5,11 @@ import data.Symbol;
 import data.round.roundState.*;
 
 public class GameRoundStateChecker {
-    final private int howManyInRowToWin;
+    final private int howManySymbolsInUnbrokenLineToWin;
     private RoundState roundState;
 
-    public GameRoundStateChecker(int howManyInRowToWin) {
-        this.howManyInRowToWin = howManyInRowToWin;
+    public GameRoundStateChecker(int howManySymbolsInUnbrokenLineToWin) {
+        this.howManySymbolsInUnbrokenLineToWin = howManySymbolsInUnbrokenLineToWin;
         this.roundState = new RoundStateUnfinished();
     }
 
@@ -55,7 +55,7 @@ public class GameRoundStateChecker {
 
         int symbolsInRowToOneSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, oneSideMove));
         int symbolsInRowToAnotherSide = getHowManyInRow(gameBoardData, new BoardNeighborsWinChecker(fieldNumber, anotherSideMove));
-        return symbolsInRowToOneSide + middleFieldPoint + symbolsInRowToAnotherSide >= howManyInRowToWin;
+        return symbolsInRowToOneSide + middleFieldPoint + symbolsInRowToAnotherSide >= howManySymbolsInUnbrokenLineToWin;
     }
 
 
