@@ -1,8 +1,8 @@
 package data;
 import data.board.BoardController;
 import data.board.BoardData;
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 import data.players.Player;
 import data.players.Players;
 import data.round.roundState.RoundState;

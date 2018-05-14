@@ -1,7 +1,7 @@
 package gameState.userIO.startSettingsInput;
 
 import data.Symbol;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import gameState.userIO.InputParamsValidator;
 
 public class StartSettingsValidator {

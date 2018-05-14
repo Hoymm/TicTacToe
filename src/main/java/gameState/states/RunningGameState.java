@@ -1,7 +1,7 @@
 package gameState.states;
 
 import data.*;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import data.round.roundState.RoundStateUnfinished;
 import gameState.Game;
 

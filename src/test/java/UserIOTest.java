@@ -1,5 +1,5 @@
 import data.*;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import gameState.userIO.startSettingsInput.StartSettingsLoader;
 import org.mockito.Mock;
 import org.mockito.Mockito;

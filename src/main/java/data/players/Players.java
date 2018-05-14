@@ -1,6 +1,6 @@
 package data.players;
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 import data.Symbol;
 import java.util.Objects;
 

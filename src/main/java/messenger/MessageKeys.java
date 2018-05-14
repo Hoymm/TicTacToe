@@ -1,4 +1,4 @@
-package data.messenger;
+package messenger;
 public enum MessageKeys {
     hello,
     startInfoAboutGame,

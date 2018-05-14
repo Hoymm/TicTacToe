@@ -1,6 +1,6 @@
 import data.Colors;
 import data.Symbol;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import data.players.Player;
 import data.players.Players;
 import org.mockito.Mockito;

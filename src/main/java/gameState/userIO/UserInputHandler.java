@@ -1,6 +1,6 @@
 package gameState.userIO;
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 import gameState.userIO.startSettingsInput.StartSettings;
 import gameState.userIO.startSettingsInput.StartSettingsLoader;
 
