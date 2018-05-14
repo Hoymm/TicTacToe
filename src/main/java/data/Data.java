@@ -106,7 +106,7 @@ public class Data {
     }
 
 
-    public void addNewPointsToPlayers() {
+    public void addPointsToPlayers() {
         getRoundState().addPointsAccordingRoundFinishedState(players);
     }
 

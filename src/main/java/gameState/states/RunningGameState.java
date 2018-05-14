@@ -15,7 +15,7 @@ public class RunningGameState extends Game {
         data.changePlayerToOpposite();
         if (data.getRoundState() != RoundState.Unfinished) {
             data.incrementRoundsPlayed();
-            data.addNewPointsToPlayers();
+            data.addPointsToPlayers();
             return new RoundFinishedState(data, messenger);
         }
         return this;
