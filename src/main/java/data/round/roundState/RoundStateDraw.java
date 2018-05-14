@@ -3,7 +3,7 @@ package data.round.roundState;
 import data.messenger.MessageKeys;
 import data.players.Players;
 
-public class RoundStateDraw implements RoundState {
+public class RoundStateDraw extends RoundState {
     @Override
     public MessageKeys getMessageKey() {
         return MessageKeys.roundIsFinishedWithDraw;

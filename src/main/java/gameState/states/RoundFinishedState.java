@@ -24,5 +24,4 @@ public class RoundFinishedState extends Game {
             return new RunningGameState(data, messenger);
         }
     }
-
 }

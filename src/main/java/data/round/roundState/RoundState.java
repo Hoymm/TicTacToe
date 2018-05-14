@@ -1,16 +1,17 @@
 package data.round.roundState;
-
 import data.messenger.MessageKeys;
 import data.players.Players;
 
-public interface RoundState {
-    void addPointsAccordingRoundFinishedState(Players players);
-    MessageKeys getMessageKey();
-    Object [] getMessageKeyArguments();
+public abstract class RoundState {
+    public abstract void addPointsAccordingRoundFinishedState(Players players);
+    public abstract MessageKeys getMessageKey();
+    public abstract Object [] getMessageKeyArguments();
 
-    default boolean isSameStateAs(RoundState roundStateTwo){
-        if (roundStateTwo == null)
-            return false;
-        return this.getClass().equals(roundStateTwo.getClass());
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        return this.getClass().getName().equals(o.getClass().getName());
     }
+
 }

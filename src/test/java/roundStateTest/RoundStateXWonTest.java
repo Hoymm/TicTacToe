@@ -20,31 +20,31 @@ public class RoundStateXWonTest {
 
     @Test
     public void roundStateXWon_isSameStateAs_roundUnfinished_shouldReturnFalse() {
-        boolean result = roundStateXWon.isSameStateAs(new RoundStateUnfinished());
+        boolean result = roundStateXWon.equals(new RoundStateUnfinished());
         assertFalse(result);
     }
 
     @Test
     public void roundStateXWon_isSameStateAs_roundStateDraw_shouldReturnFalse() {
-        boolean result = roundStateXWon.isSameStateAs(new RoundStateDraw());
+        boolean result = roundStateXWon.equals(new RoundStateDraw());
         assertFalse(result);
     }
 
     @Test
     public void roundStateXWon_isSameStateAs_roundStateOWon_shouldReturnFalse() {
-        boolean result = roundStateXWon.isSameStateAs(new RoundStateOWon());
+        boolean result = roundStateXWon.equals(new RoundStateOWon());
         assertFalse(result);
     }
 
     @Test
     public void roundStateXWon_isSameStateAs_roundStateXWon_shouldReturnTrue() {
-        boolean result = roundStateXWon.isSameStateAs(new RoundStateXWon());
+        boolean result = roundStateXWon.equals(new RoundStateXWon());
         assertTrue(result);
     }
 
     @Test
     public void roundStateXWon_isSameStateAs_null_shouldReturnFalse() {
-        boolean nullRoundStateEqualToUnfinishedFalse = roundStateXWon.isSameStateAs(null);
+        boolean nullRoundStateEqualToUnfinishedFalse = roundStateXWon.equals(null);
         assertFalse(nullRoundStateEqualToUnfinishedFalse);
     }
 }

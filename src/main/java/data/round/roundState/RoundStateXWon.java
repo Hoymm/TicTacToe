@@ -4,7 +4,7 @@ import data.Symbol;
 import data.messenger.MessageKeys;
 import data.players.Players;
 
-public class RoundStateXWon implements RoundState {
+public class RoundStateXWon extends RoundState {
     @Override
     public MessageKeys getMessageKey() {
         return MessageKeys.theRoundWins;

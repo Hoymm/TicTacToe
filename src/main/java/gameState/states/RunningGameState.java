@@ -13,7 +13,7 @@ public class RunningGameState extends Game {
     @Override
     public Game getNextState() {
         data.changePlayerToOpposite();
-        if (data.getRoundState().equals(new RoundStateUnfinished())) {
+        if (!data.getRoundState().equals(new RoundStateUnfinished())) {
             data.incrementRoundsPlayed();
             data.addPointsToPlayers();
             return new RoundFinishedState(data, messenger);

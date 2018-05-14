@@ -19,31 +19,31 @@ public class RoundStateDrawTest {
 
     @Test
     public void roundStateDraw_isSameStateAs_roundUnfinished_shouldReturnFalse() {
-        boolean result = roundStateDraw.isSameStateAs(new RoundStateUnfinished());
+        boolean result = roundStateDraw.equals(new RoundStateUnfinished());
         assertFalse(result);
     }
 
     @Test
     public void roundStateDraw_isSameStateAs_roundStateDraw_shouldReturnFalse() {
-        boolean result = roundStateDraw.isSameStateAs(new RoundStateDraw());
+        boolean result = roundStateDraw.equals(new RoundStateDraw());
         assertTrue(result);
     }
 
     @Test
     public void roundStateDraw_isSameStateAs_roundStateOWon_shouldReturnFalse() {
-        boolean result = roundStateDraw.isSameStateAs(new RoundStateOWon());
+        boolean result = roundStateDraw.equals(new RoundStateOWon());
         assertFalse(result);
     }
 
     @Test
     public void roundStateDraw_isSameStateAs_RoundStateXWon_shouldReturnTrue() {
-        boolean result = roundStateDraw.isSameStateAs(new RoundStateXWon());
+        boolean result = roundStateDraw.equals(new RoundStateXWon());
         assertFalse(result);
     }
 
     @Test
     public void roundStateDraw_isSameStateAs_null_shouldReturnFalse() {
-        boolean nullRoundStateEqualToUnfinishedFalse = roundStateDraw.isSameStateAs(null);
+        boolean nullRoundStateEqualToUnfinishedFalse = roundStateDraw.equals(null);
         assertFalse(nullRoundStateEqualToUnfinishedFalse);
     }
 }
