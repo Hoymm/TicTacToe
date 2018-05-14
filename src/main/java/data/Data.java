@@ -70,7 +70,6 @@ public class Data {
             return true;
         }
         catch (Exception e){
-            // TODO change that logger output
             LOGGER.warning("Something went wrong when converting user start data input into data objects");
             return false;
         }

@@ -4,7 +4,6 @@ import data.players.Players;
 import data.Symbol;
 
 public enum RoundState {
-    // TODO translate it
     XWon{
         @Override
         public MessageKeys getMessageKey() {
