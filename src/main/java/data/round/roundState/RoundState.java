@@ -7,4 +7,10 @@ public interface RoundState {
     void addPointsAccordingRoundFinishedState(Players players);
     MessageKeys getMessageKey();
     Object [] getMessageKeyArguments();
+
+    default boolean isSameStateAs(RoundState roundStateTwo){
+        if (roundStateTwo == null)
+            return false;
+        return this.getClass().equals(roundStateTwo.getClass());
+    }
 }
