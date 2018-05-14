@@ -1,4 +1,6 @@
-import Data.*;
+import data.board.BoardData;
+import data.board.BoardNeighborsWinChecker;
+import data.round.MoveTo;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
@@ -19,7 +21,7 @@ public class MoveAroundNeighborsTest {
         // given
         BoardNeighborsWinChecker finishedCheckerMoveDirection = new BoardNeighborsWinChecker(5, MoveTo.right);
         // when
-        boolean moveRightShouldReturnTrue = finishedCheckerMoveDirection.moveItIfPossible(boardData);
+        finishedCheckerMoveDirection.moveItIfPossible(boardData);
         // then
         assertEquals(finishedCheckerMoveDirection.getCurrentField(), 6);
     }

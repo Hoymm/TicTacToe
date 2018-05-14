@@ -1,16 +1,19 @@
-import Data.*;
+import data.*;
+import data.board.BoardController;
+import data.board.BoardData;
+import data.round.GameRoundStateChecker;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 
 public class FinishedCheckerTest {
     private final static int howManyInRowToWin = 3;
-    private GameRoundState finishedChecker;
+    private GameRoundStateChecker finishedChecker;
     private BoardController boardController;
     private BoardData boardData;
 
     @BeforeMethod
     public void setUp() {
-        finishedChecker = new GameRoundState(howManyInRowToWin);
+        finishedChecker = new GameRoundStateChecker(howManyInRowToWin);
         boardData = new BoardData(3,3);
         boardController = new BoardController(boardData, howManyInRowToWin);
     }
