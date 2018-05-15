@@ -20,7 +20,7 @@ public class GameRoundStateChecker {
 
     public void updateState(BoardData gameBoardData, int fieldNumber) {
         if (isWin(gameBoardData, fieldNumber)) {
-            roundState = gameBoardData.getSymbolFromField(fieldNumber) == Symbol.X ? new RoundStateXWon() : new RoundStateOWon();
+            roundState = gameBoardData.tryGetSymbolFromField(fieldNumber) == Symbol.X ? new RoundStateXWon() : new RoundStateOWon();
         } else if (isDraw(gameBoardData)){
             roundState = new RoundStateDraw();
         }
@@ -61,10 +61,10 @@ public class GameRoundStateChecker {
 
     private int getHowManyInRow(BoardData gameBoardData, BoardNeighborsWinChecker boardNeighborsChecker) {
         int howManyInRow = 0;
-        Symbol centerFieldSymbol = gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField());
+        Symbol centerFieldSymbol = gameBoardData.tryGetSymbolFromField(boardNeighborsChecker.getCurrentField());
 
         while(boardNeighborsChecker.moveItIfPossible(gameBoardData)
-                && centerFieldSymbol == gameBoardData.getSymbolFromField(boardNeighborsChecker.getCurrentField()))
+                && centerFieldSymbol == gameBoardData.tryGetSymbolFromField(boardNeighborsChecker.getCurrentField()))
             ++howManyInRow;
 
         return howManyInRow;

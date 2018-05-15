@@ -18,7 +18,7 @@ public class BoardData {
         myBoard.put(fieldNumber, symbol);
     }
 
-    public Symbol getSymbolFromField(int fieldNumber) {
+    public Symbol tryGetSymbolFromField(int fieldNumber) {
         return myBoard.get(fieldNumber);
     }
 

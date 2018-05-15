@@ -1,5 +1,4 @@
 package data.board;
-
 import data.round.GameRoundStateChecker;
 import data.Symbol;
 import data.round.roundState.RoundState;
@@ -7,29 +6,69 @@ import data.round.roundState.RoundState;
 public class BoardController {
     final private BoardData gameBoardData;
     final private GameRoundStateChecker gameRoundStateChecker;
+    private int fieldCounter;
 
-    public BoardController(BoardData gameBoardData, int howManyInRowToWin) {
+    public BoardController(BoardData gameBoardData, int howManySymbolsInUnbrokenLineToWin) {
         this.gameBoardData = gameBoardData;
-        gameRoundStateChecker = new GameRoundStateChecker(howManyInRowToWin);
+        gameRoundStateChecker = new GameRoundStateChecker(howManySymbolsInUnbrokenLineToWin);
     }
 
     @Override
     public String toString() {
         StringBuilder tableDisplayInfoBuilder = new StringBuilder();
-        for (int i = 0; i < gameBoardData.height; ++i) {
-            for (int j = 1; j <= gameBoardData.width; ++j) {
-                int key = gameBoardData.width * i + j;
-                tableDisplayInfoBuilder.append("|");
-                if (!gameBoardData.isFieldOccupied(key))
-                    tableDisplayInfoBuilder.append(String.format("%4d", key));
-                else
-                    tableDisplayInfoBuilder.append(String.format("%13s", gameBoardData.getSymbolFromField(key)));
+        tableDisplayInfoBuilder.append(getDisplayTopLineOfBoard()).append("\n");
 
-            }
-            tableDisplayInfoBuilder.append("|");
-            tableDisplayInfoBuilder.append("\n");
+        fieldCounter = 1;
+        for (int levelCountingFromTop = 0; levelCountingFromTop < gameBoardData.height; ++levelCountingFromTop){
+            tableDisplayInfoBuilder
+                    .append(getDisplayLine_withEmptySpacesInsideField()).append("\n")
+                    .append(getDisplayLine_withSymbolOrNumberInsideField()).append("\n")
+                    .append(getDisplayLine_verticalSeparatorBetweenFields()).append("\n");
         }
         return tableDisplayInfoBuilder.toString();
+    }
+
+    private String getDisplayLine_withSymbolOrNumberInsideField() {
+        StringBuilder displayLineWithEmptySpaces = new StringBuilder();
+        for (int i = 0; i < gameBoardData.width; ++i) {
+            Symbol symbolOnField = gameBoardData.tryGetSymbolFromField(fieldCounter);
+
+            displayLineWithEmptySpaces.append("|");
+
+            if (symbolOnField != null || String.valueOf(fieldCounter).length() < 3) {
+                displayLineWithEmptySpaces.append(" ");
+            }
+
+            displayLineWithEmptySpaces.append(symbolOnField == null ? fieldCounter : symbolOnField);
+
+            if (symbolOnField != null || String.valueOf(fieldCounter).length() < 2) {
+                displayLineWithEmptySpaces.append(" ");
+            }
+
+            ++fieldCounter;
+        }
+        return displayLineWithEmptySpaces.append("|").toString();
+    }
+
+    private String getDisplayTopLineOfBoard() {
+        return new String(new char[gameBoardData.width*4+1]).replace("\0", "_");
+    }
+
+    private String getDisplayLine_verticalSeparatorBetweenFields() {
+        return getHorizontalLineOfBoardDisplayWithHorizontalSeparators("___");
+    }
+
+    private String getDisplayLine_withEmptySpacesInsideField() {
+        return getHorizontalLineOfBoardDisplayWithHorizontalSeparators("   ");
+    }
+
+    private String getHorizontalLineOfBoardDisplayWithHorizontalSeparators(String spaceBetweenSeparators) {
+        StringBuilder displayLineWithEmptySpaces = new StringBuilder();
+        for (int i = 0; i < gameBoardData.width; ++i) {
+            displayLineWithEmptySpaces.append("|")
+                    .append(spaceBetweenSeparators);
+        }
+        return displayLineWithEmptySpaces.append("|").toString();
     }
 
 
@@ -47,11 +86,16 @@ public class BoardController {
         return gameRoundStateChecker.getRoundState();
     }
 
-    public void resetBoard() {
+    public void pepareNewRound(){
+        resetBoard();
+        setRoundStateToUnfinished();
+    }
+
+    private void resetBoard() {
         gameBoardData.clearSymbolsFromBoard();
     }
 
-    public void setRoundStateToUnfinished() {
+    private void setRoundStateToUnfinished() {
         gameRoundStateChecker.setStateUnfinished();
     }
 }

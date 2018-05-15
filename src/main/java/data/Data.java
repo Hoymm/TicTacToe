@@ -98,8 +98,7 @@ public class Data {
 
 
     public void prepareNewRound() {
-        gameBoardController.resetBoard();
-        gameBoardController.setRoundStateToUnfinished();
+        gameBoardController.pepareNewRound();
     }
 
 
