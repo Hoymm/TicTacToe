@@ -98,7 +98,7 @@ public class Data {
 
 
     public void prepareNewRound() {
-        gameBoardController.pepareNewRound();
+        gameBoardController.prepareNewRound();
     }
 
 

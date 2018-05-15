@@ -86,7 +86,7 @@ public class BoardController {
         return gameRoundStateChecker.getRoundState();
     }
 
-    public void pepareNewRound(){
+    public void prepareNewRound(){
         resetBoard();
         setRoundStateToUnfinished();
     }

@@ -96,7 +96,7 @@ public class BoardControllerTest {
     @Test
     public void prepareNewRound_putSymbolsToMakeBoardFull_returns_nullForEachFieldSymbolGet() {
         putSymbolsOnBoard3x3ToMakeADraw();
-        boardController3x3.pepareNewRound();
+        boardController3x3.prepareNewRound();
         boolean result = isGetSymbolFromFieldsShouldAlwaysReturnNull(1,2,3,4,5,6,7,8,9);
         assertTrue(result);
     }
@@ -104,7 +104,7 @@ public class BoardControllerTest {
     @Test
     public void prepareNewRound_makeADraw_returns_RoundStateUnfinished() {
         putSymbolsOnBoard3x3ToMakeADraw();
-        boardController3x3.pepareNewRound();
+        boardController3x3.prepareNewRound();
         assertEquals(boardController3x3.getRoundState(), new RoundStateUnfinished());
     }
 
