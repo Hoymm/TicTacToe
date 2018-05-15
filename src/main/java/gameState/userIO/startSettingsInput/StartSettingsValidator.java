@@ -6,7 +6,7 @@ import gameState.userIO.InputParamsValidator;
 
 public class StartSettingsValidator {
     private final InputParamsValidator validator = new InputParamsValidator();
-    public static final int MIN_BOARD_SIZE = 3, MAX_BOARD_SIZE = 50;
+    public static final int MIN_BOARD_SIZE = 3, MAX_BOARD_SIZE = 20;
     private static final int HOW_MANY_SYMBOLS_IN_UNBROKEN_LINE_MINIMUM_TO_WIN = 3;
 
     public boolean isValidSymbol(String symbol) {
