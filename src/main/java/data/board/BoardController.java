@@ -31,7 +31,7 @@ public class BoardController {
     private String getDisplayLine_withSymbolOrNumberInsideField() {
         StringBuilder displayLineWithEmptySpaces = new StringBuilder();
         for (int i = 0; i < gameBoardData.width; ++i) {
-            Symbol symbolOnField = gameBoardData.tryGetSymbolFromField(fieldCounter);
+            Symbol symbolOnField = gameBoardData.getSymbolFromField(fieldCounter);
 
             displayLineWithEmptySpaces.append("|");
 

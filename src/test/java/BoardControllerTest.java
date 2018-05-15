@@ -357,7 +357,7 @@ public class BoardControllerTest {
 
     private boolean isGetSymbolFromFieldsShouldAlwaysReturnNull(int... fieldNumbers){
         for (int i : fieldNumbers) {
-            if (gameBoardData.tryGetSymbolFromField(i) != null) {
+            if (gameBoardData.getSymbolFromField(i) != null) {
                 return false;
             }
         }
