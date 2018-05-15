@@ -12,7 +12,7 @@ public class UserIO {
         userInputHandler = new UserInputHandler(new Scanner(System.in)::nextLine, messenger);
     }
 
-    public boolean wasALastInputAQuitCommand() {
+    public boolean wasLastInputAQuitCommand() {
         return lastInput.equalsIgnoreCase(userInputHandler.getQuitCommand());
     }
 

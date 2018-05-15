@@ -22,6 +22,6 @@ public abstract class Game implements GameController {
 
     @Override
     public boolean userWantsToStayInGame() {
-        return !userIO.wasALastInputAQuitCommand();
+        return !userIO.wasLastInputAQuitCommand();
     }
 }

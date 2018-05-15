@@ -1,7 +1,4 @@
-import messenger.Messenger;
 import gameState.userIO.startSettingsInput.StartSettingsLoader;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import data.*;
@@ -10,12 +7,9 @@ import static org.testng.Assert.assertEquals;
 
 public class DisplayDataProviderTest {
     private Data data;
-    @Mock
-    private Messenger messenger;
 
     @BeforeClass
     public void setUp(){
-        messenger = Mockito.mock(Messenger.class);
         data = new Data(StartSettingsLoader.loadExampleData());
     }
 
