@@ -1,4 +1,4 @@
-package data.messenger;
+package messenger;
 
 import java.util.Locale;
 import java.util.function.Consumer;

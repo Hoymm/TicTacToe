@@ -1,6 +1,6 @@
 package data.players;
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 import data.Symbol;
 import java.util.Objects;
 
@@ -34,7 +34,8 @@ public class Players {
     @Override
     public String toString() {
             return String.format("%s%s \t %s%s%s"
-                    , curSymbolPlays.getColor(playerO), playerO, curSymbolPlays.getColor(playerX), playerX, curSymbolPlays.getDefaultColor());
+                    , curSymbolPlays.getColor(playerO), playerO, curSymbolPlays.getColor(playerX)
+                    , playerX, curSymbolPlays.getDefaultColor());
     }
 
     public Player getCurrentPlayer() {

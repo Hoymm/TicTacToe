@@ -1,6 +1,6 @@
 package data.round.roundState;
 
-import data.messenger.MessageKeys;
+import messenger.MessageKeys;
 import data.players.Players;
 
 public class RoundStateDraw extends RoundState {

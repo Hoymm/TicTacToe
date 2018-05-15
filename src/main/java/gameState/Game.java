@@ -1,6 +1,6 @@
 package gameState;
 import data.Data;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import gameState.userIO.UserIO;
 
 public abstract class Game implements GameController {
@@ -22,6 +22,6 @@ public abstract class Game implements GameController {
 
     @Override
     public boolean userWantsToStayInGame() {
-        return !userIO.wasALastInputAQuitCommand();
+        return !userIO.wasLastInputAQuitCommand();
     }
 }

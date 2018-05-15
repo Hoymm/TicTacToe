@@ -1,8 +1,8 @@
 package gameState.userIO.startSettingsInput;
 
 import data.Symbol;
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 
 import java.util.function.Supplier;
 

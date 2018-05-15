@@ -1,5 +1,5 @@
 package gameState.userIO;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import gameState.userIO.startSettingsInput.StartSettings;
 
 import java.util.Scanner;
@@ -12,7 +12,7 @@ public class UserIO {
         userInputHandler = new UserInputHandler(new Scanner(System.in)::nextLine, messenger);
     }
 
-    public boolean wasALastInputAQuitCommand() {
+    public boolean wasLastInputAQuitCommand() {
         return lastInput.equalsIgnoreCase(userInputHandler.getQuitCommand());
     }
 

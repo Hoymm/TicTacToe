@@ -1,7 +1,7 @@
 package gameState.userIO;
 
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 
 public class InputParamsValidator {
     public boolean isNotAQuitCommand(String command, Messenger messenger) {

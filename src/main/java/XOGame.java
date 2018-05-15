@@ -1,6 +1,6 @@
 import data.Colors;
-import data.messenger.MessageKeys;
-import data.messenger.Messenger;
+import messenger.MessageKeys;
+import messenger.Messenger;
 import gameState.GameController;
 import gameState.states.StartGameState;
 
@@ -27,7 +27,6 @@ class XOGame {
                 gameController.displayGame(messenger);
             }
         }
-
         messenger.printf(MessageKeys.farewell);
     }
 }

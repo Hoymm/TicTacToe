@@ -1,6 +1,6 @@
 package gameState.states;
 import data.*;
-import data.messenger.Messenger;
+import messenger.Messenger;
 import gameState.Game;
 
 public class GameFinishedState extends Game {

@@ -1,6 +1,6 @@
 package gameState;
 
-import data.messenger.Messenger;
+import messenger.Messenger;
 
 public interface GameController {
     void displayGame(Messenger messenger);

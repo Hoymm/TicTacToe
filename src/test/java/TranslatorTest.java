@@ -1,5 +1,5 @@
-import data.messenger.MessageKeys;
-import data.messenger.Translator;
+import messenger.MessageKeys;
+import messenger.Translator;
 import org.testng.annotations.Test;
 
 import java.util.Locale;

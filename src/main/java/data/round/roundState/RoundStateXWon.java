@@ -1,7 +1,7 @@
 package data.round.roundState;
 
 import data.Symbol;
-import data.messenger.MessageKeys;
+import messenger.MessageKeys;
 import data.players.Players;
 
 public class RoundStateXWon extends RoundState {
