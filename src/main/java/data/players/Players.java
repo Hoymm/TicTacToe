@@ -58,7 +58,8 @@ public class Players {
         else {
             Player winner = playerO.getPlayerScores() > playerX.getPlayerScores() ? playerO : playerX;
             return String.format(messenger.translateKey(MessageKeys.winsWhoAndScores)
-                    , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores(), playerX.getSymbol(), playerX.getPlayerScores());
+                    , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores()
+                    , playerX.getSymbol(), playerX.getPlayerScores());
         }
     }
 }
