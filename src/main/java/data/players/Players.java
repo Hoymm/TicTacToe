@@ -7,12 +7,13 @@ import java.util.Objects;
 public class Players {
     final private Player playerO;
     private final Player playerX;
-    private Symbol curSymbolPlays;
+    private Symbol curSymbolPlays, whoStartsRound;
 
     public Players(Player playerO, Player playerX, Symbol startSymbol) {
         this.playerO = playerO;
         this.playerX = playerX;
         this.curSymbolPlays = startSymbol;
+        this.whoStartsRound = startSymbol;
     }
 
     @Override
@@ -61,5 +62,18 @@ public class Players {
                     , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores()
                     , playerX.getSymbol(), playerX.getPlayerScores());
         }
+    }
+
+
+    public Symbol whoStartedLastRound() {
+        return whoStartsRound;
+    }
+
+    public void setCurrentPlayerToOneWhoStartsRound(){
+        curSymbolPlays = whoStartsRound;
+    }
+
+    public void setWhoStartedLastRoundToOpposite() {
+        whoStartsRound = whoStartsRound.getOppositeSymbol();
     }
 }

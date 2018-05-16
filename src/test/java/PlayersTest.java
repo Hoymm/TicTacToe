@@ -139,4 +139,16 @@ public class PlayersTest {
                 , adrianO.getSymbol(), adrianO.getPlayerScores(), kasiaX.getSymbol(), kasiaX.getPlayerScores()),
                 examplePlayersOStarts.showGameFinishedMessage(messenger));
     }
+
+    @Test
+    public void whoStartedLastRound_startSettingsToXStart_returnSymbolX(){
+        assertEquals(examplePlayersXStarts.whoStartedLastRound(), Symbol.X);
+    }
+
+    @Test
+    public void setCurrentPlayerToOneWhoStartsRound_aftersetWhoStartedLastRoundToOpposite_returnSymbolO(){
+        examplePlayersXStarts.setWhoStartedLastRoundToOpposite();
+        examplePlayersXStarts.setCurrentPlayerToOneWhoStartsRound();
+        assertEquals(examplePlayersXStarts.whoStartedLastRound(), Symbol.O);
+    }
 }
