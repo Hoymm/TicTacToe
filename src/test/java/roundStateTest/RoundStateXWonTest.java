@@ -54,7 +54,7 @@ public class RoundStateXWonTest {
     }
 
     @Test
-    public void getMassageKey_returns_MessageKeys_theRoundWins() {
+    public void getMessageKey_returns_MessageKeys_theRoundWins() {
         assertEquals(roundStateXWon.getMessageKey(), MessageKeys.theRoundWins);
     }
 

@@ -53,7 +53,7 @@ public class RoundStateDrawTest {
     }
 
     @Test
-    public void getMassageKey_returns_MessageKeys_roundIsFinishedWithDraw() {
+    public void getMessageKey_returns_MessageKeys_roundIsFinishedWithDraw() {
         assertEquals(roundStateDraw.getMessageKey(), MessageKeys.roundIsFinishedWithDraw);
     }
 

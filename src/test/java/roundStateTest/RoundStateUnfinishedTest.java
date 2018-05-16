@@ -51,7 +51,7 @@ public class RoundStateUnfinishedTest {
     }
 
     @Test
-    public void getMassageKey_returns_MessageKeys_theRoundWins() {
+    public void getMessageKey_returns_MessageKeys_theRoundWins() {
         assertEquals(roundStateUnfinished.getMessageKey(), MessageKeys.gameUnfinished);
     }
 

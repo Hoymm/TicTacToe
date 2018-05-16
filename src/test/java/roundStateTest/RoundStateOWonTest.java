@@ -51,7 +51,7 @@ public class RoundStateOWonTest {
     }
 
     @Test
-    public void getMassageKey_returns_MessageKeys_theRoundWins() {
+    public void getMessageKey_returns_MessageKeys_theRoundWins() {
         assertEquals(roundStateOWon.getMessageKey(), MessageKeys.theRoundWins);
     }
 
