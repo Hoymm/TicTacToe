@@ -58,8 +58,8 @@ public class RoundStateOWonTest {
     @Test
     public void addPointsAccordingRoundFinishedState_shouldReturn3to0 () {
         Player playerX, playerO;
-        playerX = new Player("Koczkodan", Symbol.O);
-        playerO = new Player("Nie Koczkodan", Symbol.X);
+        playerX = new Player("Koczkodan", Symbol.X);
+        playerO = new Player("Nie Koczkodan", Symbol.O);
         Players players = new Players(playerO, playerX, Symbol.O);
 
         roundStateOWon.addPointsAccordingRoundFinishedState(players);
