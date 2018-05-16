@@ -26,12 +26,6 @@ public class Player {
     }
 
     @Override
-    public int hashCode() {
-
-        return Objects.hash(playerName, playerScores, symbol);
-    }
-
-    @Override
     public String toString() {
         return String.format("%s [%s]: %d", playerName, symbol, playerScores);
     }
