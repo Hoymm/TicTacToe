@@ -28,7 +28,7 @@ public class Player {
         return String.format("%s [%s]: %d", playerName, symbol, playerScores);
     }
 
-    public Symbol getSymbol(){
+    public Symbol getSymbol() {
         return symbol;
     }
 

@@ -109,7 +109,7 @@ public class Data {
 
     public String gameFinishResult(Messenger messenger) {
         if (isGameFinished())
-            return players.gameFinishedMessage(messenger);
+            return players.showGameFinishedMessage(messenger);
         else
             return messenger.translateKey(MessageKeys.gameInProgress);
     }

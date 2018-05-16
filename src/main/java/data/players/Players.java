@@ -26,12 +26,6 @@ public class Players {
     }
 
     @Override
-    public int hashCode() {
-
-        return Objects.hash(playerO, playerX, curSymbolPlays);
-    }
-
-    @Override
     public String toString() {
             return String.format("%s%s \t %s%s%s"
                     , curSymbolPlays.getColor(playerO), playerO, curSymbolPlays.getColor(playerX)
@@ -54,11 +48,11 @@ public class Players {
         playerX.addPoints(points);
     }
 
-    public void addPointsToO(int points) {
+    public void addScoresToO(int points) {
         playerO.addPoints(points);
     }
 
-    public String gameFinishedMessage(Messenger messenger) {
+    public String showGameFinishedMessage(Messenger messenger) {
         if (playerO.getPlayerScores() == playerX.getPlayerScores())
             return messenger.translateKey(MessageKeys.gameFinishedItsADraw);
         else {
