@@ -17,6 +17,6 @@ public class RoundStateDraw extends RoundState {
     @Override
     public void addPointsAccordingRoundFinishedState(Players players) {
         players.addPointsToX(1);
-        players.addPointsToO(1);
+        players.addScoresToO(1);
     }
 }

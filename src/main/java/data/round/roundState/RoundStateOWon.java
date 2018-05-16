@@ -17,6 +17,6 @@ public class RoundStateOWon extends RoundState{
 
     @Override
     public void addPointsAccordingRoundFinishedState(Players players) {
-        players.addPointsToO(3);
+        players.addScoresToO(3);
     }
 }

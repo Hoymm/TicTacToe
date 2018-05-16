@@ -1,7 +1,5 @@
 package data.players;
-
 import data.Symbol;
-
 import java.util.Objects;
 
 public class Player {
@@ -26,25 +24,19 @@ public class Player {
     }
 
     @Override
-    public int hashCode() {
-
-        return Objects.hash(playerName, playerScores, symbol);
-    }
-
-    @Override
     public String toString() {
         return String.format("%s [%s]: %d", playerName, symbol, playerScores);
     }
 
-    public Symbol getSymbol(){
+    public Symbol getSymbol() {
         return symbol;
     }
 
-    int getPlayerScores() {
+    public int getPlayerScores() {
         return playerScores;
     }
 
-    void addPoints(int points) {
+    public void addPoints(int points) {
         playerScores += points;
     }
 }
