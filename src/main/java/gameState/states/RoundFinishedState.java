@@ -20,6 +20,7 @@ public class RoundFinishedState extends Game {
             return new GameFinishedState(data, messenger);
         }
         else {
+            data.setCurrentPlayerToOneWhoStartsRound();
             data.prepareNewRound();
             return new RunningGameState(data, messenger);
         }

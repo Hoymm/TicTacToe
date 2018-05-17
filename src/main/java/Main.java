@@ -10,6 +10,7 @@ class Main {
     }
 
     private static Locale loadLanguageIfInserted(String[] args) {
-        return args.length == 0 ? LocaleLanguages.getDefaultLanguage() : LocaleLanguages.valueOf(args[0]).getLanguage();
+        return args.length == 0
+                ? LocaleLanguages.getDefaultLanguage() : LocaleLanguages.valueOf(args[0].toUpperCase()).getLanguage();
     }
 }

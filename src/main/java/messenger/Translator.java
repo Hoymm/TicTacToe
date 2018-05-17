@@ -4,14 +4,13 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Translator {
-    private final Locale language;
+    private ResourceBundle bundle;
 
     public Translator(Locale language) {
-        this.language = language;
+        bundle = ResourceBundle.getBundle("language", language);
     }
 
     public String getMessage(MessageKeys keyForMessageKeys) {
-        ResourceBundle bundle = ResourceBundle.getBundle("language", language);
         return bundle.getString(keyForMessageKeys.name());
     }
 }

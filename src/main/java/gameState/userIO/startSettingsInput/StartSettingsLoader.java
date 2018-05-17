@@ -17,21 +17,27 @@ public class StartSettingsLoader {
         startSettingsValidator = new StartSettingsValidator();
     }
 
-
-
     public StartSettings load() {
         return loadStartDataFromUser();
     }
 
     private StartSettings loadStartDataFromUser() {
         StartSettings startSettings = new StartSettings();
-        startSettings = loadPlayerOName(startSettings);
-        startSettings = loadPlayerXName(startSettings);
-        startSettings = loadWhoStartFirst(startSettings);
-        startSettings = loadBoardWidth(startSettings);
-        startSettings = loadBoardHeight(startSettings);
-        startSettings = loadHowManySymbolsInLineToWinRound(startSettings);
+        loadPlayerNames(startSettings);
+        loadWhoStartFirst(startSettings);
+        loadBoardParams(startSettings);
         return startSettings;
+    }
+
+    private void loadPlayerNames(StartSettings startSettings) {
+        loadPlayerOName(startSettings);
+        loadPlayerXName(startSettings);
+    }
+
+    private void loadBoardParams(StartSettings startSettings) {
+        loadBoardWidth(startSettings);
+        loadBoardHeight(startSettings);
+        loadHowManySymbolsInLineToWinRound(startSettings);
     }
 
     public static StartSettings loadExampleData() {
@@ -45,14 +51,12 @@ public class StartSettingsLoader {
         return startSettings;
     }
 
-    private StartSettings loadPlayerOName(StartSettings startSettings) {
+    private void loadPlayerOName(StartSettings startSettings) {
         startSettings.namePlayerO = questionAndValidatePlayerName(Symbol.O.toString());
-        return startSettings;
     }
 
-    private StartSettings loadPlayerXName(StartSettings startSettings) {
+    private void loadPlayerXName(StartSettings startSettings) {
         startSettings.namePlayerX = questionAndValidatePlayerName(Symbol.X.toString());
-        return startSettings;
     }
 
     private String questionAndValidatePlayerName(String player) {
@@ -60,27 +64,24 @@ public class StartSettingsLoader {
         return userInputProvider.get().trim();
     }
 
-    private StartSettings loadWhoStartFirst(StartSettings startSettings) {
+    private void loadWhoStartFirst(StartSettings startSettings) {
         String symbolToPlayFirst = "";
         while(!startSettingsValidator.isValidSymbol(symbolToPlayFirst)){
             messenger.printf(MessageKeys.questionAboutStartingPlayer, Symbol.O, Symbol.X);
-            symbolToPlayFirst = userInputProvider.get().trim();
+            symbolToPlayFirst = userInputProvider.get().trim().toUpperCase();
             if (!startSettingsValidator.isValidSymbol(symbolToPlayFirst)){
                 messenger.printf(MessageKeys.wrongSymbolToStart, Symbol.O, Symbol.X);
             }
         }
         startSettings.whoStartsFirst = Symbol.valueOf(symbolToPlayFirst.trim());
-        return startSettings;
     }
 
-    private StartSettings loadBoardWidth(StartSettings startSettings) {
+    private void loadBoardWidth(StartSettings startSettings) {
         startSettings.boardWidth = loadAndValidateTableParam(messenger.translateKey(MessageKeys.width));
-        return startSettings;
     }
 
-    private StartSettings loadBoardHeight(StartSettings startSettings) {
+    private void loadBoardHeight(StartSettings startSettings) {
         startSettings.boardHeight = loadAndValidateTableParam(messenger.translateKey(MessageKeys.height));
-        return startSettings;
     }
 
     private int loadAndValidateTableParam(String widthOrHeight) {
@@ -97,10 +98,9 @@ public class StartSettingsLoader {
         return Integer.valueOf(tableParameterString);
     }
 
-    private StartSettings loadHowManySymbolsInLineToWinRound(StartSettings startSettings) {
+    private void loadHowManySymbolsInLineToWinRound(StartSettings startSettings) {
         int maxFromWidthAndHeightOfBoard = Math.max(startSettings.boardHeight, startSettings.boardWidth);
         startSettings.howManySymbolsInARowToWinRound = howManySymbolsInUnbrokenLineToWinRound(maxFromWidthAndHeightOfBoard);
-        return startSettings;
     }
 
     private int howManySymbolsInUnbrokenLineToWinRound(int maxFromBoardWidthAndHeight) {
