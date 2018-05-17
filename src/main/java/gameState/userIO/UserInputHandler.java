@@ -35,7 +35,7 @@ class UserInputHandler {
         String userEntry = "";
         while(isFieldBoardEntryInvalid(userEntry)){
             messenger.printf(MessageKeys.giveMeNumberOfField);
-            userEntry = userInputData.get();
+            userEntry = userInputData.get().trim();
             if (isFieldBoardEntryInvalid(userEntry)) {
                 messenger.printf(MessageKeys.boardFieldMustBePossitiveNumber, userEntry);
             }

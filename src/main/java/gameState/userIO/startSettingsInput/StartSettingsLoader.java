@@ -17,8 +17,6 @@ public class StartSettingsLoader {
         startSettingsValidator = new StartSettingsValidator();
     }
 
-
-
     public StartSettings load() {
         return loadStartDataFromUser();
     }
