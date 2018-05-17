@@ -16,22 +16,7 @@ public class BoardController {
 
     @Override
     public String toString() {
-        return calculateStringDisplayingGameBoard();
-    }
-
-    private String calculateStringDisplayingGameBoard() {
-        StringBuilder tableDisplayInfoBuilder = new StringBuilder();
-        tableDisplayInfoBuilder.append(boardDrawer.getDisplayTopLineOfBoard(gameBoardData)).append("\n");
-
-        int curFirstLeftColumnNumber = 1;
-        for (int levelCountingFromTop = 0; levelCountingFromTop < gameBoardData.height; ++levelCountingFromTop){
-            tableDisplayInfoBuilder
-                    .append(boardDrawer.getDisplayLine_withEmptySpacesInsideField(gameBoardData)).append("\n")
-                    .append(boardDrawer.getDisplayLine_withSymbolOrNumberInsideField(gameBoardData, curFirstLeftColumnNumber)).append("\n")
-                    .append(boardDrawer.getDisplayLine_verticalSeparatorBetweenFields(gameBoardData)).append("\n");
-            curFirstLeftColumnNumber += gameBoardData.width;
-        }
-        return tableDisplayInfoBuilder.toString();
+        return boardDrawer.calculateStringDisplayingGameBoard(gameBoardData);
     }
 
     public boolean tryMarkFieldAndChangeWinnerStateIfNeeded(int fieldNumber, Symbol symbol) {

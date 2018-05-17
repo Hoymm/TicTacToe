@@ -48,4 +48,19 @@ class BoardDrawer {
         return displayLineWithEmptySpaces.append("|").toString();
     }
 
+    String calculateStringDisplayingGameBoard(BoardData gameBoardData) {
+        StringBuilder tableDisplayInfoBuilder = new StringBuilder();
+        tableDisplayInfoBuilder.append(getDisplayTopLineOfBoard(gameBoardData)).append("\n");
+
+        int curFirstLeftColumnNumber = 1;
+        for (int levelCountingFromTop = 0; levelCountingFromTop < gameBoardData.height; ++levelCountingFromTop){
+            tableDisplayInfoBuilder
+                    .append(getDisplayLine_withEmptySpacesInsideField(gameBoardData)).append("\n")
+                    .append(getDisplayLine_withSymbolOrNumberInsideField(gameBoardData, curFirstLeftColumnNumber)).append("\n")
+                    .append(getDisplayLine_verticalSeparatorBetweenFields(gameBoardData)).append("\n");
+            curFirstLeftColumnNumber += gameBoardData.width;
+        }
+        return tableDisplayInfoBuilder.toString();
+    }
+
 }
