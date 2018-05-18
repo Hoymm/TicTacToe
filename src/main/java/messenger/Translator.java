@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Translator {
-    private ResourceBundle bundle;
+    private final ResourceBundle bundle;
 
     public Translator(Locale language) {
         bundle = ResourceBundle.getBundle("language", language);

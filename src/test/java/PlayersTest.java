@@ -1,4 +1,3 @@
-import data.Colors;
 import data.Symbol;
 import data.players.Player;
 import data.players.Players;
