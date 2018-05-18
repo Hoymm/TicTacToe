@@ -22,15 +22,12 @@ public class Players {
         if (o == null || getClass() != o.getClass()) return false;
         Players players = (Players) o;
         return Objects.equals(playerO, players.playerO) &&
-                Objects.equals(playerX, players.playerX) &&
-                curSymbolPlays == players.curSymbolPlays;
+                Objects.equals(playerX, players.playerX);
     }
 
     @Override
     public String toString() {
-            return String.format("%s%s \t %s%s%s"
-                    , curSymbolPlays.getColor(playerO), playerO, curSymbolPlays.getColor(playerX)
-                    , playerX, curSymbolPlays.getDefaultColor());
+            return String.format("%s \t %s", playerO.getColoredFormat(curSymbolPlays::getColor), playerX.getColoredFormat(curSymbolPlays::getColor));
     }
 
     public Player getCurrentPlayer() {

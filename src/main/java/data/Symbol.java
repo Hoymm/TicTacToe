@@ -6,7 +6,7 @@ public enum Symbol {
     X{
         @Override
         public String toString() {
-            return Colors.RED + super.toString() + Colors.DEFAULT;
+            return Colors.RED + super.toString() + Colors.INACTIVE;
         }
 
         @Override
@@ -17,7 +17,7 @@ public enum Symbol {
     }, O{
         @Override
         public String toString() {
-            return Colors.BLUE + super.toString() + Colors.DEFAULT;
+            return Colors.BLUE + super.toString() + Colors.INACTIVE;
         }
 
         @Override
@@ -41,10 +41,5 @@ public enum Symbol {
             return Colors.ACTIVE;
         else
             return Colors.INACTIVE;
-    }
-
-    @SuppressWarnings("SameReturnValue")
-    public Colors getDefaultColor() {
-        return Colors.DEFAULT;
     }
 }

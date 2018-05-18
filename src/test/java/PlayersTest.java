@@ -62,14 +62,6 @@ public class PlayersTest {
     }
 
     @Test
-    public void testPlayerOutput_doesItMatchPattern(){
-
-        //then
-        assertEquals(examplePlayersXStarts.toString(), String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
-                Colors.INACTIVE, "Adrian", Symbol.O, 0, Colors.ACTIVE , "Kasia", Symbol.X, 0, Colors.DEFAULT));
-    }
-
-    @Test
     public void whenGetCurPlayer_itShouldReturnReferenceToKasiaX(){
         // Given
         // when
