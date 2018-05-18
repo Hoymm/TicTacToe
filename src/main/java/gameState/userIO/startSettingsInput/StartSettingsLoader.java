@@ -60,8 +60,15 @@ public class StartSettingsLoader {
     }
 
     private String questionAndValidatePlayerName(String player) {
-        messenger.printf(MessageKeys.insertPlayerName, player);
-        return userInputProvider.get().trim();
+        String nameToReturn;
+        do {
+            messenger.printf(MessageKeys.insertPlayerName, player);
+            nameToReturn = userInputProvider.get().trim();
+            if (nameToReturn.length() == 0) {
+                messenger.printf(MessageKeys.nameCannotBeEmpty);
+            }
+        }while (nameToReturn.length() == 0);
+        return nameToReturn;
     }
 
     private void loadWhoStartFirst(StartSettings startSettings) {
