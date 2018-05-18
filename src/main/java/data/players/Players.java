@@ -21,6 +21,8 @@ public class Players {
         if (o == null || getClass() != o.getClass()) return false;
         Players players = (Players) o;
         return Objects.equals(playerO, players.playerO) &&
+                Objects.equals(playerX, players.playerX) &&
+                curSymbolPlays == players.curSymbolPlays &&
                 Objects.equals(playerX, players.playerX);
     }
 

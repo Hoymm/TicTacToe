@@ -59,10 +59,10 @@ public class StartSettingsLoader {
         startSettings.namePlayerX = questionAndValidatePlayerName(Symbol.X.toString());
     }
 
-    private String questionAndValidatePlayerName(String player) {
+    private String questionAndValidatePlayerName(String symbolName) {
         String nameToReturn;
         do {
-            messenger.printf(MessageKeys.insertPlayerName, player);
+            messenger.printf(MessageKeys.insertPlayerName, symbolName);
             nameToReturn = userInputProvider.get().trim();
             if (nameToReturn.length() == 0) {
                 messenger.printf(MessageKeys.nameCannotBeEmpty);
