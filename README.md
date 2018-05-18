@@ -4,8 +4,7 @@ User chooses board size, how many points to win, can play only against another u
 
 To invoke use:
 
-mvn clean install
-java -jar target/TicTacToe-[version] language
+./run.sh
 
 Available languages:
 PL - (default)
