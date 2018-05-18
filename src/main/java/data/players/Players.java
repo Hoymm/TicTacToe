@@ -5,8 +5,7 @@ import data.Symbol;
 import java.util.Objects;
 
 public class Players {
-    final private Player playerO;
-    private final Player playerX;
+    final private Player playerO, playerX;
     private Symbol curSymbolPlays, whoStartsRound;
 
     public Players(Player playerO, Player playerX, Symbol startSymbol) {
