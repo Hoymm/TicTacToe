@@ -10,12 +10,6 @@ public enum Symbol {
         }
 
         @Override
-        public Player whoShouldPlay(Player playerO, Player playerX) {
-            return playerX;
-        }
-
-
-        @Override
         public Symbol getOppositeSymbol() {
             return O;
         }
@@ -27,17 +21,19 @@ public enum Symbol {
         }
 
         @Override
-        public Player whoShouldPlay(Player playerO, Player playerX) {
-            return playerO;
-        }
-
-        @Override
         public Symbol getOppositeSymbol() {
             return X;
         }
     };
 
-    abstract public Player whoShouldPlay(Player playerO, Player playerX);
+    public Player whoShouldPlay(Player player1, Player player2){
+        if (this.equals(player1.getSymbol())) {
+            return player1;
+        }
+        else{
+            return player2;
+        }
+    }
     abstract public Symbol getOppositeSymbol();
 
     public Colors getColor(Player player) {

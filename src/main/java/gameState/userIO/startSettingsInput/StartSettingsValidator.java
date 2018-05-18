@@ -19,13 +19,13 @@ public class StartSettingsValidator {
     }
 
     public boolean isHowManySymbolsInUnbrokenLineToWinRoundInvalid(String unbrokenSymbolsLineToWinRoundString
-            , int HOW_MANY_SYMBOLS_IN_UNBROKEN_LINE_MAX_TO_WIN, Messenger messenger) {
+            , int maxSymbolsAmountInUnbrokenLineToWin, Messenger messenger) {
 
         if (validator.isNotAQuitCommand(unbrokenSymbolsLineToWinRoundString, messenger) && validator.isInteger(unbrokenSymbolsLineToWinRoundString)){
             int unbrokenSymbolsLineToWinRound = Integer.valueOf(unbrokenSymbolsLineToWinRoundString);
 
             return HOW_MANY_SYMBOLS_IN_UNBROKEN_LINE_MINIMUM_TO_WIN > unbrokenSymbolsLineToWinRound
-                    || unbrokenSymbolsLineToWinRound > HOW_MANY_SYMBOLS_IN_UNBROKEN_LINE_MAX_TO_WIN;
+                    || unbrokenSymbolsLineToWinRound > maxSymbolsAmountInUnbrokenLineToWin;
         }
         return true;
     }

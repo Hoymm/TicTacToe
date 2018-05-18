@@ -17,6 +17,17 @@ public class StartSettingsLoader {
         startSettingsValidator = new StartSettingsValidator();
     }
 
+    public static StartSettings loadExampleData() {
+        StartSettings startSettings = new StartSettings();
+        startSettings.namePlayerO = "Damian";
+        startSettings.namePlayerX = "Andrzej";
+        startSettings.whoStartsFirst = Symbol.O;
+        startSettings.boardWidth = 3;
+        startSettings.boardHeight = 3;
+        startSettings.howManySymbolsInARowToWinRound = 3;
+        return startSettings;
+    }
+
     public StartSettings load() {
         return loadStartDataFromUser();
     }
@@ -38,17 +49,6 @@ public class StartSettingsLoader {
         loadBoardWidth(startSettings);
         loadBoardHeight(startSettings);
         loadHowManySymbolsInLineToWinRound(startSettings);
-    }
-
-    public static StartSettings loadExampleData() {
-        StartSettings startSettings = new StartSettings();
-        startSettings.namePlayerO = "Damian";
-        startSettings.namePlayerX = "Andrzej";
-        startSettings.whoStartsFirst = Symbol.O;
-        startSettings.boardWidth = 3;
-        startSettings.boardHeight = 3;
-        startSettings.howManySymbolsInARowToWinRound = 3;
-        return startSettings;
     }
 
     private void loadPlayerOName(StartSettings startSettings) {
