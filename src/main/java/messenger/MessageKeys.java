@@ -24,5 +24,6 @@ public enum MessageKeys {
     winsWhoAndScores,
     theRoundWins,
     roundIsFinishedWithDraw,
+    nameCannotBeEmpty,
     gameUnfinished
 }

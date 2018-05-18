@@ -5,7 +5,7 @@ import data.Symbol;
 class BoardDrawer {
 
 
-    String getDisplayLine_withSymbolOrNumberInsideField(BoardData gameBoardData, int fieldCounter) {
+    private String getDisplayLine_withSymbolOrNumberInsideField(BoardData gameBoardData, int fieldCounter) {
         StringBuilder displayLineWithEmptySpaces = new StringBuilder();
         for (int i = 0; i < gameBoardData.width; ++i) {
             Symbol symbolOnField = gameBoardData.getSymbolFromField(fieldCounter);
@@ -27,15 +27,15 @@ class BoardDrawer {
         return displayLineWithEmptySpaces.append("|").toString();
     }
 
-    String getDisplayTopLineOfBoard(BoardData gameBoardData) {
+    private String getDisplayTopLineOfBoard(BoardData gameBoardData) {
         return new String(new char[gameBoardData.width*4+1]).replace("\0", "_");
     }
 
-    String getDisplayLine_verticalSeparatorBetweenFields(BoardData gameBoardData) {
+    private String getDisplayLine_verticalSeparatorBetweenFields(BoardData gameBoardData) {
         return getHorizontalLineOfBoardDisplayWithHorizontalSeparators(gameBoardData, "___");
     }
 
-    String getDisplayLine_withEmptySpacesInsideField(BoardData gameBoardData) {
+    private String getDisplayLine_withEmptySpacesInsideField(BoardData gameBoardData) {
         return getHorizontalLineOfBoardDisplayWithHorizontalSeparators(gameBoardData, "   ");
     }
 

@@ -1,4 +1,3 @@
-import data.Colors;
 import data.Symbol;
 import data.players.Player;
 import data.players.Players;
@@ -59,14 +58,6 @@ public class PlayersTest {
         // when
         // then
         assertNotEquals(examplePlayersXStarts, players);
-    }
-
-    @Test
-    public void testPlayerOutput_doesItMatchPattern(){
-
-        //then
-        assertEquals(examplePlayersXStarts.toString(), String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
-                Colors.INACTIVE, "Adrian", Symbol.O, 0, Colors.ACTIVE , "Kasia", Symbol.X, 0, Colors.DEFAULT));
     }
 
     @Test

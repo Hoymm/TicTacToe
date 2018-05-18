@@ -6,14 +6,8 @@ public enum Symbol {
     X{
         @Override
         public String toString() {
-            return Colors.RED + super.toString() + Colors.DEFAULT;
+            return Colors.RED + super.toString() + Colors.INACTIVE;
         }
-
-        @Override
-        public Player whoShouldPlay(Player playerO, Player playerX) {
-            return playerX;
-        }
-
 
         @Override
         public Symbol getOppositeSymbol() {
@@ -23,12 +17,7 @@ public enum Symbol {
     }, O{
         @Override
         public String toString() {
-            return Colors.BLUE + super.toString() + Colors.DEFAULT;
-        }
-
-        @Override
-        public Player whoShouldPlay(Player playerO, Player playerX) {
-            return playerO;
+            return Colors.BLUE + super.toString() + Colors.INACTIVE;
         }
 
         @Override
@@ -37,7 +26,14 @@ public enum Symbol {
         }
     };
 
-    abstract public Player whoShouldPlay(Player playerO, Player playerX);
+    public Player whoShouldPlay(Player player1, Player player2){
+        if (this.equals(player1.getSymbol())) {
+            return player1;
+        }
+        else{
+            return player2;
+        }
+    }
     abstract public Symbol getOppositeSymbol();
 
     public Colors getColor(Player player) {
@@ -45,10 +41,5 @@ public enum Symbol {
             return Colors.ACTIVE;
         else
             return Colors.INACTIVE;
-    }
-
-    @SuppressWarnings("SameReturnValue")
-    public Colors getDefaultColor() {
-        return Colors.DEFAULT;
     }
 }

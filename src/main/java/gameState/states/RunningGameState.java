@@ -7,7 +7,7 @@ import gameState.Game;
 
 public class RunningGameState extends Game {
 
-    RunningGameState(Data data, Messenger messenger) {
+    public RunningGameState(Data data, Messenger messenger) {
         super(data, messenger);
         data.setCurrentPlayerToOneWhoStartsRound();
         data.setWhoStartedLastRoundToOpposite();

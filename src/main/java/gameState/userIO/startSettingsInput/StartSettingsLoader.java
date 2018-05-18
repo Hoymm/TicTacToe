@@ -17,6 +17,17 @@ public class StartSettingsLoader {
         startSettingsValidator = new StartSettingsValidator();
     }
 
+    public static StartSettings loadExampleData() {
+        StartSettings startSettings = new StartSettings();
+        startSettings.namePlayerO = "Damian";
+        startSettings.namePlayerX = "Andrzej";
+        startSettings.whoStartsFirst = Symbol.O;
+        startSettings.boardWidth = 3;
+        startSettings.boardHeight = 3;
+        startSettings.howManySymbolsInARowToWinRound = 3;
+        return startSettings;
+    }
+
     public StartSettings load() {
         return loadStartDataFromUser();
     }
@@ -40,17 +51,6 @@ public class StartSettingsLoader {
         loadHowManySymbolsInLineToWinRound(startSettings);
     }
 
-    public static StartSettings loadExampleData() {
-        StartSettings startSettings = new StartSettings();
-        startSettings.namePlayerO = "Damian";
-        startSettings.namePlayerX = "Andrzej";
-        startSettings.whoStartsFirst = Symbol.O;
-        startSettings.boardWidth = 3;
-        startSettings.boardHeight = 3;
-        startSettings.howManySymbolsInARowToWinRound = 3;
-        return startSettings;
-    }
-
     private void loadPlayerOName(StartSettings startSettings) {
         startSettings.namePlayerO = questionAndValidatePlayerName(Symbol.O.toString());
     }
@@ -59,9 +59,16 @@ public class StartSettingsLoader {
         startSettings.namePlayerX = questionAndValidatePlayerName(Symbol.X.toString());
     }
 
-    private String questionAndValidatePlayerName(String player) {
-        messenger.printf(MessageKeys.insertPlayerName, player);
-        return userInputProvider.get().trim();
+    private String questionAndValidatePlayerName(String symbolName) {
+        String nameToReturn;
+        do {
+            messenger.printf(MessageKeys.insertPlayerName, symbolName);
+            nameToReturn = userInputProvider.get().trim();
+            if (nameToReturn.length() == 0) {
+                messenger.printf(MessageKeys.nameCannotBeEmpty);
+            }
+        }while (nameToReturn.length() == 0);
+        return nameToReturn;
     }
 
     private void loadWhoStartFirst(StartSettings startSettings) {
