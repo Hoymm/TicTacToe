@@ -1,4 +1,3 @@
-import data.Colors;
 import data.Symbol;
 import data.players.Player;
 import data.players.Players;
@@ -59,14 +58,6 @@ public class PlayersTest {
         // when
         // then
         assertNotEquals(examplePlayersXStarts, players);
-    }
-
-    @Test
-    public void testPlayerOutput_doesItMatchPattern(){
-
-        //then
-        assertEquals(examplePlayersXStarts.toString(), String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
-                Colors.INACTIVE, "Adrian", Symbol.O, 0, Colors.ACTIVE , "Kasia", Symbol.X, 0, Colors.DEFAULT));
     }
 
     @Test
@@ -138,5 +129,17 @@ public class PlayersTest {
         assertEquals(String.format("The winner is %s. %s: %d %s: %d", adrianO.getSymbol()
                 , adrianO.getSymbol(), adrianO.getPlayerScores(), kasiaX.getSymbol(), kasiaX.getPlayerScores()),
                 examplePlayersOStarts.showGameFinishedMessage(messenger));
+    }
+
+    @Test
+    public void whoStartedLastRound_startSettingsToXStart_returnSymbolX(){
+        assertEquals(examplePlayersXStarts.whoStartedLastRound(), Symbol.X);
+    }
+
+    @Test
+    public void setCurrentPlayerToOneWhoStartsRound_aftersetWhoStartedLastRoundToOpposite_returnSymbolO(){
+        examplePlayersXStarts.setWhoStartedLastRoundToOpposite();
+        examplePlayersXStarts.setCurrentPlayerToOneWhoStartsRound();
+        assertEquals(examplePlayersXStarts.whoStartedLastRound(), Symbol.O);
     }
 }

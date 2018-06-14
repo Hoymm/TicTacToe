@@ -2,11 +2,12 @@ TicTacToe allows user to play that popular game in text mode.
 User chooses board size, how many points to win, can play only against another user (no PC mode), does not support playing through network.
 
 
-To invoke use:
+To run game use:
 
-mvn clean install
-java -jar target/TicTacToe-[version] language
+For polish version type:
 
-Available languages:
-PL - (default)
-ENG
+ ``./run.sh pl``
+
+For english version type:
+
+ ``./run.sh eng``

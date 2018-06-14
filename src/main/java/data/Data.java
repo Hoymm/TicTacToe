@@ -36,16 +36,13 @@ public class Data {
         return Objects.hash(players, gameBoardController);
     }
 
-
-    public void changePlayerToOpposite() {
+    public void changeCurrentPlayerToOpposite() {
         players.changePlayerTurn();
     }
-
 
     public String gameHeaderDisplayInfo() {
         return players.toString();
     }
-
 
     public String gameBoardDisplayInfo() {
         return gameBoardController.toString();
@@ -72,11 +69,9 @@ public class Data {
         }
     }
 
-
     public RoundState getRoundState() {
         return gameBoardController.getRoundState();
     }
-
 
     public boolean tryToInsertNewCoordinates(int userInput, Messenger messenger){
         if (!gameBoardController.tryMarkFieldAndChangeWinnerStateIfNeeded(userInput, players.getCurrentSymbol())) {
@@ -86,26 +81,21 @@ public class Data {
         return true;
     }
 
-
     public boolean isGameFinished() {
         return roundsPlayed == 3;
     }
-
 
     public void incrementRoundsPlayed() {
         roundsPlayed++;
     }
 
-
     public void prepareNewRound() {
         gameBoardController.prepareNewRound();
     }
 
-
     public void addPointsToPlayers() {
         getRoundState().addPointsAccordingRoundFinishedState(players);
     }
-
 
     public String gameFinishResult(Messenger messenger) {
         if (isGameFinished())
@@ -117,5 +107,18 @@ public class Data {
     public void printRoundState(Messenger messenger) {
         RoundState roundState = gameBoardController.getRoundState();
         messenger.printf(roundState.getMessageKey(), roundState.getMessageKeyArguments());
+    }
+
+    public Symbol getSymbolToPlayNow() {
+        Player currentPlayerTurn = players.getCurrentPlayer();
+        return currentPlayerTurn.getSymbol();
+    }
+
+    public void setCurrentPlayerToOneWhoStartsRound() {
+        players.setCurrentPlayerToOneWhoStartsRound();
+    }
+
+    public void setWhoStartedLastRoundToOpposite() {
+        players.setWhoStartedLastRoundToOpposite();
     }
 }

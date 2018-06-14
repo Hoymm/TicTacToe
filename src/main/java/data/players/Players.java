@@ -5,14 +5,14 @@ import data.Symbol;
 import java.util.Objects;
 
 public class Players {
-    final private Player playerO;
-    private final Player playerX;
-    private Symbol curSymbolPlays;
+    final private Player playerO, playerX;
+    private Symbol curSymbolPlays, whoStartsRound;
 
     public Players(Player playerO, Player playerX, Symbol startSymbol) {
         this.playerO = playerO;
         this.playerX = playerX;
         this.curSymbolPlays = startSymbol;
+        this.whoStartsRound = startSymbol;
     }
 
     @Override
@@ -22,14 +22,13 @@ public class Players {
         Players players = (Players) o;
         return Objects.equals(playerO, players.playerO) &&
                 Objects.equals(playerX, players.playerX) &&
-                curSymbolPlays == players.curSymbolPlays;
+                curSymbolPlays == players.curSymbolPlays &&
+                Objects.equals(playerX, players.playerX);
     }
 
     @Override
     public String toString() {
-            return String.format("%s%s \t %s%s%s"
-                    , curSymbolPlays.getColor(playerO), playerO, curSymbolPlays.getColor(playerX)
-                    , playerX, curSymbolPlays.getDefaultColor());
+            return String.format("%s \t %s", playerO.getColoredFormat(curSymbolPlays::getColor), playerX.getColoredFormat(curSymbolPlays::getColor));
     }
 
     public Player getCurrentPlayer() {
@@ -61,5 +60,18 @@ public class Players {
                     , winner.getSymbol(), playerO.getSymbol(), playerO.getPlayerScores()
                     , playerX.getSymbol(), playerX.getPlayerScores());
         }
+    }
+
+
+    public Symbol whoStartedLastRound() {
+        return whoStartsRound;
+    }
+
+    public void setCurrentPlayerToOneWhoStartsRound(){
+        curSymbolPlays = whoStartsRound;
+    }
+
+    public void setWhoStartedLastRoundToOpposite() {
+        whoStartsRound = whoStartsRound.getOppositeSymbol();
     }
 }

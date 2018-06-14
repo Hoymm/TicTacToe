@@ -1,6 +1,8 @@
 package data.players;
+import data.Colors;
 import data.Symbol;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class Player {
     final private String playerName;
@@ -28,6 +30,12 @@ public class Player {
         return String.format("%s [%s]: %d", playerName, symbol, playerScores);
     }
 
+    String getColoredFormat(Function <Player, Colors> getColor) {
+        Colors activeOrInactiveColor = getColor.apply(this);
+        return String.format("%s%s%s [%s]: %d"
+                , activeOrInactiveColor, playerName, Colors.INACTIVE, symbol, playerScores);
+    }
+
     public Symbol getSymbol() {
         return symbol;
     }
@@ -39,4 +47,5 @@ public class Player {
     public void addPoints(int points) {
         playerScores += points;
     }
+
 }

@@ -1,7 +1,9 @@
+import data.Colors;
+import data.Data;
+import data.Symbol;
 import gameState.userIO.startSettingsInput.StartSettingsLoader;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import data.*;
 
 import static org.testng.Assert.assertEquals;
 
@@ -19,7 +21,9 @@ public class DisplayDataProviderTest {
         //when
         String playersInfo = data.gameHeaderDisplayInfo();
         //then
-        assertEquals(playersInfo, String.format("%s%s [%s]: %d \t %s%s [%s]: %d%s",
-                Colors.ACTIVE, "Damian", Symbol.O, 0, Colors.INACTIVE , "Andrzej", Symbol.X, 0, Colors.DEFAULT));
+        String expected = String.format("%s%s%s [%s]: %d \t %s%s%s [%s]: %d",
+                Colors.ACTIVE, "Damian", Colors.INACTIVE, Symbol.O, 0
+                , Colors.INACTIVE, "Andrzej", Colors.INACTIVE, Symbol.X, 0);
+        assertEquals(playersInfo, expected);
     }
 }
